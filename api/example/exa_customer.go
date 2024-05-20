@@ -1,6 +1,7 @@
 package example
 
 import (
+	"gin-vue-admin/model/common/response"
 	"gin-vue-admin/model/example"
 	"github.com/gin-gonic/gin"
 )
@@ -12,6 +13,8 @@ func (e *CustomerApi) CreateExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
 	err := c.ShouldBindJSON(&customer)
 	if err != nil {
-		response.
+		response.FailWithMessage(err.Error(), c)
+		return
 	}
+
 }
