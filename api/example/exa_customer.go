@@ -16,5 +16,5 @@ func (e *CustomerApi) CreateExaCustomer(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-
+	err = customerService.
 }
