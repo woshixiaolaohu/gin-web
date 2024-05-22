@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gin-vue-admin/cmd"
 	"gin-vue-admin/global"
+	"gin-vue-admin/initialize"
 )
 
 // @title 接口文档
@@ -14,5 +15,6 @@ func main() {
 	cmd.Execute()
 	// 初始化Viper 读取配置文件
 	global.GVA_VP = cmd.Viper()
-	//
+	// 初始化其他
+	initialize.OtherInit()
 }
