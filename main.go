@@ -5,6 +5,7 @@ import (
 	"gin-vue-admin/cmd"
 	"gin-vue-admin/global"
 	"gin-vue-admin/initialize"
+	"go.uber.org/zap"
 )
 
 // @title 接口文档
@@ -17,4 +18,9 @@ func main() {
 	global.GVA_VP = cmd.Viper()
 	// 初始化其他
 	initialize.OtherInit()
+	// 初始化zap日志库
+	global.GVA_LOG = cmd.Zap()
+	zap.ReplaceGlobals(global.GVA_LOG)
+	// 初始化gorm连接数据库
+
 }
