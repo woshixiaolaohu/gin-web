@@ -22,5 +22,7 @@ func main() {
 	global.GVA_LOG = cmd.Zap()
 	zap.ReplaceGlobals(global.GVA_LOG)
 	// 初始化gorm连接数据库
-
+	global.GVA_DB = initialize.Gorm()
+	// 初始化定时任务
+	initialize.Timer()
 }
