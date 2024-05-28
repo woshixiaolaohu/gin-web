@@ -8,7 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// GormMysql 初始化mysql数据库
+// GormMysql 初始化 Mysql 数据库
 func GormMysql() *gorm.DB {
 	m := global.GVA_CONFIG.Mysql
 	if m.DBName == "" {
