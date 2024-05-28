@@ -11,6 +11,7 @@ import (
 
 var (
 	GVA_DB     *gorm.DB
+	GVA_DBList map[string]*gorm.DB
 	GVA_CONFIG config.Server
 	GVA_VP     *viper.Viper
 	BlackCache local_cache.Cache

@@ -25,4 +25,7 @@ func main() {
 	global.GVA_DB = initialize.Gorm()
 	// 初始化定时任务
 	initialize.Timer()
+	// 根据配置初始化数据库
+	initialize.DBList()
+
 }
