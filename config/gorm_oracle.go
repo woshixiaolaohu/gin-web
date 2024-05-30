@@ -1,7 +1,7 @@
 package config
 
 type Oracle struct {
-	GeneralDB `yaml:",inline" mapStructure:",squash"`
+	GeneralDB `yaml:",inline" mapstructure:",squash"`
 }
 
 func (o *Oracle) Dsn() string {

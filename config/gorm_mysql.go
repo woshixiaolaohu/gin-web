@@ -1,7 +1,7 @@
 package config
 
 type Mysql struct {
-	GeneralDB `yaml:",inline" mapStructure:",squash"`
+	GeneralDB `yaml:",inline" mapstructure:",squash"`
 }
 
 func (m *Mysql) Dsn() string {

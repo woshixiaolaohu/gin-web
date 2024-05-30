@@ -11,10 +11,10 @@ zap:
   format: console
   prefix: "[github.com/flipped-aurora/gin-vue-admin/server]"
   director: log
-  show-line: true
-  encode-level: LowercaseColorLevelEncoder
-  stacktrace-key: stacktrace
-  log-in-console: true
+  show_line: true
+  encode_level: LowercaseColorLevelEncoder
+  stacktrace_key: stacktrace
+  log_in_console: true
 
 # redis configuration
 redis:
@@ -35,7 +35,7 @@ mongo:
   coll: ''
   options: ''
   database: ''
-  username: ''
+  user_name: ''
   password: ''
   auth_source: ''
   min_pool_size: 0
@@ -84,12 +84,12 @@ captcha:
 # mysql connect configuration
 # 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
 mysql:
-  path: ""
-  port: ""
+  path: "localhost"
+  port: "3306"
   config: ""
-  db_name: ""
-  username: ""
-  password: ""
+  db_name: "db_test_1"
+  user_name: "root"
+  password: "123456"
   max_idle_conn: 10
   max_open_conn: 100
   log_mode: ""
@@ -102,7 +102,7 @@ pgsql:
   port: ""
   config: ""
   db_name: ""
-  username: ""
+  user_name: ""
   password: ""
   max_idle_conn: 10
   max_open_conn: 100
@@ -113,7 +113,7 @@ oracle:
   port: ""
   config: ""
   db_name: ""
-  username: ""
+  user_name: ""
   password: ""
   max_idle_conn: 10
   max_open_conn: 100
@@ -124,7 +124,7 @@ mssql:
   port: ""
   config: ""
   db_name: ""
-  username: ""
+  user_name: ""
   password: ""
   max_idle_conn: 10
   max_open_conn: 100
@@ -135,7 +135,7 @@ sqlite:
   port: ""
   config: ""
   db_name: ""
-  username: ""
+  user_name: ""
   password: ""
   max_idle_conn: 10
   max_open_conn: 100
@@ -149,7 +149,7 @@ db_list:
     port: ""
     config: ""
     db_name: ""
-    username: ""
+    user_name: ""
     password: ""
     max_idle_conn: 10
     max_open_conn: 100
@@ -162,7 +162,7 @@ local:
   store_path: uploads/file
 
 # autocode configuration
-autocode:
+auto_code:
   transfer_restart: true
   # root 自动适配项目根目录
   # 请不要手动配置,他会在项目加载的时候识别出根路径

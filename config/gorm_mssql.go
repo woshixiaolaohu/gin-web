@@ -1,7 +1,7 @@
 package config
 
 type Mssql struct {
-	GeneralDB `yaml:",inline" mapStructure:",squash"`
+	GeneralDB `yaml:",inline" mapstructure:",squash"`
 }
 
 func (m *Mssql) Dsn() string {

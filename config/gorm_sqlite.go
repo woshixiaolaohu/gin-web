@@ -3,7 +3,7 @@ package config
 import "path/filepath"
 
 type Sqlite struct {
-	GeneralDB `yaml:",inline" mapStructure:",squash"`
+	GeneralDB `yaml:",inline" mapstructure:",squash"`
 }
 
 func (s *Sqlite) Dsn() string {

@@ -70,6 +70,9 @@ func Viper(path ...string) *viper.Viper {
 			panic(err)
 		}
 	})
+	if err = v.Unmarshal(&global.GVA_CONFIG); err != nil {
+		panic(err)
+	}
 	// root适配性 根据root位置去找对应的文件迁移位置，保证root路径有效
 	global.GVA_CONFIG.AutoCode.Root, _ = filepath.Abs("..")
 	return v
