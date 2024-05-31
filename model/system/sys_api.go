@@ -3,7 +3,7 @@ package system
 import "gin-vue-admin/global"
 
 type SysApi struct {
-	global.GvaModel
+	global.GVA_MODEL
 	Path        string `json:"path" gorm:"comment:api路径"`             //api路径
 	Description string `json:"description" gorm:"comment:api中文描述"`    //api中文描述
 	ApiGroup    string `json:"api_group" gorm:"comment:api组"`         //api组

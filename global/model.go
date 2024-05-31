@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-type GvaModel struct {
+type GVA_MODEL struct {
 	ID        uint           `json:"id" gorm:"primaryKey"` // 主键ID
 	CreatedAt time.Time      // 创建时间
 	UpdateAt  time.Time      // 更新时间
