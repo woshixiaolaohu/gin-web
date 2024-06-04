@@ -31,7 +31,10 @@ func main() {
 	initialize.DBList()
 	if global.GVA_DB != nil {
 		// 初始化表
-
 		initialize.RegisterTables()
+		// 程序结束前关闭数据库连接
+		db, _ := global.GVA_DB.DB()
+		defer db.Close()
 	}
+
 }
