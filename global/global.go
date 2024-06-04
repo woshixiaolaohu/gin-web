@@ -3,6 +3,7 @@ package global
 import (
 	"gin-vue-admin/config"
 	"gin-vue-admin/utils/timer"
+	"github.com/go-redis/redis/v8"
 
 	"github.com/songzhibin97/gkit/cache/local_cache"
 	"github.com/spf13/viper"
@@ -13,6 +14,7 @@ import (
 var (
 	GVA_DB     *gorm.DB
 	GVA_DBList map[string]*gorm.DB
+	GVA_REDIS  redis.UniversalClient
 	GVA_CONFIG config.Server
 	GVA_VP     *viper.Viper
 	BlackCache local_cache.Cache
