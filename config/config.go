@@ -4,6 +4,7 @@ type Server struct {
 	Zap    Zap    `json:"zap" yaml:"zap" mapstructure:"zap"`
 	JWT    JWT    `json:"jwt" yaml:"jwt" mapstructure:"jwt"`
 	Redis  Redis  `json:"redis" yaml:"redis" mapstructure:"redis"`
+	Mongo  Mongo  `json:"mongo" yaml:"mongo" mapstructure:"mongo"`
 	System System `json:"system" yaml:"system" mapstructure:"system"`
 	// auto
 	AutoCode AutoCode `json:"auto_code" yaml:"auto_code" mapstructure:"auto_code"`

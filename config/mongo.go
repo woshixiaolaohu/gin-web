@@ -25,7 +25,7 @@ type MongoHost struct {
 	Port string `json:"port" yaml:"port" mapstructure:"port"` // port
 }
 
-func (m *Mongo) Url() string {
+func (m *Mongo) Uri() string {
 	length := len(m.Hosts)
 	hosts := make([]string, 0, length)
 	for i := 0; i < length; i++ {

@@ -4,8 +4,10 @@ import (
 	"context"
 	"fmt"
 	"gin-vue-admin/global"
+	"gin-vue-admin/initialize/internal"
 	"gin-vue-admin/utils"
 	"github.com/pkg/errors"
+	"github.com/qiniu/qmgo"
 	"github.com/qiniu/qmgo/options"
 	"go.mongodb.org/mongo-driver/bson"
 	option "go.mongodb.org/mongo-driver/mongo/options"
@@ -25,6 +27,37 @@ type (
 		Name string   `bson:"name"`
 	}
 )
+
+func (m *mongo) Initialization() error {
+	var opts []options.ClientOptions
+	if global.GVA_CONFIG.Mongo.IsZap {
+		opts = internal.Mongo.GetClientOptions()
+	}
+	ctx := context.Background()
+	client, err := qmgo.Open(ctx, &qmgo.Config{
+		Uri:              global.GVA_CONFIG.Mongo.Uri(),
+		Coll:             global.GVA_CONFIG.Mongo.Coll,
+		Database:         global.GVA_CONFIG.Mongo.Database,
+		MinPoolSize:      &global.GVA_CONFIG.Mongo.MinPoolSize,
+		MaxPoolSize:      &global.GVA_CONFIG.Mongo.MaxPoolSize,
+		SocketTimeoutMS:  &global.GVA_CONFIG.Mongo.SocketTimeoutMs,
+		ConnectTimeoutMS: &global.GVA_CONFIG.Mongo.ConnectTimeoutMs,
+		Auth: &qmgo.Credential{
+			Username:   global.GVA_CONFIG.Mongo.Username,
+			Password:   global.GVA_CONFIG.Mongo.Password,
+			AuthSource: global.GVA_CONFIG.Mongo.AuthSource,
+		},
+	}, opts...)
+	if err != nil {
+		return errors.Wrapf(err, "连接 mongodb 数据库失败")
+	}
+	global.GVA_MONGO = client
+	err = m.Indexes(ctx)
+	if err != nil {
+		return err
+	}
+	return nil
+}
 
 func (m *mongo) Indexes(ctx context.Context) error {
 	// 表名：索引列表 列：“表名” [][]string{{"index1", "index2"}}

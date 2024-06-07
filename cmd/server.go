@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gin-vue-admin/global"
 	"gin-vue-admin/initialize"
+	"go.uber.org/zap"
 )
 
 type server interface {
@@ -21,6 +22,9 @@ func RunWindowsServer() {
 		initialize.Redis()
 	}
 	if global.GVA_CONFIG.System.UseMongo {
-
+		err := initialize.Mongo.Initialization()
+		if err != nil {
+			zap.L().Error(fmt.Sprintf("%+v", err))
+		}
 	}
 }
