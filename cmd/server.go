@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gin-vue-admin/global"
 	"gin-vue-admin/initialize"
+	"gin-vue-admin/service/system"
 	"go.uber.org/zap"
 )
 
@@ -27,4 +28,9 @@ func RunWindowsServer() {
 			zap.L().Error(fmt.Sprintf("%+v", err))
 		}
 	}
+	// 从 db 加载 jwt 数据
+	if global.GVA_DB != nil {
+		system.LoadAll()
+	}
+	
 }
