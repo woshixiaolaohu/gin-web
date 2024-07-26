@@ -6,5 +6,6 @@ import "gin-vue-admin/global"
 type CustomerService struct{}
 
 func (exa *CustomerService) CreateExaCustomer(e example.ExaCustomer) (err error) {
-	err = global.GVA_DB.create()
+	err = global.GVA_DB.Create(&e).Error
+	return err
 }

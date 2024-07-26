@@ -2,8 +2,10 @@ package example
 
 import (
 	"gin-vue-admin/global"
+	"gin-vue-admin/model/common/request"
 	"gin-vue-admin/model/common/response"
 	"gin-vue-admin/model/example"
+	exampleRes "gin-vue-admin/model/example/response"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
@@ -29,5 +31,83 @@ func (f *FileUploadAndDownloadApi) UploadFile(c *gin.Context) {
 		response.FailWithMessage("接收文件失败", c)
 		return
 	}
-	file, err = fileUploadAndDownloadService.Uplo
+	// 文件上传之后拿到文件路径
+	file, err = fileUploadAndDownloadService.UploadFile(header, noSave)
+	if err != nil {
+		global.GVA_LOG.Error("修改数据库链接失败", zap.Error(err))
+		response.FailWithMessage("修改数据库链接失败", c)
+	}
+	response.OkWithDetailed(exampleRes.ExaFileResponse{File: file}, "上传成功", c)
+}
+
+// EditFileName
+// @Summary编辑文件命名或备注
+func (f *FileUploadAndDownloadApi) EditFileName(c *gin.Context) {
+	var file example.ExaFileUploadAndDownload
+	err := c.ShouldBindJSON(&file)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = fileUploadAndDownloadService.EditFileName(file)
+	if err != nil {
+		global.GVA_LOG.Error("编辑失败", zap.Error(err))
+		response.FailWithMessage("编辑失败", c)
+		return
+	}
+	response.OkWithMessage("编辑成功", c)
+}
+
+// DeleteFile
+// @Tags      ExaFileUploadAndDownload
+// @Summary   删除文件
+// @Security  ApiKeyAuth
+// @Produce   application/json
+// @Param     data  body      example.ExaFileUploadAndDownload  true  "传入文件里面id即可"
+// @Success   200   {object}  response.Response{msg=string}     "删除文件"
+// @Router    /fileUploadAndDownload/deleteFile [post]
+func (f *FileUploadAndDownloadApi) DeleteFile(c *gin.Context) {
+	var file example.ExaFileUploadAndDownload
+	err := c.ShouldBindJSON(&file)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = fileUploadAndDownloadService.DeleteFile(file)
+	if err != nil {
+		global.GVA_LOG.Error("删除失败", zap.Error(err))
+		response.FailWithMessage("删除失败", c)
+		return
+	}
+	response.OkWithMessage("删除成功", c)
+}
+
+// GetFileList
+// @Tags      ExaFileUploadAndDownload
+// @Summary   分页文件列表
+// @Security  ApiKeyAuth
+// @accept    application/json
+// @Produce   application/json
+// @Param     data  body      request.PageInfo                                        true  "页码, 每页大小"
+// @Success   200   {object}  response.Response{data=response.PageResult,msg=string}  "分页文件列表,返回包括列表,总数,页码,每页数量"
+// @Router    /fileUploadAndDownload/getFileList [post]
+func (f *FileUploadAndDownloadApi) GetFileList(c *gin.Context) {
+	var pageInfo request.PageInfo
+	err := c.ShouldBindJSON(&pageInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	list, total, err := fileUploadAndDownloadService.GetFileRecordInfoList(pageInfo)
+	if err != nil {
+		global.GVA_LOG.Error("获取分页文件列表失败", zap.Error(err))
+		response.FailWithMessage("获取分页文件列表失败", c)
+		return
+	}
+	response.OkWithDetailed(response.PageResult{
+		List:     list,
+		Total:    total,
+		Page:     pageInfo.Page,
+		PageSize: pageInfo.PageSize,
+	}, "获取分页列表成功", c)
 }
