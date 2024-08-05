@@ -66,6 +66,6 @@ func Routers() *gin.Engine {
 		})
 	}
 	{
-		systemRouter.In
+		systemRouter.Init
 	}
 }
