@@ -1,12 +1,12 @@
 package example
 
 import (
+	"gin-vue-admin/global"
 	"gin-vue-admin/model/common/request"
 	"gin-vue-admin/model/example"
 	"gin-vue-admin/model/system"
 	systemService "gin-vue-admin/service/system"
 )
-import "gin-vue-admin/global"
 
 type CustomerService struct{}
 
@@ -30,12 +30,12 @@ func (exa *CustomerService) DeleteExaCustomer(e example.ExaCustomer) (err error)
 	return err
 }
 
-// UpdateCustomer
+// UpdateExaCustomer
 // @function: UpdateExaCustomer
 // @description: 更新客户
 // @param: e *model.ExaCustomer
 // @return: err error
-func (exa *CustomerService) UpdateCustomer(e example.ExaCustomer) (err error) {
+func (exa *CustomerService) UpdateExaCustomer(e *example.ExaCustomer) (err error) {
 	err = global.GVA_DB.Save(&e).Error
 	return err
 }
@@ -56,5 +56,20 @@ func (exa *CustomerService) GetCustomerInfoList(sysUserAuthorityID uint, info re
 	db := global.GVA_DB.Model(&example.ExaCustomer{})
 	var a system.SysAuthority
 	a.AuthorityID = sysUserAuthorityID
-	auth, err := systemService.
+	auth, err := systemService.AuthorityServiceApp.GetAuthorityInfo(a)
+	if err != nil {
+		return
+	}
+	var dataID []uint
+	for _, v := range auth.DataAuthorityID {
+		dataID = append(dataID, v.AuthorityID)
+	}
+	var CustomerList []example.ExaCustomer
+	err = db.Where("sys_user_authority_id in ?", dataID).Count(&total).Error
+	if err != nil {
+		return CustomerList, total, err
+	} else {
+		err = db.Limit(limit).Offset(offset).Preload("SysUser").Where("sys_user_authority_id in ?", dataID).Find(&CustomerList).Error
+	}
+	return CustomerList, total, err
 }
