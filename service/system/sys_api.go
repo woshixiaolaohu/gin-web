@@ -104,12 +104,12 @@ func (apiService *ApiService) GetAllApis() (apis []system.SysApi, err error) {
 	return
 }
 
-// GetApiById
-// @function: GetApiById
+// GetApiByID
+// @function: GetApiByID
 // @description: 根据id获取api
 // @param: id float64
 // @return: api model.SysApi, err error
-func (apiService *ApiService) GetApiById(id int) (api system.SysApi, err error) {
+func (apiService *ApiService) GetApiByID(id int) (api system.SysApi, err error) {
 	err = global.GVA_DB.First(&api, "id = ?", id).Error
 	return
 }
