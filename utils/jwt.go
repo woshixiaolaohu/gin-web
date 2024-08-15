@@ -25,7 +25,7 @@ func NewJWT() *JWT {
 	}
 }
 
-func (j *JWT) ClearClaims(baseClaims request.BaseClaims) request.CustomClaims {
+func (j *JWT) CreateClaims(baseClaims request.BaseClaims) request.CustomClaims {
 	bf, _ := ParseDuration(global.GVA_CONFIG.JWT.BufferTime)
 	ep, _ := ParseDuration(global.GVA_CONFIG.JWT.ExpiresTime)
 	claims := request.CustomClaims{
