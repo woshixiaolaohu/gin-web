@@ -4,6 +4,8 @@ type ServiceGroup struct {
 	JwtService
 	OperationRecordService
 	ApiService
+	MenuService
+	BaseMenuService
 	UserService
 	CasbinService
 }
