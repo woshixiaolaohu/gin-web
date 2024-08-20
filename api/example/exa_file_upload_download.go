@@ -22,7 +22,7 @@ type FileUploadAndDownloadApi struct {
 // @Param     file  formData  file                                                           true  "上传文件示例"
 // @Success   200   {object}  response.Response{data=exampleRes.ExaFileResponse,msg=string}  "上传文件示例,返回包括文件详情"
 // @Router    /fileUploadAndDownload/upload [post]
-func (f *FileUploadAndDownloadApi) UploadFile(c *gin.Context) {
+func (b *FileUploadAndDownloadApi) UploadFile(c *gin.Context) {
 	var file example.ExaFileUploadAndDownload
 	noSave := c.DefaultQuery("noSave", "0")
 	_, header, err := c.Request.FormFile("file")
@@ -42,7 +42,7 @@ func (f *FileUploadAndDownloadApi) UploadFile(c *gin.Context) {
 
 // EditFileName
 // @Summary编辑文件命名或备注
-func (f *FileUploadAndDownloadApi) EditFileName(c *gin.Context) {
+func (b *FileUploadAndDownloadApi) EditFileName(c *gin.Context) {
 	var file example.ExaFileUploadAndDownload
 	err := c.ShouldBindJSON(&file)
 	if err != nil {
@@ -66,7 +66,7 @@ func (f *FileUploadAndDownloadApi) EditFileName(c *gin.Context) {
 // @Param     data  body      example.ExaFileUploadAndDownload  true  "传入文件里面id即可"
 // @Success   200   {object}  response.Response{msg=string}     "删除文件"
 // @Router    /fileUploadAndDownload/deleteFile [post]
-func (f *FileUploadAndDownloadApi) DeleteFile(c *gin.Context) {
+func (b *FileUploadAndDownloadApi) DeleteFile(c *gin.Context) {
 	var file example.ExaFileUploadAndDownload
 	err := c.ShouldBindJSON(&file)
 	if err != nil {
@@ -91,7 +91,7 @@ func (f *FileUploadAndDownloadApi) DeleteFile(c *gin.Context) {
 // @Param     data  body      request.PageInfo                                        true  "页码, 每页大小"
 // @Success   200   {object}  response.Response{data=response.PageResult,msg=string}  "分页文件列表,返回包括列表,总数,页码,每页数量"
 // @Router    /fileUploadAndDownload/getFileList [post]
-func (f *FileUploadAndDownloadApi) GetFileList(c *gin.Context) {
+func (b *FileUploadAndDownloadApi) GetFileList(c *gin.Context) {
 	var pageInfo request.PageInfo
 	err := c.ShouldBindJSON(&pageInfo)
 	if err != nil {
