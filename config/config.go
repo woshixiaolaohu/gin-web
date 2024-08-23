@@ -16,6 +16,8 @@ type Server struct {
 	Oracle Oracle         `json:"oracle" yaml:"oracle" mapstructure:"oracle"`
 	Sqlite Sqlite         `json:"sqlite" yaml:"sqlite" mapstructure:"sqlite"`
 	DBList []SpecializeDB `json:"db_list" yaml:"db_list" mapstructure:"db_list"`
+
+	DiskList []DiskList `json:"disk_list" yaml:"disk_list" mapstructure:"disk_list"`
 	// oss
 	Local     Local     `json:"local" yaml:"local" mapstructure:"local"`
 	AliyunOSS AliyunOSS `json:"aliyun_oss" yaml:"aliyun_oss" mapstructure:"aliyun_oss"`
