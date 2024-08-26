@@ -19,6 +19,10 @@ type Server struct {
 
 	DiskList []DiskList `json:"disk_list" yaml:"disk_list" mapstructure:"disk_list"`
 	// oss
-	Local     Local     `json:"local" yaml:"local" mapstructure:"local"`
-	AliyunOSS AliyunOSS `json:"aliyun_oss" yaml:"aliyun_oss" mapstructure:"aliyun_oss"`
+	Local      Local      `json:"local" yaml:"local" mapstructure:"local"`
+	AliyunOSS  AliyunOSS  `json:"aliyun_oss" yaml:"aliyun_oss" mapstructure:"aliyun_oss"`
+	AwsS3      AwsS3      `json:"aws_s3" yaml:"aws_s3" mapstructure:"aws_s3"`
+	HuaWeiObs  HuaWeiObs  `json:"huawei_obs" yaml:"huawei_obs" mapstructure:"huawei_obs"`
+	Qiniu      QiNiu      `json:"qiniu" yaml:"qiniu" mapstructure:"qiniu"`
+	TencentCOS TencentCOS `json:"tencent_cos" yaml:"tencent_cos" mapstructure:"tencent_cos"`
 }
