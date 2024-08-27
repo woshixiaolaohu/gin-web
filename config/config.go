@@ -25,4 +25,6 @@ type Server struct {
 	HuaWeiObs  HuaWeiObs  `json:"huawei_obs" yaml:"huawei_obs" mapstructure:"huawei_obs"`
 	Qiniu      QiNiu      `json:"qiniu" yaml:"qiniu" mapstructure:"qiniu"`
 	TencentCOS TencentCOS `json:"tencent_cos" yaml:"tencent_cos" mapstructure:"tencent_cos"`
+	// 跨域配置
+	Cors CORS `json:"cors" yaml:"cors" mapstructure:"cors"`
 }
