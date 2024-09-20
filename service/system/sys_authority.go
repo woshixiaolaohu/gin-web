@@ -100,7 +100,7 @@ func (authorityService *AuthorityService) CopyAuthority(copyInfo response.SysAut
 // @description: 更改一个角色
 // @param: auth model.SysAuthority
 // @return: authority system.SysAuthority, err error
-func (menuService *MenuService) UpdateAuthority(auth system.SysAuthority) (authority system.SysAuthority, err error) {
+func (authorityService *AuthorityService) UpdateAuthority(auth system.SysAuthority) (authority system.SysAuthority, err error) {
 	var oldAuthority system.SysAuthority
 	err = global.GVA_DB.Where("authority_id = ?", auth.AuthorityID).First(&oldAuthority).Error
 	if err != nil {

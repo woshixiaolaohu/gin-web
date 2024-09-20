@@ -8,4 +8,6 @@ type ServiceGroup struct {
 	BaseMenuService
 	UserService
 	CasbinService
+	AuthorityService
+	AuthorityBtnService
 }

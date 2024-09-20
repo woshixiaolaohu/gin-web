@@ -1,6 +1,7 @@
 package system
 
 import (
+	"errors"
 	"gin-vue-admin/global"
 	"gin-vue-admin/model/system"
 	"gin-vue-admin/model/system/request"
@@ -56,4 +57,17 @@ func (authorityBtnService *AuthorityBtnService) SetAuthorityBtn(req request.SysA
 		}
 		return err
 	})
+}
+
+// CanRemoveAuthorityBtn
+// @function: CanRemoveAuthorityBtn
+// @description: 删除权限按钮
+// @param: ID string
+// @return: err error
+func (authorityBtnService *AuthorityBtnService) CanRemoveAuthorityBtn(ID string) (err error) {
+	fErr := global.GVA_DB.First(&system.SysAuthorityBtn{}, "sys_base_menu_btn_id = ?", ID).Error
+	if errors.Is(fErr, gorm.ErrRecordNotFound) {
+		return nil
+	}
+	return errors.New("此按钮正在使用无法删除")
 }
