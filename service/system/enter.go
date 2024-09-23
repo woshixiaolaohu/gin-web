@@ -10,4 +10,8 @@ type ServiceGroup struct {
 	CasbinService
 	AuthorityService
 	AuthorityBtnService
+	DictionaryService
+	DictionaryDetailService
+	SysExportTemplateService
+	InitDBService
 }
