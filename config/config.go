@@ -5,6 +5,7 @@ type Server struct {
 	JWT     JWT     `json:"jwt" yaml:"jwt" mapstructure:"jwt"`
 	Redis   Redis   `json:"redis" yaml:"redis" mapstructure:"redis"`
 	Mongo   Mongo   `json:"mongo" yaml:"mongo" mapstructure:"mongo"`
+	Email   Email   `json:"email" yaml:"email" mapstructure:"email"`
 	System  System  `json:"system" yaml:"system" mapstructure:"system"`
 	Captcha Captcha `json:"captcha" yaml:"captcha" mapstructure:"captcha"`
 	// auto

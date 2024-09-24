@@ -3,6 +3,7 @@ package initialize
 import (
 	"gin-vue-admin/docs"
 	"gin-vue-admin/global"
+	"gin-vue-admin/middleware"
 	"gin-vue-admin/router"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
@@ -66,6 +67,29 @@ func Routers() *gin.Engine {
 		})
 	}
 	{
-		systemRouter.Init
+		systemRouter.InitBaseRouter(publicGroup) // 注册基础功能路由 不做健全
+		systemRouter.InitInitRouter(publicGroup) // 自动初始化相关
 	}
+	PrivateGroup := Router.Group(global.GVA_CONFIG.System.RouterPrefix)
+	PrivateGroup.Use(middleware.JWTAuth()).Use(middleware.CasbinHandler())
+	{
+		systemRouter.InitApiRouter(PrivateGroup, publicGroup)       //  注册功能api路由
+		systemRouter.InitJwtRouter(PrivateGroup)                    // jwt相关路由
+		systemRouter.InitUserRouter(PrivateGroup)                   // 注册用户相关路由
+		systemRouter.InitMenuRouter(PrivateGroup)                   // 注册menu路由
+		systemRouter.InitSystemRouter(PrivateGroup)                 // system相关路由
+		systemRouter.InitCasbinRouter(PrivateGroup)                 // 权限相关路由
+		systemRouter.InitAuthorityRouter(PrivateGroup)              // 注册角色路由
+		systemRouter.InitSysDictionaryRouter(PrivateGroup)          // 字典管理
+		systemRouter.InitSysOperationRecordRouter(PrivateGroup)     // 操作记录
+		systemRouter.InitSysDictionaryDetailRouter(PrivateGroup)    // 字典详情管理
+		systemRouter.InitAuthorityBtnRouterRouter(PrivateGroup)     // 权限按钮管理
+		systemRouter.InitSysExportTemplateRouter(PrivateGroup)      // 导出模板
+		exampleRouter.InitCustomRouter(PrivateGroup)                // 客户路由
+		exampleRouter.InitFileUploadAndDownloadRouter(PrivateGroup) // 文件上传下载功能路由
+	}
+	// 插件路由安装
+	InstallPlugin(PrivateGroup, publicGroup)
+	global.GVA_LOG.Info("路由注册成功")
+	return Router
 }

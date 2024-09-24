@@ -14,4 +14,5 @@ type ServiceGroup struct {
 	DictionaryDetailService
 	SysExportTemplateService
 	InitDBService
+	SystemConfigService
 }

@@ -32,5 +32,13 @@ func RunWindowsServer() {
 	if global.GVA_DB != nil {
 		system.LoadAll()
 	}
-	
+	Router := initialize.Routers()
+	Router.Static("/form-generator", "./resource/page")
+
+	address := fmt.Sprintf(":%d", global.GVA_CONFIG.System.Addr)
+	s := initServer(address, Router)
+
+	global.GVA_LOG.Info("server run success on ", zap.String("address", address))
+	fmt.Printf(`欢迎使用%s`, address)
+	global.GVA_LOG.Error(s.ListenAndServe().Error())
 }

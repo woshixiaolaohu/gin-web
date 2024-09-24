@@ -22,7 +22,7 @@ func (s *SysExportTemplateRouter) InitSysExportTemplateRouter(Router *gin.Router
 	{
 		sysExportTemplateRouterWithoutRecord.GET("getSysExportTemplate", sysExportTemplateApi.GetSysExportTemplate)         // 根据 ID 获取导出模板
 		sysExportTemplateRouterWithoutRecord.GET("getSysExportTemplateList", sysExportTemplateApi.GetSysExportTemplateList) // 获取导出模板列表
-		sysExportTemplateRouterWithoutRecord.GET("exportTemplate", sysExportTemplateApi.ExportTemplate)                     // 导出表格
+		sysExportTemplateRouterWithoutRecord.GET("exportExcel", sysExportTemplateApi.ExportExcel)                           // 导出表格
 		sysExportTemplateRouterWithoutRecord.GET("exportTemplate", sysExportTemplateApi.ExportTemplate)                     // 导出模板
 	}
 }

@@ -14,6 +14,8 @@ type ApiGroup struct {
 	DBApi
 	JwtApi
 	AuthorityMenuApi
+	OperationRecordApi
+	SystemApi
 }
 
 var (
@@ -28,4 +30,6 @@ var (
 	dictionaryService       = service.ServiceGroupApp.SystemServiceGroup.DictionaryService
 	dictionaryDetailService = service.ServiceGroupApp.SystemServiceGroup.DictionaryDetailService
 	initDBService           = service.ServiceGroupApp.SystemServiceGroup.InitDBService
+	operationRecordService  = service.ServiceGroupApp.SystemServiceGroup.OperationRecordService
+	systemConfigService     = service.ServiceGroupApp.SystemServiceGroup.SystemConfigService
 )
