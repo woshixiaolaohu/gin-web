@@ -11,18 +11,20 @@ import (
 type SystemConfigService struct{}
 
 // GetSystemConfig
-// @function: GetSystemConfig
-// @description: 读取配置文件
-// @return: conf config.Server, err error
+//
+//	@function:		GetSystemConfig
+//	@description:	读取配置文件
+//	@return:		conf config.Server, err error
 func (systemConfigService *SystemConfigService) GetSystemConfig() (conf config.Server, err error) {
 	return global.GVA_CONFIG, nil
 }
 
 // SetSystemConfig
-// @function: SetSystemConfig
-// @description: 设置配置文件
-// @param: system model.System
-// @return: err error
+//
+//	@function:		SetSystemConfig
+//	@description:	设置配置文件
+//	@param:			system model.System
+//	@return:		err error
 func (systemConfigService *SystemConfigService) SetSystemConfig(system system.System) (err error) {
 	cs := utils.StructToMap(system.Config)
 	for k, v := range cs {
@@ -33,9 +35,10 @@ func (systemConfigService *SystemConfigService) SetSystemConfig(system system.Sy
 }
 
 // GetServerInfo
-// @function: GetServerInfo
-// @description: 获取服务器信息
-// @return: server *utils.Server, err error
+//
+//	@function:		GetServerInfo
+//	@description:	获取服务器信息
+//	@return:		server *utils.Server, err error
 func (systemConfigService *SystemConfigService) GetServerInfo() (server *utils.Server, err error) {
 	var s utils.Server
 	s.Os = utils.InitOS()

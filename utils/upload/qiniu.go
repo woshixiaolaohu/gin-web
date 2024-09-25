@@ -15,11 +15,12 @@ import (
 type Qiniu struct{}
 
 // UploadFile
-// @function: UploadFile
-// @object: *Qiniu
-// @description: 上传文件
-// @param: file *multipart.FileHeader
-// @return: string, string, error
+//
+//	@function:		UploadFile
+//	@object:		*Qiniu
+//	@description:	上传文件
+//	@param:			file *multipart.FileHeader
+//	@return:		string, string, error
 func (q *Qiniu) UploadFile(file *multipart.FileHeader) (string, string, error) {
 	putPolicy := storage.PutPolicy{Scope: global.GVA_CONFIG.Qiniu.Bucket}
 	mac := qbox.NewMac(global.GVA_CONFIG.Qiniu.AccessKey, global.GVA_CONFIG.Qiniu.SecretKey)
@@ -45,11 +46,12 @@ func (q *Qiniu) UploadFile(file *multipart.FileHeader) (string, string, error) {
 }
 
 // DeleteFile
-// @function: DeleteFile
-// @object: *Qiniu
-// @description: 删除文件
-// @param: key string
-// @return: error
+//
+//	@function:		DeleteFile
+//	@object:		*Qiniu
+//	@description:	删除文件
+//	@param:			key string
+//	@return:		error
 func (q *Qiniu) DeleteFile(key string) error {
 	mac := qbox.NewMac(global.GVA_CONFIG.Qiniu.AccessKey, global.GVA_CONFIG.Qiniu.SecretKey)
 	cfg := qiniuConfig()
@@ -62,10 +64,11 @@ func (q *Qiniu) DeleteFile(key string) error {
 }
 
 // qiniuConfig
-// @function: qiniuConfig
-// @object: *Qiniu
-// @description: 根据配置文件进行返回七牛云的配置
-// @return: *storage.Config
+//
+//	@function:		qiniuConfig
+//	@object:		*Qiniu
+//	@description:	根据配置文件进行返回七牛云的配置
+//	@return:		*storage.Config
 func qiniuConfig() *storage.Config {
 	cfg := storage.Config{
 		UseHTTPS:      global.GVA_CONFIG.Qiniu.UseHttps,

@@ -12,10 +12,11 @@ import (
 type AuthorityBtnService struct{}
 
 // GetAuthorityBtn
-// @function: GetAuthorityBtn
-// @description: 获取btn
-// @param: req request.SysAuthorityBtnReq
-// @return: res response.SysAuthorityBtnRes, err error
+//
+//	@function:		GetAuthorityBtn
+//	@description:	获取btn
+//	@param:			req request.SysAuthorityBtnReq
+//	@return:		res response.SysAuthorityBtnRes, err error
 func (authorityBtnService *AuthorityBtnService) GetAuthorityBtn(req request.SysAuthorityBtnReq) (res response.SysAuthorityBtnRes, err error) {
 	var authorityBtn []system.SysAuthorityBtn
 	err = global.GVA_DB.Find(&authorityBtn, "authority_id = ? AND sys_menu_id = ?", req.AuthorityID, req.MenuID).Error
@@ -31,10 +32,11 @@ func (authorityBtnService *AuthorityBtnService) GetAuthorityBtn(req request.SysA
 }
 
 // SetAuthorityBtn
-// @function: SetAuthorityBtn
-// @description: 设置btn
-// @param: req request.SysAuthorityBtnReq
-// @return: err error
+//
+//	@function:		SetAuthorityBtn
+//	@description:	设置btn
+//	@param:			req request.SysAuthorityBtnReq
+//	@return:		err error
 func (authorityBtnService *AuthorityBtnService) SetAuthorityBtn(req request.SysAuthorityBtnReq) (err error) {
 	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
 		var authorityBtn []system.SysAuthorityBtn
@@ -60,10 +62,11 @@ func (authorityBtnService *AuthorityBtnService) SetAuthorityBtn(req request.SysA
 }
 
 // CanRemoveAuthorityBtn
-// @function: CanRemoveAuthorityBtn
-// @description: 删除权限按钮
-// @param: ID string
-// @return: err error
+//
+//	@function:		CanRemoveAuthorityBtn
+//	@description:	删除权限按钮
+//	@param:			ID string
+//	@return:		err error
 func (authorityBtnService *AuthorityBtnService) CanRemoveAuthorityBtn(ID string) (err error) {
 	fErr := global.GVA_DB.First(&system.SysAuthorityBtn{}, "sys_base_menu_btn_id = ?", ID).Error
 	if errors.Is(fErr, gorm.ErrRecordNotFound) {

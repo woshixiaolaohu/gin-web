@@ -16,10 +16,11 @@ const (
 )
 
 // AutoInjectionCode
-// @function: AutoInjectionCode
-// @description: 向文件中固定注释位置写入代码
-// @param: filepath string, funcName string, codeData string
-// @return: error
+//
+//	@function:		AutoInjectionCode
+//	@description:	向文件中固定注释位置写入代码
+//	@param:			filepath string, funcName string, codeData string
+//	@return:		error
 func AutoInjectionCode(filepath string, funcName string, codeData string) error {
 	srcData, err := os.ReadFile(filepath)
 	if err != nil {

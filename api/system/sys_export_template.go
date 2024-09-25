@@ -19,14 +19,15 @@ type SysExportTemplateApi struct{}
 var sysExportTemplateService = service.ServiceGroupApp.SystemServiceGroup.SysExportTemplateService
 
 // CreateSysExportTemplate 创建导出模板
-// @Tags SysExportTemplate
-// @Summary 创建导出模板
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Param data body system.SysExportTemplate true "创建导出模板"
-// @Success 200 {string} string "{"success":true,"data":{},"msg":"创建成功"}"
-// @Router /sysExportTemplate/createSysExportTemplate [post]
+//
+//	@Tags		SysExportTemplate
+//	@Summary	创建导出模板
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	body		system.SysExportTemplate	true	"创建导出模板"
+//	@Success	200		{string}	string						"{"success":true,"data":{},"msg":"创建成功"}"
+//	@Router		/sysExportTemplate/createSysExportTemplate [post]
 func (s *SysExportTemplateApi) CreateSysExportTemplate(c *gin.Context) {
 	var sysExportTemplate system.SysExportTemplate
 	err := c.ShouldBindJSON(&sysExportTemplate)
@@ -50,14 +51,15 @@ func (s *SysExportTemplateApi) CreateSysExportTemplate(c *gin.Context) {
 }
 
 // DeleteSysExportTemplate 删除导出模板
-// @Tags SysExportTemplate
-// @Summary 删除导出模板
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Param data body system.SysExportTemplate true "删除导出模板"
-// @Success 200 {string} string "{"success":true,"data":{},"msg":"删除成功"}"
-// @Router /sysExportTemplate/deleteSysExportTemplate [delete]
+//
+//	@Tags		SysExportTemplate
+//	@Summary	删除导出模板
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	body		system.SysExportTemplate	true	"删除导出模板"
+//	@Success	200		{string}	string						"{"success":true,"data":{},"msg":"删除成功"}"
+//	@Router		/sysExportTemplate/deleteSysExportTemplate [delete]
 func (s *SysExportTemplateApi) DeleteSysExportTemplate(c *gin.Context) {
 	var sysExportTemplate system.SysExportTemplate
 	err := c.ShouldBindJSON(&sysExportTemplate)
@@ -75,14 +77,15 @@ func (s *SysExportTemplateApi) DeleteSysExportTemplate(c *gin.Context) {
 }
 
 // DeleteSysExportTemplateByIds 批量删除导出模板
-// @Tags SysExportTemplate
-// @Summary 批量删除导出模板
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Param data body request.IdsReq true "批量删除导出模板"
-// @Success 200 {string} string "{"success":true,"data":{},"msg":"批量删除成功"}"
-// @Router /sysExportTemplate/deleteSysExportTemplateByIds [delete]
+//
+//	@Tags		SysExportTemplate
+//	@Summary	批量删除导出模板
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	body		request.IdsReq	true	"批量删除导出模板"
+//	@Success	200		{string}	string			"{"success":true,"data":{},"msg":"批量删除成功"}"
+//	@Router		/sysExportTemplate/deleteSysExportTemplateByIds [delete]
 func (s *SysExportTemplateApi) DeleteSysExportTemplateByIds(c *gin.Context) {
 	var Ids request.IdsReq
 	err := c.ShouldBindJSON(&Ids)
@@ -99,14 +102,15 @@ func (s *SysExportTemplateApi) DeleteSysExportTemplateByIds(c *gin.Context) {
 }
 
 // UpdateSysExportTemplate 更新导出模板
-// @Tags SysExportTemplate
-// @Summary 更新导出模板
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Param data body system.SysExportTemplate true "更新导出模板"
-// @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router /sysExportTemplate/updateSysExportTemplate [put]
+//
+//	@Tags		SysExportTemplate
+//	@Summary	更新导出模板
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	body		system.SysExportTemplate	true	"更新导出模板"
+//	@Success	200		{string}	string						"{"success":true,"data":{},"msg":"更新成功"}"
+//	@Router		/sysExportTemplate/updateSysExportTemplate [put]
 func (s *SysExportTemplateApi) UpdateSysExportTemplate(c *gin.Context) {
 	var sysExportTemplate system.SysExportTemplate
 	err := c.ShouldBindJSON(&sysExportTemplate)
@@ -132,14 +136,15 @@ func (s *SysExportTemplateApi) UpdateSysExportTemplate(c *gin.Context) {
 }
 
 // GetSysExportTemplate 用id查询导出模板
-// @Tags SysExportTemplate
-// @Summary 用id查询导出模板
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Param data query system.SysExportTemplate true "用id查询导出模板"
-// @Success 200 {string} string "{"success":true,"data":{},"msg":"查询成功"}"
-// @Router /sysExportTemplate/getSysExportTemplate [get]
+//
+//	@Tags		SysExportTemplate
+//	@Summary	用id查询导出模板
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	query		system.SysExportTemplate	true	"用id查询导出模板"
+//	@Success	200		{string}	string						"{"success":true,"data":{},"msg":"查询成功"}"
+//	@Router		/sysExportTemplate/getSysExportTemplate [get]
 func (s *SysExportTemplateApi) GetSysExportTemplate(c *gin.Context) {
 	var sysExportTemplate system.SysExportTemplate
 	err := c.ShouldBindJSON(sysExportTemplate)
@@ -157,14 +162,15 @@ func (s *SysExportTemplateApi) GetSysExportTemplate(c *gin.Context) {
 }
 
 // GetSysExportTemplateList 分页获取导出模板列表
-// @Tags SysExportTemplate
-// @Summary 分页获取导出模板列表
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Param data query systemReq.SysExportTemplateSearch true "分页获取导出模板列表"
-// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
-// @Router /sysExportTemplate/getSysExportTemplateList [get]
+//
+//	@Tags		SysExportTemplate
+//	@Summary	分页获取导出模板列表
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	query		systemReq.SysExportTemplateSearch	true	"分页获取导出模板列表"
+//	@Success	200		{string}	string								"{"success":true,"data":{},"msg":"获取成功"}"
+//	@Router		/sysExportTemplate/getSysExportTemplateList [get]
 func (s *SysExportTemplateApi) GetSysExportTemplateList(c *gin.Context) {
 	var pageInfo systemReq.SysExportTemplateSearch
 	err := c.ShouldBindJSON(&pageInfo)
@@ -187,12 +193,13 @@ func (s *SysExportTemplateApi) GetSysExportTemplateList(c *gin.Context) {
 }
 
 // ExportExcel 导出表格
-// @Tags SysExportTemplate
-// @Summary 导出表格
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Router /sysExportTemplate/exportExcel [get]
+//
+//	@Tags		SysExportTemplate
+//	@Summary	导出表格
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Router		/sysExportTemplate/exportExcel [get]
 func (s *SysExportTemplateApi) ExportExcel(c *gin.Context) {
 	templateID := c.Query("templateID")
 	queryParams := c.Request.URL.Query()
@@ -212,12 +219,13 @@ func (s *SysExportTemplateApi) ExportExcel(c *gin.Context) {
 }
 
 // ExportTemplate 导出表格模板
-// @Tags SysExportTemplate
-// @Summary 导出表格模板
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Router /sysExportTemplate/exportExcel [get]
+//
+//	@Tags		SysExportTemplate
+//	@Summary	导出表格模板
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Router		/sysExportTemplate/exportExcel [get]
 func (s *SysExportTemplateApi) ExportTemplate(c *gin.Context) {
 	templateID := c.Query("templateID")
 	if templateID == "" {
@@ -236,12 +244,13 @@ func (s *SysExportTemplateApi) ExportTemplate(c *gin.Context) {
 }
 
 // ImportExcel 导入表格
-// @Tags SysImportTemplate
-// @Summary 导入表格
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Router /sysExportTemplate/importExcel [post]
+//
+//	@Tags		SysImportTemplate
+//	@Summary	导入表格
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Router		/sysExportTemplate/importExcel [post]
 func (s *SysExportTemplateApi) ImportExcel(c *gin.Context) {
 	templateID := c.Query("templateID")
 	if templateID == "" {

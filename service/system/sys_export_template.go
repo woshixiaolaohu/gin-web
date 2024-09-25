@@ -21,40 +21,44 @@ import (
 type SysExportTemplateService struct{}
 
 // CreateSysExportTemplate
-// @function: CreateSysExportTemplate
-// @description: 创建导出模板记录
-// @param: sysExportTemplate *system.SysExportTemplate
-// @return: err error
+//
+//	@function:		CreateSysExportTemplate
+//	@description:	创建导出模板记录
+//	@param:			sysExportTemplate *system.SysExportTemplate
+//	@return:		err error
 func (sysExportTemplateService *SysExportTemplateService) CreateSysExportTemplate(sysExportTemplate *system.SysExportTemplate) (err error) {
 	err = global.GVA_DB.Create(sysExportTemplate).Error
 	return err
 }
 
 // DeleteSysExportTemplate
-// @function: DeleteSysExportTemplate
-// @description: 删除导出模板记录
-// @param: sysExportTemplate system.SysExportTemplate
-// @return: err error
+//
+//	@function:		DeleteSysExportTemplate
+//	@description:	删除导出模板记录
+//	@param:			sysExportTemplate system.SysExportTemplate
+//	@return:		err error
 func (sysExportTemplateService *SysExportTemplateService) DeleteSysExportTemplate(sysExportTemplate system.SysExportTemplate) (err error) {
 	err = global.GVA_DB.Delete(&sysExportTemplate).Error
 	return err
 }
 
 // DeleteSysExportTemplateByIds
-// @function: DeleteSysExportTemplateByIds
-// @description: 批量删除导出模板记录
-// @param: ids request.IdsReq
-// @return: err error
+//
+//	@function:		DeleteSysExportTemplateByIds
+//	@description:	批量删除导出模板记录
+//	@param:			ids request.IdsReq
+//	@return:		err error
 func (sysExportTemplateService *SysExportTemplateService) DeleteSysExportTemplateByIds(ids request.IdsReq) (err error) {
 	err = global.GVA_DB.Delete(&[]system.SysExportTemplate{}, "id in ?", ids.Ids).Error
 	return err
 }
 
 // UpdateSysExportTemplate
-// @function: UpdateSysExportTemplate
-// @description: 更新导出模板记录
-// @param: sysExportTemplate system.SysExportTemplate
-// @return: err error
+//
+//	@function:		UpdateSysExportTemplate
+//	@description:	更新导出模板记录
+//	@param:			sysExportTemplate system.SysExportTemplate
+//	@return:		err error
 func (sysExportTemplateService *SysExportTemplateService) UpdateSysExportTemplate(sysExportTemplate system.SysExportTemplate) (err error) {
 	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
 		conditions := sysExportTemplate.Conditions
@@ -90,20 +94,22 @@ func (sysExportTemplateService *SysExportTemplateService) UpdateSysExportTemplat
 }
 
 // GetSysExportTemplate
-// @function: GetSysExportTemplate
-// @description: 根据id获取导出模板记录
-// @param: id uint
-// @return: sysExportTemplate system.SysExportTemplate, err error
+//
+//	@function:		GetSysExportTemplate
+//	@description:	根据id获取导出模板记录
+//	@param:			id uint
+//	@return:		sysExportTemplate system.SysExportTemplate, err error
 func (sysExportTemplateService *SysExportTemplateService) GetSysExportTemplate(id uint) (sysExportTemplate system.SysExportTemplate, err error) {
 	err = global.GVA_DB.Where("id = ?", id).Preload("JoinTemplate").Preload("Conditions").First(&sysExportTemplate).Error
 	return
 }
 
 // GetSysTemplateInfoList
-// @function: GetSysTemplateInfoList
-// @description: 分页获取导出模板记录
-// @param: info systemReq.SysExportTemplateSearch
-// @return: list []system.SysExportTemplate, total int64, err error
+//
+//	@function:		GetSysTemplateInfoList
+//	@description:	分页获取导出模板记录
+//	@param:			info systemReq.SysExportTemplateSearch
+//	@return:		list []system.SysExportTemplate, total int64, err error
 func (sysExportTemplateService *SysExportTemplateService) GetSysTemplateInfoList(info systemReq.SysExportTemplateSearch) (list []system.SysExportTemplate, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
@@ -135,10 +141,11 @@ func (sysExportTemplateService *SysExportTemplateService) GetSysTemplateInfoList
 }
 
 // ExportExcel
-// @function: ExportExcel
-// @description: 导出Excel
-// @param: templateID string, value url.Values
-// @return: file *bytes.Buffer, name string, err error
+//
+//	@function:		ExportExcel
+//	@description:	导出Excel
+//	@param:			templateID string, value url.Values
+//	@return:		file *bytes.Buffer, name string, err error
 func (sysExportTemplateService *SysExportTemplateService) ExportExcel(templateID string, values url.Values) (file *bytes.Buffer, name string, err error) {
 	var template system.SysExportTemplate
 	err = global.GVA_DB.Preload("Conditions").Preload("JoinTemplate").First(&template, "template_id = ?", templateID).Error
@@ -259,10 +266,11 @@ func (sysExportTemplateService *SysExportTemplateService) ExportExcel(templateID
 }
 
 // ExportTemplate
-// @function: ExportTemplate
-// @description: 导出Excel模板
-// @param: templateID string
-// @return: file *bytes.Buffer, name string, err error
+//
+//	@function:		ExportTemplate
+//	@description:	导出Excel模板
+//	@param:			templateID string
+//	@return:		file *bytes.Buffer, name string, err error
 func (sysExportTemplateService *SysExportTemplateService) ExportTemplate(templateID string) (file *bytes.Buffer, name string, err error) {
 	var template system.SysExportTemplate
 	err = global.GVA_DB.First(&template, "template_id = ?", templateID).Error
@@ -306,10 +314,11 @@ func (sysExportTemplateService *SysExportTemplateService) ExportTemplate(templat
 }
 
 // ImportExcel
-// @function: ImportExcel
-// @description: 导入Excel
-// @param: templateID string, file *multipart.FileHeader
-// @return: err error
+//
+//	@function:		ImportExcel
+//	@description:	导入Excel
+//	@param:			templateID string, file *multipart.FileHeader
+//	@return:		err error
 func (sysExportTemplateService *SysExportTemplateService) ImportExcel(templateID string, file *multipart.FileHeader) (err error) {
 	var template system.SysExportTemplate
 	err = global.GVA_DB.First(&template, "template_id = ?", templateID).Error

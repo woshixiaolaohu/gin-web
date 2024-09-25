@@ -19,10 +19,11 @@ type AuthorityService struct {
 var AuthorityServiceApp = new(AuthorityService)
 
 // CreateAuthority
-// @function: CreateAuthority
-// @description: 创建一个角色
-// @param: auth model.SysAuthority
-// @return: authority system.SysAuthority, err error
+//
+//	@function:		CreateAuthority
+//	@description:	创建一个角色
+//	@param:			auth model.SysAuthority
+//	@return:		authority system.SysAuthority, err error
 func (authorityService *AuthorityService) CreateAuthority(auth system.SysAuthority) (authority system.SysAuthority, err error) {
 	if err = global.GVA_DB.Where("authority_id= ?", auth.AuthorityID).First(&system.SysAuthority{}).Error; !errors.Is(err, gorm.ErrRecordNotFound) {
 		return auth, ErrRoleExistence
@@ -48,10 +49,11 @@ func (authorityService *AuthorityService) CreateAuthority(auth system.SysAuthori
 }
 
 // CopyAuthority
-// @function: CopyAuthority
-// @description: 复制一个角色
-// @param: copyInfo response.SysAuthorityCopyResponse
-// @return: authority system.SysAuthority, err error
+//
+//	@function:		CopyAuthority
+//	@description:	复制一个角色
+//	@param:			copyInfo response.SysAuthorityCopyResponse
+//	@return:		authority system.SysAuthority, err error
 func (authorityService *AuthorityService) CopyAuthority(copyInfo response.SysAuthorityCopyResponse) (authority system.SysAuthority, err error) {
 	var authorityBox system.SysAuthority
 	if !errors.Is(global.GVA_DB.Where("authority_id = ? ", copyInfo.Authority.AuthorityID).First(&authorityBox).Error, gorm.ErrRecordNotFound) {
@@ -96,10 +98,11 @@ func (authorityService *AuthorityService) CopyAuthority(copyInfo response.SysAut
 }
 
 // UpdateAuthority
-// @function: UpdateAuthority
-// @description: 更改一个角色
-// @param: auth model.SysAuthority
-// @return: authority system.SysAuthority, err error
+//
+//	@function:		UpdateAuthority
+//	@description:	更改一个角色
+//	@param:			auth model.SysAuthority
+//	@return:		authority system.SysAuthority, err error
 func (authorityService *AuthorityService) UpdateAuthority(auth system.SysAuthority) (authority system.SysAuthority, err error) {
 	var oldAuthority system.SysAuthority
 	err = global.GVA_DB.Where("authority_id = ?", auth.AuthorityID).First(&oldAuthority).Error
@@ -112,10 +115,11 @@ func (authorityService *AuthorityService) UpdateAuthority(auth system.SysAuthori
 }
 
 // DeleteAuthority
-// @function: DeleteAuthority
-// @description: 删除角色
-// @param: auth *model.SysAuthority
-// @return: err error
+//
+//	@function:		DeleteAuthority
+//	@description:	删除角色
+//	@param:			auth *model.SysAuthority
+//	@return:		err error
 func (authorityService *AuthorityService) DeleteAuthority(auth *system.SysAuthority) error {
 	if errors.Is(global.GVA_DB.Debug().Preload("Users").First(&auth).Error, gorm.ErrRecordNotFound) {
 		return errors.New("该角色不存在")
@@ -159,10 +163,11 @@ func (authorityService *AuthorityService) DeleteAuthority(auth *system.SysAuthor
 }
 
 // GetAuthorityInfoList
-// @function: GetAuthorityInfoList
-// @description: 分页获取数据
-// @param: info request.PageInfo
-// @return: list interface{}, total int64, err error
+//
+//	@function:		GetAuthorityInfoList
+//	@description:	分页获取数据
+//	@param:			info request.PageInfo
+//	@return:		list interface{}, total int64, err error
 func (authorityService *AuthorityService) GetAuthorityInfoList(info request.PageInfo) (list interface{}, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
@@ -179,20 +184,22 @@ func (authorityService *AuthorityService) GetAuthorityInfoList(info request.Page
 }
 
 // GetAuthorityInfo
-// @function: GetAuthorityInfo
-// @description: 获取所有角色信息
-// @param: auth model.SysAuthority
-// @return: sa system.SysAuthority, err error
+//
+//	@function:		GetAuthorityInfo
+//	@description:	获取所有角色信息
+//	@param:			auth model.SysAuthority
+//	@return:		sa system.SysAuthority, err error
 func (authorityService *AuthorityService) GetAuthorityInfo(auth system.SysAuthority) (sa system.SysAuthority, err error) {
 	err = global.GVA_DB.Preload("DataAuthorityID").Where("authority_id = ?", auth.AuthorityID).First(&sa).Error
 	return sa, err
 }
 
 // SetDataAuthority
-// @function: SetDataAuthority
-// @description: 设置角色资源权限
-// @param: auth model.SysAuthority
-// @return: error
+//
+//	@function:		SetDataAuthority
+//	@description:	设置角色资源权限
+//	@param:			auth model.SysAuthority
+//	@return:		error
 func (authorityService *AuthorityService) SetDataAuthority(auth system.SysAuthority) error {
 	var s system.SysAuthority
 	global.GVA_DB.Preload("DataAuthorityID").First(&s, "authority_id = ?", auth.AuthorityID)
@@ -201,10 +208,11 @@ func (authorityService *AuthorityService) SetDataAuthority(auth system.SysAuthor
 }
 
 // SetMenuAuthority
-// @function: SetMenuAuthority
-// @description: 菜单与角色绑定
-// @param: auth *model.SysAuthority
-// @return: error
+//
+//	@function:		SetMenuAuthority
+//	@description:	菜单与角色绑定
+//	@param:			auth *model.SysAuthority
+//	@return:		error
 func (authorityService *AuthorityService) SetMenuAuthority(auth *system.SysAuthority) error {
 	var s system.SysAuthority
 	global.GVA_DB.Preload("SysBaseMenus").First(&s, "authority_id = ?", auth.AuthorityID)
@@ -213,10 +221,11 @@ func (authorityService *AuthorityService) SetMenuAuthority(auth *system.SysAutho
 }
 
 // findChildrenAuthority
-// @function: findChildrenAuthority
-// @description: 查询子角色
-// @param: authority *model.SysAuthority
-// @return: err error
+//
+//	@function:		findChildrenAuthority
+//	@description:	查询子角色
+//	@param:			authority *model.SysAuthority
+//	@return:		err error
 func (authorityService *AuthorityService) findChildrenAuthority(authority *system.SysAuthority) (err error) {
 	err = global.GVA_DB.Preload("DataAuthorityID").Where("parent_id = ?", authority.AuthorityID).Find(&authority.Children).Error
 	if len(authority.Children) > 0 {

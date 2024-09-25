@@ -10,20 +10,22 @@ import (
 )
 
 // Email
-// @function: Email
-// @description: Email发送方法
-// @param: subject string, body string
-// @return: error
+//
+//	@function:		Email
+//	@description:	Email发送方法
+//	@param:			subject string, body string
+//	@return:		error
 func Email(To, subject string, body string) error {
 	to := strings.Split("To", ",")
 	return send(to, subject, body)
 }
 
 // ErrorToEmail
-// @function: ErrorToEmail
-// @description: 给email中间件错误发送邮件到指定邮箱
-// @param: subject string, body string
-// @return: error
+//
+//	@function:		ErrorToEmail
+//	@description:	给email中间件错误发送邮件到指定邮箱
+//	@param:			subject string, body string
+//	@return:		error
 func ErrorToEmail(subject string, body string) error {
 	to := strings.Split(global.GlobalConfig.To, ",")
 	if to[len(to)-1] == "" { // 判断切片最后一个元素是否为空 为空则移除
@@ -33,20 +35,22 @@ func ErrorToEmail(subject string, body string) error {
 }
 
 // EmailTest
-// @function: EmailTest
-// @description: Email测试方法
-// @param: subject string, body string
-// @return: error
+//
+//	@function:		EmailTest
+//	@description:	Email测试方法
+//	@param:			subject string, body string
+//	@return:		error
 func EmailTest(subject string, body string) error {
 	to := []string{global.GlobalConfig.To}
 	return send(to, subject, body)
 }
 
 // send
-// @function: send
-// @description: Email发送方法
-// @param: subject string, body string
-// @return: error
+//
+//	@function:		send
+//	@description:	Email发送方法
+//	@param:			subject string, body string
+//	@return:		error
 func send(to []string, subject string, body string) error {
 	from := global.GlobalConfig.From
 	nickname := global.GlobalConfig.NickName

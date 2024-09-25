@@ -17,11 +17,12 @@ import (
 type AwsS3 struct{}
 
 // UploadFile
-// @function: UploadFile
-// @object: *AwsS3
-// @description: Upload file to Aws S3 using aws-sdk-go. See https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/s3-example-basic-bucket-operations.html#s3-examples-bucket-ops-upload-file-to-bucket
-// @param: file *multipart.FileHeader
-// @return: string, string, error
+//
+//	@function:		UploadFile
+//	@object:		*AwsS3
+//	@description:	Upload file to Aws S3 using aws-sdk-go. See https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/s3-example-basic-bucket-operations.html#s3-examples-bucket-ops-upload-file-to-bucket
+//	@param:			file *multipart.FileHeader
+//	@return:		string, string, error
 func (a *AwsS3) UploadFile(file *multipart.FileHeader) (string, string, error) {
 	sess := newSession()
 	uploader := s3manager.NewUploader(sess)
@@ -47,11 +48,12 @@ func (a *AwsS3) UploadFile(file *multipart.FileHeader) (string, string, error) {
 }
 
 // DeleteFile
-// @function: DeleteFile
-// @object: *AwsS3
-// @description: Delete file from Aws S3 using aws-sdk-go. See https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/s3-example-basic-bucket-operations.html#s3-examples-bucket-ops-delete-bucket-item
-// @param: file *multipart.FileHeader
-// @return: string, string, error
+//
+//	@function:		DeleteFile
+//	@object:		*AwsS3
+//	@description:	Delete file from Aws S3 using aws-sdk-go. See https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/s3-example-basic-bucket-operations.html#s3-examples-bucket-ops-delete-bucket-item
+//	@param:			file *multipart.FileHeader
+//	@return:		string, string, error
 func (a *AwsS3) DeleteFile(key string) error {
 	sess := newSession()
 	svc := s3.New(sess)

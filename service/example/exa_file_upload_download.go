@@ -11,21 +11,23 @@ import (
 )
 
 // Upload
-// @author: jelly
-// @function: Upload
-// @description: 创建文件上传记录
-// @param: file model.ExaFileUploadAndDownload
-// @return: error
+//
+//	@author:		jelly
+//	@function:		Upload
+//	@description:	创建文件上传记录
+//	@param:			file model.ExaFileUploadAndDownload
+//	@return:		error
 func (f *FileUploadAndDownloadService) Upload(file example.ExaFileUploadAndDownload) error {
 	return global.GVA_DB.Create(&file).Error
 }
 
 // FindFile
-// @author: jelly
-// @function: FindFile
-// @description: 查询文件记录
-// @param: id uint
-// @return: model.ExaFileUploadAndDownload, error
+//
+//	@author:		jelly
+//	@function:		FindFile
+//	@description:	查询文件记录
+//	@param:			id uint
+//	@return:		model.ExaFileUploadAndDownload, error
 func (f *FileUploadAndDownloadService) FindFile(id uint) (example.ExaFileUploadAndDownload, error) {
 	var file example.ExaFileUploadAndDownload
 	err := global.GVA_DB.Where("id = ?", id).First(&file).Error
@@ -33,11 +35,12 @@ func (f *FileUploadAndDownloadService) FindFile(id uint) (example.ExaFileUploadA
 }
 
 // DeleteFile
-// @author: jelly
-// @function: DeleteFile
-// @description: 删除文件记录
-// @param: file model.ExaFileUploadAndDownload
-// @return: err error
+//
+//	@author:		jelly
+//	@function:		DeleteFile
+//	@description:	删除文件记录
+//	@param:			file model.ExaFileUploadAndDownload
+//	@return:		err error
 func (f *FileUploadAndDownloadService) DeleteFile(file example.ExaFileUploadAndDownload) (err error) {
 	var fileFormDb example.ExaFileUploadAndDownload
 	fileFormDb, err = f.FindFile(file.ID)
@@ -59,11 +62,12 @@ func (f *FileUploadAndDownloadService) EditFileName(file example.ExaFileUploadAn
 }
 
 // GetFileRecordInfoList
-// @author: jelly
-// @function: GetFileRecordInfoList
-// @description: 分页获取数据
-// @param: info request.PageInfo
-// @return: list interface{}, total int64, err error
+//
+//	@author:		jelly
+//	@function:		GetFileRecordInfoList
+//	@description:	分页获取数据
+//	@param:			info request.PageInfo
+//	@return:		list interface{}, total int64, err error
 func (f *FileUploadAndDownloadService) GetFileRecordInfoList(info request.PageInfo) (list interface{}, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
@@ -82,11 +86,12 @@ func (f *FileUploadAndDownloadService) GetFileRecordInfoList(info request.PageIn
 }
 
 // UploadFile
-// @author: jelly
-// @function: UploadFile
-// @description: 根据配置文件判断是文件上传到本地还是云
-// @param: header *multipart.FileHeader, noSave string
-// @return: file model.ExaFileUploadAndDownload, err error
+//
+//	@author:		jelly
+//	@function:		UploadFile
+//	@description:	根据配置文件判断是文件上传到本地还是云
+//	@param:			header *multipart.FileHeader, noSave string
+//	@return:		file model.ExaFileUploadAndDownload, err error
 func (e *FileUploadAndDownloadService) UploadFile(header *multipart.FileHeader, noSave string) (file example.ExaFileUploadAndDownload, err error) {
 	oss := upload.NewOss()
 	filePath, key, uploadErr := oss.UploadFile(header)

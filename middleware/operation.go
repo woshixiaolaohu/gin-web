@@ -96,7 +96,7 @@ func OperationRecord() gin.HandlerFunc {
 		latency := time.Since(now)
 		record.ErrorMessage = c.Errors.ByType(gin.ErrorTypePrivate).String()
 		record.Status = c.Writer.Status()
-		record.Latency = latency
+		record.Latency = int64(latency)
 		record.Resp = writer.body.String()
 
 		if strings.Contains(c.Writer.Header().Get("Pragma"), "public") ||

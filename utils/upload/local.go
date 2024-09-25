@@ -17,12 +17,13 @@ type Local struct {
 }
 
 // UploadFile
-// @author: jelly
-// @object: *Local
-// @function: UploadFile
-// @description: 上传文件
-// @param: file *multipart.FileHeader
-// @return: string, string, error
+//
+//	@author:		jelly
+//	@object:		*Local
+//	@function:		UploadFile
+//	@description:	上传文件
+//	@param:			file *multipart.FileHeader
+//	@return:		string, string, error
 func (*Local) UploadFile(file *multipart.FileHeader) (string, string, error) {
 	// 读取文件后缀
 	ext := filepath.Ext(file.Filename)
@@ -65,12 +66,13 @@ func (*Local) UploadFile(file *multipart.FileHeader) (string, string, error) {
 }
 
 // DeleteFile
-// @author: jelly
-// @object: *Local
-// @function: DeleteFile
-// @description: 删除文件
-// @param: key string
-// @return: error
+//
+//	@author:		jelly
+//	@object:		*Local
+//	@function:		DeleteFile
+//	@description:	删除文件
+//	@param:			key string
+//	@return:		error
 func (*Local) DeleteFile(key string) error {
 	p := global.GVA_CONFIG.Local.StorePath + "/" + key
 	if strings.Contains(p, global.GVA_CONFIG.Local.StorePath) {

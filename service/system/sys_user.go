@@ -16,10 +16,11 @@ type UserService struct {
 }
 
 // Register
-// @function: Register
-// @description: 用户注册
-// @param: u model.SysUser
-// @return: userInter system.SysUser, err error
+//
+//	@function:		Register
+//	@description:	用户注册
+//	@param:			u model.SysUser
+//	@return:		userInter system.SysUser, err error
 func (userService *UserService) Register(u system.SysUser) (userInter system.SysUser, err error) {
 	var user system.SysUser
 	// 判断用户名是否注册
@@ -34,10 +35,11 @@ func (userService *UserService) Register(u system.SysUser) (userInter system.Sys
 }
 
 // Login
-// @function: Login
-// @description: 用户登录
-// @param: u *model.SysUser
-// @return: err error, userInter *model.SysUser
+//
+//	@function:		Login
+//	@description:	用户登录
+//	@param:			u *model.SysUser
+//	@return:		err error, userInter *model.SysUser
 func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysUser, err error) {
 	if global.GVA_DB == nil {
 		return nil, fmt.Errorf("db not init")
@@ -54,10 +56,11 @@ func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysU
 }
 
 // ChangePassword
-// @function: ChangePassword
-// @description: 修改用户密码
-// @param: u *model.SysUser, newPassword string
-// @return: userInter *model.SysUser,err error
+//
+//	@function:		ChangePassword
+//	@description:	修改用户密码
+//	@param:			u *model.SysUser, newPassword string
+//	@return:		userInter *model.SysUser,err error
 func (userService *UserService) ChangePassword(u *system.SysUser, newPassword string) (userInter *system.SysUser, err error) {
 	var user system.SysUser
 	if err = global.GVA_DB.Where("id = ?", u.ID).First(&user).Error; err != nil {
@@ -72,10 +75,11 @@ func (userService *UserService) ChangePassword(u *system.SysUser, newPassword st
 }
 
 // GetUserInfoList
-// @function: GetUserInfoList
-// @description: 分页获取数据
-// @param: info request.PageInfo
-// @return: err error, list interface{}, total int64
+//
+//	@function:		GetUserInfoList
+//	@description:	分页获取数据
+//	@param:			info request.PageInfo
+//	@return:		err error, list interface{}, total int64
 func (userService *UserService) GetUserInfoList(info request.PageInfo) (list interface{}, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
@@ -90,10 +94,11 @@ func (userService *UserService) GetUserInfoList(info request.PageInfo) (list int
 }
 
 // SetUserAuthority
-// @function: SetUserAuthority
-// @description: 设置一个用户的权限
-// @param: id uint, authorityId string
-// @return: err error
+//
+//	@function:		SetUserAuthority
+//	@description:	设置一个用户的权限
+//	@param:			id uint, authorityId string
+//	@return:		err error
 func (userService *UserService) SetUserAuthority(id uint, authorityID uint) (err error) {
 	assignErr := global.GVA_DB.Where("sys_user_id = ? AND sys_authority_authority_id = ?", id, authorityID).First(&system.SysUserAuthority{}).Error
 	if errors.Is(assignErr, gorm.ErrRecordNotFound) {
@@ -104,10 +109,11 @@ func (userService *UserService) SetUserAuthority(id uint, authorityID uint) (err
 }
 
 // SetUserAuthorities
-// @function: SetUserAuthorities
-// @description: 设置一个用户的权限
-// @param: id uint, authorityIds []string
-// @return: err error
+//
+//	@function:		SetUserAuthorities
+//	@description:	设置一个用户的权限
+//	@param:			id uint, authorityIds []string
+//	@return:		err error
 func (userService *UserService) SetUserAuthorities(id uint, authorityIds []uint) (err error) {
 	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
 		var user system.SysUser
@@ -140,10 +146,11 @@ func (userService *UserService) SetUserAuthorities(id uint, authorityIds []uint)
 }
 
 // DeleteUser
-// @function: DeleteUser
-// @description: 删除用户
-// @param: id float64
-// @return: err error
+//
+//	@function:		DeleteUser
+//	@description:	删除用户
+//	@param:			id float64
+//	@return:		err error
 func (userService *UserService) DeleteUser(id int) (err error) {
 	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
 		if err := tx.Where("id = ?", id).Delete(&system.SysUser{}).Error; err != nil {
@@ -157,10 +164,11 @@ func (userService *UserService) DeleteUser(id int) (err error) {
 }
 
 // SetUserInfo
-// @function: SetUserInfo
-// @description: 设置用户信息
-// @param: reqUser model.SysUser
-// @return: err error, user model.SysUser
+//
+//	@function:		SetUserInfo
+//	@description:	设置用户信息
+//	@param:			reqUser model.SysUser
+//	@return:		err error, user model.SysUser
 func (userService *UserService) SetUserInfo(u system.SysUser) error {
 	return global.GVA_DB.Model(&system.SysUser{}).Select("updated_at", "nick_name", "header_img", "phone", "email", "side_mode", "enable").
 		Where("id = ?", u.ID).Updates(map[string]interface{}{
@@ -175,19 +183,21 @@ func (userService *UserService) SetUserInfo(u system.SysUser) error {
 }
 
 // SetSelfInfo
-// @function: SetSelfInfo
-// @description: 设置个人信息
-// @param: reqUser model.SysUser
-// @return: err error, user model.SysUser
+//
+//	@function:		SetSelfInfo
+//	@description:	设置个人信息
+//	@param:			reqUser model.SysUser
+//	@return:		err error, user model.SysUser
 func (userService *UserService) SetSelfInfo(u system.SysUser) error {
 	return global.GVA_DB.Model(&system.SysUser{}).Where("id = ?", u.ID).Updates(u).Error
 }
 
 // GetUserInfo
-// @function: GetUserInfo
-// @description: 获取用户信息
-// @param: uuid uuid.UUID
-// @return: err error, user system.SysUser
+//
+//	@function:		GetUserInfo
+//	@description:	获取用户信息
+//	@param:			uuid uuid.UUID
+//	@return:		err error, user system.SysUser
 func (userService *UserService) GetUserInfo(uuid uuid.UUID) (user system.SysUser, err error) {
 	var reqUser system.SysUser
 	err = global.GVA_DB.Preload("Authorities").Preload("Authority").First(&reqUser, "uuid = ?", uuid).Error
@@ -199,10 +209,11 @@ func (userService *UserService) GetUserInfo(uuid uuid.UUID) (user system.SysUser
 }
 
 // FindUserById
-// @function: FindUserById
-// @description: 通过id获取用户信息
-// @param: id int
-// @return: err error, user *model.SysUser
+//
+//	@function:		FindUserById
+//	@description:	通过id获取用户信息
+//	@param:			id int
+//	@return:		err error, user *model.SysUser
 func (userService *UserService) FindUserById(id int) (user *system.SysUser, err error) {
 	var reqUser system.SysUser
 	err = global.GVA_DB.Where("id = ?", id).First(&reqUser).Error
@@ -210,10 +221,11 @@ func (userService *UserService) FindUserById(id int) (user *system.SysUser, err 
 }
 
 // FindUserByUuid
-// @function: FindUserByUuid
-// @description: 通过uuid获取用户信息
-// @param: uuid string
-// @return: err error, user *model.SysUser
+//
+//	@function:		FindUserByUuid
+//	@description:	通过uuid获取用户信息
+//	@param:			uuid string
+//	@return:		err error, user *model.SysUser
 func (userService *UserService) FindUserByUuid(uuid string) (user *system.SysUser, err error) {
 	var reqUser system.SysUser
 	if err = global.GVA_DB.Where("uuid = ?", uuid).First(&reqUser).Error; err != nil {
@@ -223,10 +235,11 @@ func (userService *UserService) FindUserByUuid(uuid string) (user *system.SysUse
 }
 
 // ResetPassword
-// @function: ResetPassword
-// @description: 修改用户密码
-// @param: ID uint
-// @return: err error
+//
+//	@function:		ResetPassword
+//	@description:	修改用户密码
+//	@param:			ID uint
+//	@return:		err error
 func (userService *UserService) ResetPassword(ID uint) (err error) {
 	err = global.GVA_DB.Model(&system.SysUser{}).Where("id = ?", ID).Update("password", utils.BcryptHash("123456")).Error
 	return err

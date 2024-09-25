@@ -11,11 +11,12 @@ type FileUploadAndDownloadService struct {
 }
 
 // FindOrCreateFile
-// @author: jelly
-// @function: FindOrCreateFile
-// @description: 上传文件时检测当前文件属性，如果没有文件则创建，有则返回文件的当前切片
-// @param: fileMd5 string, fileName string, chunkTotal int
-// @return: file model.ExaFile, err error
+//
+//	@author:		jelly
+//	@function:		FindOrCreateFile
+//	@description:	上传文件时检测当前文件属性，如果没有文件则创建，有则返回文件的当前切片
+//	@param:			fileMd5 string, fileName string, chunkTotal int
+//	@return:		file model.ExaFile, err error
 func (f *FileUploadAndDownloadService) FindOrCreateFile(fileMd5 string, fileName string, chunkTotal int) (file example.ExaFile, err error) {
 	var cfile example.ExaFile
 	cfile.FileMD5 = fileMd5
@@ -32,11 +33,12 @@ func (f *FileUploadAndDownloadService) FindOrCreateFile(fileMd5 string, fileName
 }
 
 // CreateFileChunk
-// @author: jelly
-// @function: CreateFileChunk
-// @description: 创建文件切片记录
-// @param: id uint, fileChunkPath string, fileChunkNumber int
-// @return: error
+//
+//	@author:		jelly
+//	@function:		CreateFileChunk
+//	@description:	创建文件切片记录
+//	@param:			id uint, fileChunkPath string, fileChunkNumber int
+//	@return:		error
 func (f *FileUploadAndDownloadService) CreateFileChunk(id uint, fileChunkPath string, fileChunkNumber int) error {
 	var chunk example.ExaFileChunk
 	chunk.FileChunkPath = fileChunkPath
@@ -47,11 +49,12 @@ func (f *FileUploadAndDownloadService) CreateFileChunk(id uint, fileChunkPath st
 }
 
 // DeleteFileChunk
-// @author: jelly
-// @function: DeleteFileChunk
-// @description: 删除文件切片记录
-// @param: fileMd5 string, fileName string, filePath string
-// @return: error
+//
+//	@author:		jelly
+//	@function:		DeleteFileChunk
+//	@description:	删除文件切片记录
+//	@param:			fileMd5 string, fileName string, filePath string
+//	@return:		error
 func (f *FileUploadAndDownloadService) DeleteFileChunk(fileMd5 string, filePath string) error {
 	var chunks []example.ExaFileChunk
 	var file example.ExaFile

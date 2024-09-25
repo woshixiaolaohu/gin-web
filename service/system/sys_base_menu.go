@@ -12,10 +12,11 @@ type BaseMenuService struct{}
 var BaseMenuServiceApp = new(BaseMenuService)
 
 // DeleteBaseMenu
-// @function: DeleteBaseMenu
-// @description: 删除基础路由
-// @param: id float64
-// @return: err error
+//
+//	@function:		DeleteBaseMenu
+//	@description:	删除基础路由
+//	@param:			id float64
+//	@return:		err error
 func (baseMenuService *BaseMenuService) DeleteBaseMenu(id int) (err error) {
 	err = global.GVA_DB.First(&system.SysBaseMenu{}, "parent_id = ?", id).Error
 	if err != nil {
@@ -50,10 +51,11 @@ func (baseMenuService *BaseMenuService) DeleteBaseMenu(id int) (err error) {
 }
 
 // UpdateBaseMenu
-// @function: UpdateBaseMenu
-// @description: 更新路由
-// @param: menu model.SysBaseMenu
-// @return: err error
+//
+//	@function:		UpdateBaseMenu
+//	@description:	更新路由
+//	@param:			menu model.SysBaseMenu
+//	@return:		err error
 func (baseMenuService *BaseMenuService) UpdateBaseMenu(menu system.SysBaseMenu) (err error) {
 	var oldMenu system.SysBaseMenu
 	upDateMap := make(map[string]interface{})
@@ -118,10 +120,11 @@ func (baseMenuService *BaseMenuService) UpdateBaseMenu(menu system.SysBaseMenu) 
 }
 
 // GetBaseMenuById
-// @function: GetBaseMenuById
-// @description: 返回当前选中menu
-// @param: id float64
-// @return: menu system.SysBaseMenu, err error
+//
+//	@function:		GetBaseMenuById
+//	@description:	返回当前选中menu
+//	@param:			id float64
+//	@return:		menu system.SysBaseMenu, err error
 func (baseMenuService *BaseMenuService) GetBaseMenuById(id int) (menu system.SysBaseMenu, err error) {
 	err = global.GVA_DB.Preload("MenuBtn").Preload("Parameters").Where("id = ?", id).First(&menu).Error
 	return

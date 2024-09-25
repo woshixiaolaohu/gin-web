@@ -9,50 +9,55 @@ import (
 type DictionaryDetailService struct{}
 
 // CreateSysDictionaryDetail
-// @function: CreateSysDictionaryDetail
-// @description: 创建字典详情数据
-// @param: sysDictionaryDetail model.SysDictionaryDetail
-// @return: err error
+//
+//	@function:		CreateSysDictionaryDetail
+//	@description:	创建字典详情数据
+//	@param:			sysDictionaryDetail model.SysDictionaryDetail
+//	@return:		err error
 func (dictionaryDetailService *DictionaryDetailService) CreateSysDictionaryDetail(sysDictionaryDetail system.SysDictionaryDetail) (err error) {
 	err = global.GVA_DB.Create(&sysDictionaryDetail).Error
 	return err
 }
 
 // DeleteSysDictionaryDetail
-// @function: DeleteSysDictionaryDetail
-// @description: 删除字典详情数据
-// @param: sysDictionaryDetail model.SysDictionaryDetail
-// @return: err error
+//
+//	@function:		DeleteSysDictionaryDetail
+//	@description:	删除字典详情数据
+//	@param:			sysDictionaryDetail model.SysDictionaryDetail
+//	@return:		err error
 func (dictionaryDetailService *DictionaryDetailService) DeleteSysDictionaryDetail(sysDictionaryDetail system.SysDictionaryDetail) (err error) {
 	err = global.GVA_DB.Delete(&sysDictionaryDetail).Error
 	return err
 }
 
 // UpdateSysDictionaryDetail
-// @function: UpdateSysDictionaryDetail
-// @description: 更新字典详情数据
-// @param: sysDictionaryDetail *model.SysDictionaryDetail
-// @return: err error
+//
+//	@function:		UpdateSysDictionaryDetail
+//	@description:	更新字典详情数据
+//	@param:			sysDictionaryDetail *model.SysDictionaryDetail
+//	@return:		err error
 func (dictionaryDetailService *DictionaryDetailService) UpdateSysDictionaryDetail(sysDictionaryDetail system.SysDictionaryDetail) (err error) {
 	err = global.GVA_DB.Save(&sysDictionaryDetail).Error
 	return err
 }
 
 // GetSysDictionaryDetail
-// @function: GetSysDictionaryDetail
-// @description: 根据id获取字典详情单条数据
-// @param: id uint
-// @return: sysDictionaryDetail system.SysDictionaryDetail, err error
+//
+//	@function:		GetSysDictionaryDetail
+//	@description:	根据id获取字典详情单条数据
+//	@param:			id uint
+//	@return:		sysDictionaryDetail system.SysDictionaryDetail, err error
 func (dictionaryDetailService *DictionaryDetailService) GetSysDictionaryDetail(id uint) (sysDictionaryDetail system.SysDictionaryDetail, err error) {
 	err = global.GVA_DB.Where("id = ?", id).First(&sysDictionaryDetail).Error
 	return
 }
 
 // GetSysDictionaryDetailInfoList
-// @function: GetSysDictionaryDetailInfoList
-// @description: 分页获取字典详情列表
-// @param: info request.SysDictionaryDetailSearch
-// @return: list interface{}, total int64, err error
+//
+//	@function:		GetSysDictionaryDetailInfoList
+//	@description:	分页获取字典详情列表
+//	@param:			info request.SysDictionaryDetailSearch
+//	@return:		list interface{}, total int64, err error
 func (dictionaryDetailService *DictionaryDetailService) GetSysDictionaryDetailInfoList(info request.SysDictionarySearch) (list interface{}, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
@@ -81,10 +86,11 @@ func (dictionaryDetailService *DictionaryDetailService) GetSysDictionaryDetailIn
 }
 
 // GetDictionaryList
-// @function: GetDictionaryList
-// @description: 按照字典id获取字典全部内容的方法
-// @param: dictionaryID uint
-// @return: list []system.SysDictionaryDetail, err error
+//
+//	@function:		GetDictionaryList
+//	@description:	按照字典id获取字典全部内容的方法
+//	@param:			dictionaryID uint
+//	@return:		list []system.SysDictionaryDetail, err error
 func (dictionaryDetailService *DictionaryDetailService) GetDictionaryList(dictionaryID uint) (list []system.SysDictionaryDetail, err error) {
 	var sysDictionaryDetails []system.SysDictionaryDetail
 	err = global.GVA_DB.Find(&sysDictionaryDetails, "sys_dictionary_id = ?", dictionaryID).Error
@@ -92,10 +98,11 @@ func (dictionaryDetailService *DictionaryDetailService) GetDictionaryList(dictio
 }
 
 // GetDictionaryListByType
-// @function: GetDictionaryListByType
-// @description: 按照字典type获取字典全部内容的方法
-// @param: dictionaryType string
-// @return: list []system.SysDictionaryDetail, err error
+//
+//	@function:		GetDictionaryListByType
+//	@description:	按照字典type获取字典全部内容的方法
+//	@param:			dictionaryType string
+//	@return:		list []system.SysDictionaryDetail, err error
 func (dictionaryDetailService *DictionaryDetailService) GetDictionaryListByType(dictionaryType string) (list []system.SysDictionaryDetail, err error) {
 	var sysDictionaryDetails []system.SysDictionaryDetail
 	db := global.GVA_DB.Model(&system.SysDictionaryDetail{}).Joins("JOIN sys_dictionaries ON sys_dictionaries_id = sys_dictionary_details.sys_dictionary_id")
@@ -104,10 +111,11 @@ func (dictionaryDetailService *DictionaryDetailService) GetDictionaryListByType(
 }
 
 // GetDictionaryInfoByValue
-// @function: GetDictionaryInfoByValue
-// @description: 按照字典id+字典内容value获取单条字典内容
-// @param: dictionaryID uint, value string
-// @return: detail system.SysDictionaryDetail, err error
+//
+//	@function:		GetDictionaryInfoByValue
+//	@description:	按照字典id+字典内容value获取单条字典内容
+//	@param:			dictionaryID uint, value string
+//	@return:		detail system.SysDictionaryDetail, err error
 func (dictionaryDetailService *DictionaryDetailService) GetDictionaryInfoByValue(dictionaryID uint, value string) (detail system.SysDictionaryDetail, err error) {
 	var sysDictionaryDetail system.SysDictionaryDetail
 	err = global.GVA_DB.First(&sysDictionaryDetail, "sys_dictionary_id = ? AND value = ?", dictionaryID, value).Error
@@ -115,10 +123,11 @@ func (dictionaryDetailService *DictionaryDetailService) GetDictionaryInfoByValue
 }
 
 // GetDictionaryInfoByTypeValue
-// @function: GetDictionaryInfoByTypeValue
-// @description: 按照字典type+字典内容value获取单条字典内容
-// @param: dictionaryType string, value string
-// @return: detail system.SysDictionaryDetail, err error
+//
+//	@function:		GetDictionaryInfoByTypeValue
+//	@description:	按照字典type+字典内容value获取单条字典内容
+//	@param:			dictionaryType string, value string
+//	@return:		detail system.SysDictionaryDetail, err error
 func (dictionaryDetailService *DictionaryDetailService) GetDictionaryInfoByTypeValue(dictionaryType string, value string) (detail system.SysDictionaryDetail, err error) {
 	var sysDictionaryDetails system.SysDictionaryDetail
 	db := global.GVA_DB.Model(&system.SysDictionaryDetail{}).Joins("JOIN sys_dictionaries ON sys_dictionaries.id = sys_dictionary_details.sys_dictionary_id")

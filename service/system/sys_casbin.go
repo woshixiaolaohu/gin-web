@@ -18,10 +18,11 @@ type CasbinService struct{}
 var CasbinServiceApp = new(CasbinService)
 
 // UpdateCasbin
-// @function: UpdateCasbin
-// @description: 更新casbin权限
-// @param: authorityId string, casbinInfos []request.CasbinInfo
-// @return: error
+//
+//	@function:		UpdateCasbin
+//	@description:	更新casbin权限
+//	@param:			authorityId string, casbinInfos []request.CasbinInfo
+//	@return:		error
 func (casbinService *CasbinService) UpdateCasbin(AuthorityID uint, casbinInfos []request.CasbinInfo) error {
 	authorityID := strconv.Itoa(int(AuthorityID))
 	casbinService.ClearCasbin(0, authorityID)
@@ -44,10 +45,11 @@ func (casbinService *CasbinService) UpdateCasbin(AuthorityID uint, casbinInfos [
 }
 
 // UpdateCasbinApi
-// @function: UpdateCasbinApi
-// @description: API更新随动
-// @param: oldPath string, newPath string, oldMethod string, newMethod string
-// @return: error
+//
+//	@function:		UpdateCasbinApi
+//	@description:	API更新随动
+//	@param:			oldPath string, newPath string, oldMethod string, newMethod string
+//	@return:		error
 func (casbinService *CasbinService) UpdateCasbinApi(oldPath, newPath, oldMethod, newMethod string) error {
 	err := global.GVA_DB.Model(&gormadapter.CasbinRule{}).Where("v1 = AND v2 = ?", oldPath, oldMethod).Updates(map[string]interface{}{
 		"v1": newPath,
@@ -62,10 +64,11 @@ func (casbinService *CasbinService) UpdateCasbinApi(oldPath, newPath, oldMethod,
 }
 
 // GetPolicyPathByAuthorityID
-// @function: GetPolicyPathByAuthorityID
-// @description: 获取权限列表
-// @param: authorityId string
-// @return: pathMaps []request.CasbinInfo
+//
+//	@function:		GetPolicyPathByAuthorityID
+//	@description:	获取权限列表
+//	@param:			authorityId string
+//	@return:		pathMaps []request.CasbinInfo
 func (casbinService *CasbinService) GetPolicyPathByAuthorityID(AuthorityID uint) (pathMaps []request.CasbinInfo) {
 	e := casbinService.Casbin()
 	authorityID := strconv.Itoa(int(AuthorityID))
@@ -80,10 +83,11 @@ func (casbinService *CasbinService) GetPolicyPathByAuthorityID(AuthorityID uint)
 }
 
 // ClearCasbin
-// @function: ClearCasbin
-// @description: 清除匹配的权限
-// @param: v int, p ...string
-// @return: bool
+//
+//	@function:		ClearCasbin
+//	@description:	清除匹配的权限
+//	@param:			v int, p ...string
+//	@return:		bool
 func (casbinService *CasbinService) ClearCasbin(v int, p ...string) bool {
 	e := casbinService.Casbin()
 	success, _ := e.RemoveFilteredPolicy(v, p...)
@@ -92,19 +96,21 @@ func (casbinService *CasbinService) ClearCasbin(v int, p ...string) bool {
 }
 
 // RemoveFilteredPolicy
-// @function: RemoveFilteredPolicy
-// @description: 使用数据库方法清理筛选的politicy 此方法需要调用FreshCasbin方法才可以在系统中即刻生效
-// @param: db *gorm.DB, authorityId string
-// @return: error
+//
+//	@function:		RemoveFilteredPolicy
+//	@description:	使用数据库方法清理筛选的politicy 此方法需要调用FreshCasbin方法才可以在系统中即刻生效
+//	@param:			db *gorm.DB, authorityId string
+//	@return:		error
 func (casbinService *CasbinService) RemoveFilteredPolicy(db *gorm.DB, authorityID string) error {
 	return db.Delete(&gormadapter.CasbinRule{}, "v0 = ? ", authorityID).Error
 }
 
 // SyncPolicy
-// @function: SyncPolicy
-// @description: 同步目前数据库的policy 此方法需要调用FreshCasbin方法才可以在系统中即刻生效
-// @param: db *gorm.DB, authorityId string, rules [][]string
-// @return: error
+//
+//	@function:		SyncPolicy
+//	@description:	同步目前数据库的policy 此方法需要调用FreshCasbin方法才可以在系统中即刻生效
+//	@param:			db *gorm.DB, authorityId string, rules [][]string
+//	@return:		error
 func (casbinService *CasbinService) SyncPolicy(db *gorm.DB, authorityID string, rules [][]string) error {
 	err := casbinService.RemoveFilteredPolicy(db, authorityID)
 	if err != nil {
@@ -114,10 +120,11 @@ func (casbinService *CasbinService) SyncPolicy(db *gorm.DB, authorityID string, 
 }
 
 // AddPolicies
-// @function: AddPolicies
-// @description: 添加权限
-// @param: db *gorm.DB, rules [][]string
-// @return: error
+//
+//	@function:		AddPolicies
+//	@description:	添加权限
+//	@param:			db *gorm.DB, rules [][]string
+//	@return:		error
 func (casbinService *CasbinService) AddPolicies(db *gorm.DB, rules [][]string) error {
 	var casbinRules []gormadapter.CasbinRule
 	for i := range rules {
@@ -132,9 +139,10 @@ func (casbinService *CasbinService) AddPolicies(db *gorm.DB, rules [][]string) e
 }
 
 // FreshCasbin
-// @function: FreshCasbin
-// @description: 刷新 Casbin
-// @return: error
+//
+//	@function:		FreshCasbin
+//	@description:	刷新 Casbin
+//	@return:		error
 func (casbinService *CasbinService) FreshCasbin() (err error) {
 	e := casbinService.Casbin()
 	err = e.LoadPolicy()
@@ -147,9 +155,10 @@ var (
 )
 
 // Casbin
-// @function: Casbin
-// @description: 持久化到数据库  引入自定义规则
-// @return: *casbin.SyncedCachedEnforcer
+//
+//	@function:		Casbin
+//	@description:	持久化到数据库  引入自定义规则
+//	@return:		*casbin.SyncedCachedEnforcer
 func (casbinService *CasbinService) Casbin() *casbin.SyncedCachedEnforcer {
 	once.Do(func() {
 		a, err := gormadapter.NewAdapterByDB(global.GVA_DB)

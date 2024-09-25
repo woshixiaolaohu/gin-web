@@ -11,40 +11,44 @@ import (
 type CustomerService struct{}
 
 // CreateExaCustomer
-// @function: CreateExaCustomer
-// @description: 创建客户
-// @param: e model.ExaCustomer
-// @return: err error
+//
+//	@function:		CreateExaCustomer
+//	@description:	创建客户
+//	@param:			e model.ExaCustomer
+//	@return:		err error
 func (exa *CustomerService) CreateExaCustomer(e example.ExaCustomer) (err error) {
 	err = global.GVA_DB.Create(&e).Error
 	return err
 }
 
 // DeleteExaCustomer
-// @function: DeleteFileChunk
-// @description: 删除客户
-// @param: e model.ExaCustomer
-// @return: err error
+//
+//	@function:		DeleteFileChunk
+//	@description:	删除客户
+//	@param:			e model.ExaCustomer
+//	@return:		err error
 func (exa *CustomerService) DeleteExaCustomer(e example.ExaCustomer) (err error) {
 	err = global.GVA_DB.Delete(&e).Error
 	return err
 }
 
 // UpdateExaCustomer
-// @function: UpdateExaCustomer
-// @description: 更新客户
-// @param: e *model.ExaCustomer
-// @return: err error
+//
+//	@function:		UpdateExaCustomer
+//	@description:	更新客户
+//	@param:			e *model.ExaCustomer
+//	@return:		err error
 func (exa *CustomerService) UpdateExaCustomer(e *example.ExaCustomer) (err error) {
 	err = global.GVA_DB.Save(&e).Error
 	return err
 }
 
 // GetExaCustomer
-// @function: GetExaCustomer
-// @description: 获取客户信息
-// @param: id uint
-// @return: customer model.ExaCustomer, err error
+//
+//	@function:		GetExaCustomer
+//	@description:	获取客户信息
+//	@param:			id uint
+//	@return:		customer model.ExaCustomer, err error
 func (exa *CustomerService) GetExaCustomer(id uint) (customer example.ExaCustomer, err error) {
 	err = global.GVA_DB.Where("id = ? ", id).First(&customer).Error
 	return

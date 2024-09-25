@@ -14,14 +14,15 @@ import (
 type CustomerApi struct{}
 
 // CreateExaCustomer
-// @Tags      ExaCustomer
-// @Summary   创建客户
-// @Security  ApiKeyAuth
-// @accept    application/json
-// @Produce   application/json
-// @Param     data  body      example.ExaCustomer            true  "客户用户名, 客户手机号码"
-// @Success   200   {object}  response.Response{msg=string}  "创建客户"
-// @Router    /customer/customer [post]
+//
+//	@Tags		ExaCustomer
+//	@Summary	创建客户
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	body		example.ExaCustomer				true	"客户用户名, 客户手机号码"
+//	@Success	200		{object}	response.Response{msg=string}	"创建客户"
+//	@Router		/customer/customer [post]
 func (customerApi *CustomerApi) CreateExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
 	err := c.ShouldBindJSON(&customer)
@@ -46,13 +47,14 @@ func (customerApi *CustomerApi) CreateExaCustomer(c *gin.Context) {
 }
 
 // DeleteExaCustomer
-// @Summary   删除客户
-// @Security  ApiKeyAuth
-// @accept    application/json
-// @Produce   application/json
-// @Param     data  body      example.ExaCustomer            true  "客户ID"
-// @Success   200   {object}  response.Response{msg=string}  "删除客户"
-// @Router    /customer/customer [delete]
+//
+//	@Summary	删除客户
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	body		example.ExaCustomer				true	"客户ID"
+//	@Success	200		{object}	response.Response{msg=string}	"删除客户"
+//	@Router		/customer/customer [delete]
 func (customerApi *CustomerApi) DeleteExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
 	err := c.ShouldBindJSON(&customer)
@@ -75,14 +77,15 @@ func (customerApi *CustomerApi) DeleteExaCustomer(c *gin.Context) {
 }
 
 // UpdateExaCustomer
-// @Tags      ExaCustomer
-// @Summary   更新客户信息
-// @Security  ApiKeyAuth
-// @accept    application/json
-// @Produce   application/json
-// @Param     data  body      example.ExaCustomer            true  "客户ID, 客户信息"
-// @Success   200   {object}  response.Response{msg=string}  "更新客户信息"
-// @Router    /customer/customer [put]
+//
+//	@Tags		ExaCustomer
+//	@Summary	更新客户信息
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	body		example.ExaCustomer				true	"客户ID, 客户信息"
+//	@Success	200		{object}	response.Response{msg=string}	"更新客户信息"
+//	@Router		/customer/customer [put]
 func (customerApi *CustomerApi) UpdateExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
 	err := c.ShouldBindJSON(&customer)
@@ -110,14 +113,15 @@ func (customerApi *CustomerApi) UpdateExaCustomer(c *gin.Context) {
 }
 
 // GetExaCustomer
-// @Tags      ExaCustomer
-// @Summary   获取单一客户信息
-// @Security  ApiKeyAuth
-// @accept    application/json
-// @Produce   application/json
-// @Param     data  query     example.ExaCustomer                                                true  "客户ID"
-// @Success   200   {object}  response.Response{data=exampleRes.ExaCustomerResponse,msg=string}  "获取单一客户信息,返回包括客户详情"
-// @Router    /customer/customer [get]
+//
+//	@Tags		ExaCustomer
+//	@Summary	获取单一客户信息
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	query		example.ExaCustomer													true	"客户ID"
+//	@Success	200		{object}	response.Response{data=exampleRes.ExaCustomerResponse,msg=string}	"获取单一客户信息,返回包括客户详情"
+//	@Router		/customer/customer [get]
 func (customerApi *CustomerApi) GetExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
 	err := c.ShouldBindJSON(&customer)
@@ -140,14 +144,15 @@ func (customerApi *CustomerApi) GetExaCustomer(c *gin.Context) {
 }
 
 // GetExaCustomerList
-// @Tags      ExaCustomer
-// @Summary   分页获取权限客户列表
-// @Security  ApiKeyAuth
-// @accept    application/json
-// @Produce   application/json
-// @Param     data  query     request.PageInfo                                        true  "页码, 每页大小"
-// @Success   200   {object}  response.Response{data=response.PageResult,msg=string}  "分页获取权限客户列表,返回包括列表,总数,页码,每页数量"
-// @Router    /customer/customerList [get]
+//
+//	@Tags		ExaCustomer
+//	@Summary	分页获取权限客户列表
+//	@Security	ApiKeyAuth
+//	@accept		application/json
+//	@Produce	application/json
+//	@Param		data	query		request.PageInfo										true	"页码, 每页大小"
+//	@Success	200		{object}	response.Response{data=response.PageResult,msg=string}	"分页获取权限客户列表,返回包括列表,总数,页码,每页数量"
+//	@Router		/customer/customerList [get]
 func (customerApi *CustomerApi) GetExaCustomerList(c *gin.Context) {
 	var pageInfo request.PageInfo
 	err := c.ShouldBindQuery(&pageInfo)

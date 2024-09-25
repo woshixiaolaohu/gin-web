@@ -52,9 +52,10 @@ type Disk struct {
 }
 
 // InitOS
-// @function: InitCPU
-// @description: OS信息
-// @return: o Os, err error
+//
+//	@function:		InitCPU
+//	@description:	OS信息
+//	@return:		o Os, err error
 func InitOS() (o Os) {
 	o.GOOS = runtime.GOOS
 	o.NumCPU = runtime.NumCPU()
@@ -65,9 +66,10 @@ func InitOS() (o Os) {
 }
 
 // InitCPU
-// @function: InitCPU
-// @description: CPU信息
-// @return: c Cpu, err error
+//
+//	@function:		InitCPU
+//	@description:	CPU信息
+//	@return:		c Cpu, err error
 func InitCPU() (c Cpu, err error) {
 	if cores, err := cpu.Counts(false); err != nil {
 		return c, err
@@ -83,9 +85,10 @@ func InitCPU() (c Cpu, err error) {
 }
 
 // InitRAM
-// @function: InitRAM
-// @description: RAM信息
-// @return: r Ram, err error
+//
+//	@function:		InitRAM
+//	@description:	RAM信息
+//	@return:		r Ram, err error
 func InitRAM() (r Ram, err error) {
 	if u, err := mem.VirtualMemory(); err != nil {
 		return r, err
@@ -98,9 +101,10 @@ func InitRAM() (r Ram, err error) {
 }
 
 // InitDisk
-// @function: InitDisk
-// @description: 硬盘信息
-// @return: d Disk, err error
+//
+//	@function:		InitDisk
+//	@description:	硬盘信息
+//	@return:		d Disk, err error
 func InitDisk() (d []Disk, err error) {
 	for i := range global.GVA_CONFIG.DiskList {
 		mp := global.GVA_CONFIG.DiskList[i].MountPoint

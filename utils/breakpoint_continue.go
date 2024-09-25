@@ -17,10 +17,11 @@ const (
 )
 
 // BreakPointContinue
-// @function: BreakPointContinue
-// @description: 断点续传
-// @param: content []byte, fileName string, contentNumber int, contentTotal int, fileMd5 string
-// @return: error, string
+//
+//	@function:		BreakPointContinue
+//	@description:	断点续传
+//	@param:			content []byte, fileName string, contentNumber int, contentTotal int, fileMd5 string
+//	@return:		error, string
 func BreakPointContinue(content []byte, fileName string, contentNumber int, contentTotal int, fileMd5 string) (string, error) {
 	path := breakpointDir + fileMd5 + "/"
 	err := os.MkdirAll(path, os.ModePerm)
@@ -32,10 +33,11 @@ func BreakPointContinue(content []byte, fileName string, contentNumber int, cont
 }
 
 // CheckMd5
-// @function: CheckMd5
-// @description: 检查Md5
-// @param: content []byte, chunkMd5 string
-// @return: CanUpload bool
+//
+//	@function:		CheckMd5
+//	@description:	检查Md5
+//	@param:			content []byte, chunkMd5 string
+//	@return:		CanUpload bool
 func CheckMd5(content []byte, chunkMd5 string) (CanUpload bool) {
 	fileMd5 := MD5V(content)
 	if fileMd5 == chunkMd5 {
@@ -46,10 +48,11 @@ func CheckMd5(content []byte, chunkMd5 string) (CanUpload bool) {
 }
 
 // makeFileContent
-// @function: makeFileContent
-// @description: 创建切片内容
-// @param: content []byte, fileName string, FileDir string, contentNumber int
-// @return: string, error
+//
+//	@function:		makeFileContent
+//	@description:	创建切片内容
+//	@param:			content []byte, fileName string, FileDir string, contentNumber int
+//	@return:		string, error
 func makeFileContent(content []byte, fileName string, FileDir string, contentNumber int) (string, error) {
 	if strings.Index(fileName, "..") > -1 || strings.Index(FileDir, "..") > -1 {
 		return "", errors.New("文件名或路径不合法")
@@ -69,10 +72,11 @@ func makeFileContent(content []byte, fileName string, FileDir string, contentNum
 }
 
 // MakeFile
-// @function: MakeFile
-// @description: 创建切片文件
-// @param: fileName string, FileMd5 string
-// @return: error, string
+//
+//	@function:		MakeFile
+//	@description:	创建切片文件
+//	@param:			fileName string, FileMd5 string
+//	@return:		error, string
 func MakeFile(fileName string, FileMd5 string) (string, error) {
 	rd, err := os.ReadDir(breakpointDir + FileMd5)
 	if err != nil {
@@ -96,10 +100,11 @@ func MakeFile(fileName string, FileMd5 string) (string, error) {
 }
 
 // RemoveChunk
-// @function: RemoveChunk
-// @description: 移除切片
-// @param: FileMd5 string
-// @return: error
+//
+//	@function:		RemoveChunk
+//	@description:	移除切片
+//	@param:			FileMd5 string
+//	@return:		error
 func RemoveChunk(FileMd5 string) error {
 	err := os.RemoveAll(breakpointDir + FileMd5)
 	return err
