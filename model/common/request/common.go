@@ -2,8 +2,8 @@ package request
 
 type PageInfo struct {
 	Page     int    `json:"page" form:"page"`
-	PageSize int    `json:"page_size" form:"page_size"`
-	KeyWord  string `json:"key_word" form:"key_word"`
+	PageSize int    `json:"pageSize" form:"pageSize"`
+	KeyWord  string `json:"keyword" form:"keyword"`
 }
 
 type GetById struct {
@@ -19,7 +19,7 @@ type IdsReq struct {
 }
 
 type GetAuthorityId struct {
-	AuthorityId uint `json:"authority_id" form:"authority_id"` //角色ID
+	AuthorityID uint `json:"authorityID" form:"authorityID"` //角色ID
 }
 type Empty struct {
 }

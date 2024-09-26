@@ -1057,12 +1057,6 @@ const docTemplate = `{
                 "summary": "获取单一客户信息",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "主键ID",
-                        "name": "ID",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "创建时间",
                         "name": "createdAt",
@@ -1082,6 +1076,12 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
+                        "description": "主键ID",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
                         "description": "管理角色ID",
                         "name": "sys_user_authority_id",
                         "in": "query"
@@ -1095,7 +1095,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "更新时间",
-                        "name": "updatedAt",
+                        "name": "updateAt",
                         "in": "query"
                     }
                 ],
@@ -1285,7 +1285,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "key_word",
+                        "name": "keyWord",
                         "in": "query"
                     },
                     {
@@ -1295,7 +1295,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "page_size",
+                        "name": "pageSize",
                         "in": "query"
                     }
                 ],
@@ -2341,12 +2341,6 @@ const docTemplate = `{
                 "summary": "用id查询SysDictionary",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "主键ID",
-                        "name": "ID",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "创建时间",
                         "name": "createdAt",
@@ -2356,6 +2350,12 @@ const docTemplate = `{
                         "type": "string",
                         "description": "描述",
                         "name": "desc",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "主键ID",
+                        "name": "id",
                         "in": "query"
                     },
                     {
@@ -2379,7 +2379,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "更新时间",
-                        "name": "updatedAt",
+                        "name": "updateAt",
                         "in": "query"
                     }
                 ],
@@ -2620,12 +2620,6 @@ const docTemplate = `{
                 "summary": "用id查询SysDictionaryDetail",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "主键ID",
-                        "name": "ID",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "创建时间",
                         "name": "createdAt",
@@ -2635,6 +2629,12 @@ const docTemplate = `{
                         "type": "string",
                         "description": "扩展值",
                         "name": "extend",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "主键ID",
+                        "name": "id",
                         "in": "query"
                     },
                     {
@@ -2664,7 +2664,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "更新时间",
-                        "name": "updatedAt",
+                        "name": "updateAt",
                         "in": "query"
                     },
                     {
@@ -2719,12 +2719,6 @@ const docTemplate = `{
                 "summary": "分页获取SysDictionaryDetail列表",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "主键ID",
-                        "name": "ID",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "创建时间",
                         "name": "createdAt",
@@ -2737,8 +2731,14 @@ const docTemplate = `{
                         "in": "query"
                     },
                     {
+                        "type": "integer",
+                        "description": "主键ID",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
                         "type": "string",
-                        "name": "key_word",
+                        "name": "keyWord",
                         "in": "query"
                     },
                     {
@@ -2754,7 +2754,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "page_size",
+                        "name": "pageSize",
                         "in": "query"
                     },
                     {
@@ -2778,7 +2778,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "更新时间",
-                        "name": "updatedAt",
+                        "name": "updateAt",
                         "in": "query"
                     },
                     {
@@ -3016,12 +3016,6 @@ const docTemplate = `{
                 "summary": "用id查询导出模板",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "主键ID",
-                        "name": "ID",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "创建时间",
                         "name": "createdAt",
@@ -3031,6 +3025,12 @@ const docTemplate = `{
                         "type": "string",
                         "description": "数据库名称",
                         "name": "db_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "主键ID",
+                        "name": "id",
                         "in": "query"
                     },
                     {
@@ -3072,7 +3072,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "更新时间",
-                        "name": "updatedAt",
+                        "name": "updateAt",
                         "in": "query"
                     }
                 ],
@@ -3105,12 +3105,6 @@ const docTemplate = `{
                 "summary": "分页获取导出模板列表",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "主键ID",
-                        "name": "ID",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "创建时间",
                         "name": "createdAt",
@@ -3128,8 +3122,14 @@ const docTemplate = `{
                         "in": "query"
                     },
                     {
+                        "type": "integer",
+                        "description": "主键ID",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
                         "type": "string",
-                        "name": "key_word",
+                        "name": "keyWord",
                         "in": "query"
                     },
                     {
@@ -3157,7 +3157,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "page_size",
+                        "name": "pageSize",
                         "in": "query"
                     },
                     {
@@ -3186,7 +3186,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "更新时间",
-                        "name": "updatedAt",
+                        "name": "updateAt",
                         "in": "query"
                     }
                 ],
@@ -3427,12 +3427,6 @@ const docTemplate = `{
                 "summary": "用id查询SysOperationRecord",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "主键ID",
-                        "name": "ID",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "代理",
                         "name": "agent",
@@ -3454,6 +3448,12 @@ const docTemplate = `{
                         "type": "string",
                         "description": "错误信息",
                         "name": "error_message",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "主键ID",
+                        "name": "id",
                         "in": "query"
                     },
                     {
@@ -3495,7 +3495,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "更新时间",
-                        "name": "updatedAt",
+                        "name": "updateAt",
                         "in": "query"
                     },
                     {
@@ -3550,12 +3550,6 @@ const docTemplate = `{
                 "summary": "分页获取SysOperationRecord列表",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "主键ID",
-                        "name": "ID",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "代理",
                         "name": "agent",
@@ -3580,6 +3574,12 @@ const docTemplate = `{
                         "in": "query"
                     },
                     {
+                        "type": "integer",
+                        "description": "主键ID",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
                         "type": "string",
                         "description": "请求ip",
                         "name": "ip",
@@ -3587,7 +3587,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "key_word",
+                        "name": "keyWord",
                         "in": "query"
                     },
                     {
@@ -3609,7 +3609,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "page_size",
+                        "name": "pageSize",
                         "in": "query"
                     },
                     {
@@ -3633,7 +3633,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "更新时间",
-                        "name": "updatedAt",
+                        "name": "updateAt",
                         "in": "query"
                     },
                     {
@@ -5212,10 +5212,6 @@ const docTemplate = `{
         "example.ExaCustomer": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "createdAt": {
                     "description": "创建时间",
                     "type": "string"
@@ -5227,6 +5223,10 @@ const docTemplate = `{
                 "customer_phone": {
                     "description": "客户联系方式",
                     "type": "string"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "sys_user": {
                     "description": "管理详情",
@@ -5244,7 +5244,7 @@ const docTemplate = `{
                     "description": "管理ID",
                     "type": "integer"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -5253,10 +5253,6 @@ const docTemplate = `{
         "example.ExaFile": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "chunkTotal": {
                     "type": "integer"
                 },
@@ -5279,10 +5275,14 @@ const docTemplate = `{
                 "filePath": {
                     "type": "string"
                 },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
+                },
                 "isFinish": {
                     "type": "boolean"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -5291,10 +5291,6 @@ const docTemplate = `{
         "example.ExaFileChunk": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "createdAt": {
                     "description": "创建时间",
                     "type": "string"
@@ -5308,7 +5304,11 @@ const docTemplate = `{
                 "fileChunkPath": {
                     "type": "string"
                 },
-                "updatedAt": {
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
+                },
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -5317,13 +5317,13 @@ const docTemplate = `{
         "example.ExaFileUploadAndDownload": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "createdAt": {
                     "description": "创建时间",
                     "type": "string"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "key": {
                     "description": "编号",
@@ -5337,7 +5337,7 @@ const docTemplate = `{
                     "description": "文件标签",
                     "type": "string"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 },
@@ -5532,13 +5532,13 @@ const docTemplate = `{
         "request.PageInfo": {
             "type": "object",
             "properties": {
-                "key_word": {
+                "keyWord": {
                     "type": "string"
                 },
                 "page": {
                     "type": "integer"
                 },
-                "page_size": {
+                "pageSize": {
                     "type": "integer"
                 }
             }
@@ -5587,10 +5587,6 @@ const docTemplate = `{
         "request.SearchApiParams": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "api_group": {
                     "description": "api组",
                     "type": "string"
@@ -5607,7 +5603,11 @@ const docTemplate = `{
                     "description": "api中文描述",
                     "type": "string"
                 },
-                "key_word": {
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
+                },
+                "keyWord": {
                     "type": "string"
                 },
                 "method": {
@@ -5621,14 +5621,14 @@ const docTemplate = `{
                 "page": {
                     "type": "integer"
                 },
-                "page_size": {
+                "pageSize": {
                     "type": "integer"
                 },
                 "path": {
                     "description": "api路径",
                     "type": "string"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -5728,7 +5728,7 @@ const docTemplate = `{
                 "page": {
                     "type": "integer"
                 },
-                "page_size": {
+                "pageSize": {
                     "type": "integer"
                 },
                 "total": {
@@ -5875,10 +5875,6 @@ const docTemplate = `{
         "system.Condition": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "column": {
                     "description": "作为查询条件的字段",
                     "type": "string"
@@ -5891,6 +5887,10 @@ const docTemplate = `{
                     "description": "条件取得key",
                     "type": "string"
                 },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
+                },
                 "operator": {
                     "description": "关联条件",
                     "type": "string"
@@ -5899,7 +5899,7 @@ const docTemplate = `{
                     "description": "模板标识",
                     "type": "string"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -5908,13 +5908,13 @@ const docTemplate = `{
         "system.JoinTemplate": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "createdAt": {
                     "description": "创建时间",
                     "type": "string"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "joins": {
                     "description": "关联",
@@ -5932,7 +5932,7 @@ const docTemplate = `{
                     "description": "模板标识",
                     "type": "string"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -5970,10 +5970,6 @@ const docTemplate = `{
         "system.SysApi": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "api_group": {
                     "description": "api组",
                     "type": "string"
@@ -5986,6 +5982,10 @@ const docTemplate = `{
                     "description": "api中文描述",
                     "type": "string"
                 },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
+                },
                 "method": {
                     "description": "方法：创建POST(默认) | GET(查看) | PUT(更新) | DELETE(删除)",
                     "type": "string"
@@ -5994,7 +5994,7 @@ const docTemplate = `{
                     "description": "api路径",
                     "type": "string"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -6060,10 +6060,6 @@ const docTemplate = `{
         "system.SysBaseMenu": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "children": {
                     "type": "array",
                     "items": {
@@ -6081,6 +6077,10 @@ const docTemplate = `{
                 "hidden": {
                     "description": "是否在列表隐藏",
                     "type": "boolean"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "menu_btn": {
                     "type": "array",
@@ -6124,7 +6124,7 @@ const docTemplate = `{
                         "$ref": "#/definitions/system.SysAuthority"
                     }
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -6133,10 +6133,6 @@ const docTemplate = `{
         "system.SysBaseMenuBtn": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "createdAt": {
                     "description": "创建时间",
                     "type": "string"
@@ -6144,13 +6140,17 @@ const docTemplate = `{
                 "desc": {
                     "type": "string"
                 },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
+                },
                 "name": {
                     "type": "string"
                 },
                 "sys_base_menu_id": {
                     "type": "integer"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -6159,13 +6159,13 @@ const docTemplate = `{
         "system.SysBaseMenuParameter": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "createdAt": {
                     "description": "创建时间",
                     "type": "string"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "key": {
                     "description": "地址栏携带参数的key",
@@ -6178,7 +6178,7 @@ const docTemplate = `{
                     "description": "地址栏携带参数为params|query",
                     "type": "string"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 },
@@ -6191,10 +6191,6 @@ const docTemplate = `{
         "system.SysDictionary": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "createdAt": {
                     "description": "创建时间",
                     "type": "string"
@@ -6202,6 +6198,10 @@ const docTemplate = `{
                 "desc": {
                     "description": "描述",
                     "type": "string"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "name": {
                     "description": "字典名(中文)",
@@ -6221,7 +6221,7 @@ const docTemplate = `{
                     "description": "字典名(英文)",
                     "type": "string"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -6230,10 +6230,6 @@ const docTemplate = `{
         "system.SysDictionaryDetail": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "createdAt": {
                     "description": "创建时间",
                     "type": "string"
@@ -6241,6 +6237,10 @@ const docTemplate = `{
                 "extend": {
                     "description": "扩展值",
                     "type": "string"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "label": {
                     "description": "展示值",
@@ -6258,7 +6258,7 @@ const docTemplate = `{
                     "description": "关联标记",
                     "type": "integer"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 },
@@ -6271,10 +6271,6 @@ const docTemplate = `{
         "system.SysExportTemplate": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "conditions": {
                     "description": "条件",
                     "type": "array",
@@ -6289,6 +6285,10 @@ const docTemplate = `{
                 "db_name": {
                     "description": "数据库名称",
                     "type": "string"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "join_template": {
                     "description": "关联",
@@ -6321,7 +6321,7 @@ const docTemplate = `{
                     "description": "模板信息",
                     "type": "string"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -6330,10 +6330,6 @@ const docTemplate = `{
         "system.SysMenu": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "authority_id": {
                     "description": "角色ID",
                     "type": "integer"
@@ -6361,6 +6357,10 @@ const docTemplate = `{
                 "hidden": {
                     "description": "是否在列表隐藏",
                     "type": "boolean"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "menu_btn": {
                     "type": "array",
@@ -6408,7 +6408,7 @@ const docTemplate = `{
                         "$ref": "#/definitions/system.SysAuthority"
                     }
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 }
@@ -6417,10 +6417,6 @@ const docTemplate = `{
         "system.SysOperationRecord": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "agent": {
                     "description": "代理",
                     "type": "string"
@@ -6436,6 +6432,10 @@ const docTemplate = `{
                 "error_message": {
                     "description": "错误信息",
                     "type": "string"
+                },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
                 },
                 "ip": {
                     "description": "请求ip",
@@ -6461,7 +6461,7 @@ const docTemplate = `{
                     "description": "请求状态",
                     "type": "integer"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 },
@@ -6477,10 +6477,6 @@ const docTemplate = `{
         "system.SysUser": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "description": "主键ID",
-                    "type": "integer"
-                },
                 "authorities": {
                     "type": "array",
                     "items": {
@@ -6519,6 +6515,10 @@ const docTemplate = `{
                     "description": "用户头像",
                     "type": "string"
                 },
+                "id": {
+                    "description": "主键ID",
+                    "type": "integer"
+                },
                 "nick_name": {
                     "description": "用户昵称",
                     "type": "string"
@@ -6531,7 +6531,7 @@ const docTemplate = `{
                     "description": "用户侧边栏主题",
                     "type": "string"
                 },
-                "updatedAt": {
+                "updateAt": {
                     "description": "更新时间",
                     "type": "string"
                 },

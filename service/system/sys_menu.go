@@ -16,7 +16,7 @@ var MenuServiceApp = new(MenuService)
 //
 //	@function:		getMenuTreeMap
 //	@description:	获取路由总树map
-//	@param:			authorityId string
+//	@param:			authorityID string
 //	@return:		treeMap map[string][]system.SysMenu, err error
 func (menuService *MenuService) getMenuTreeMap(authorityID uint) (treeMap map[uint][]system.SysMenu, err error) {
 	var allMenus []system.SysMenu
@@ -68,7 +68,7 @@ func (menuService *MenuService) getMenuTreeMap(authorityID uint) (treeMap map[ui
 //
 //	@function:		GetMenuTree
 //	@description:	获取动态菜单树
-//	@param:			authorityId string
+//	@param:			authorityID string
 //	@return:		menus []system.SysMenu, err error
 func (menuService *MenuService) GetMenuTree(authorityID uint) (menus []system.SysMenu, err error) {
 	menuTree, err := menuService.getMenuTreeMap(authorityID)
@@ -168,7 +168,7 @@ func (menuService *MenuService) GetBaseMenuTree() (menus []system.SysBaseMenu, e
 //
 //	@function:		AddMenuAuthority
 //	@description:	为角色增加menu树
-//	@param:			menus []model.SysBaseMenu, authorityId string
+//	@param:			menus []model.SysBaseMenu, authorityID string
 //	@return:		err error
 func (menuService *MenuService) AddMenuAuthority(menus []system.SysBaseMenu, authorityID uint) (err error) {
 	var auth system.SysAuthority
@@ -187,7 +187,7 @@ func (menuService *MenuService) AddMenuAuthority(menus []system.SysBaseMenu, aut
 func (menuService *MenuService) GetMenuAuthority(info *request.GetAuthorityId) (menus []system.SysMenu, err error) {
 	var baseMenu []system.SysBaseMenu
 	var SysAuthorityMenus []system.SysAuthorityMenu
-	err = global.GVA_DB.Where("sys_authority_authority_id = ?", info.AuthorityId).Find(&SysAuthorityMenus).Error
+	err = global.GVA_DB.Where("sys_authority_authority_id = ?", info.AuthorityID).Find(&SysAuthorityMenus).Error
 	if err != nil {
 		return
 	}
@@ -199,7 +199,7 @@ func (menuService *MenuService) GetMenuAuthority(info *request.GetAuthorityId) (
 	for i := range baseMenu {
 		menus = append(menus, system.SysMenu{
 			SysBaseMenu: baseMenu[i],
-			AuthorityID: info.AuthorityId,
+			AuthorityID: info.AuthorityID,
 			MenuID:      baseMenu[i].ID,
 			Parameters:  baseMenu[i].Parameters,
 		})

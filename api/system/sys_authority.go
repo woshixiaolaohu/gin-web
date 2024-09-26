@@ -158,7 +158,7 @@ func (a *AuthorityApi) UpdateAuthority(c *gin.Context) {
 //	@Router		/authority/getAuthorityList [post]
 func (a *AuthorityApi) GetAuthorityList(c *gin.Context) {
 	var pageInfo request.PageInfo
-	err := c.ShouldBindJSON(pageInfo)
+	err := c.ShouldBindJSON(&pageInfo)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return

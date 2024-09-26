@@ -60,7 +60,7 @@ func (authorityService *AuthorityService) CopyAuthority(copyInfo response.SysAut
 		return authority, ErrRoleExistence
 	}
 	copyInfo.Authority.Children = []system.SysAuthority{}
-	menus, err := MenuServiceApp.GetMenuAuthority(&request.GetAuthorityId{AuthorityId: copyInfo.OldAuthorityID})
+	menus, err := MenuServiceApp.GetMenuAuthority(&request.GetAuthorityId{AuthorityID: copyInfo.OldAuthorityID})
 	if err != nil {
 		return
 	}

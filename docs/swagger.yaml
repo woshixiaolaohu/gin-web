@@ -616,9 +616,6 @@ definitions:
     type: object
   example.ExaCustomer:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       createdAt:
         description: 创建时间
         type: string
@@ -628,6 +625,9 @@ definitions:
       customer_phone:
         description: 客户联系方式
         type: string
+      id:
+        description: 主键ID
+        type: integer
       sys_user:
         allOf:
         - $ref: '#/definitions/system.SysUser'
@@ -638,15 +638,12 @@ definitions:
       sys_user_id:
         description: 管理ID
         type: integer
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
   example.ExaFile:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       chunkTotal:
         type: integer
       createdAt:
@@ -662,17 +659,17 @@ definitions:
         type: string
       filePath:
         type: string
+      id:
+        description: 主键ID
+        type: integer
       isFinish:
         type: boolean
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
   example.ExaFileChunk:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       createdAt:
         description: 创建时间
         type: string
@@ -682,18 +679,21 @@ definitions:
         type: integer
       fileChunkPath:
         type: string
-      updatedAt:
+      id:
+        description: 主键ID
+        type: integer
+      updateAt:
         description: 更新时间
         type: string
     type: object
   example.ExaFileUploadAndDownload:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       createdAt:
         description: 创建时间
         type: string
+      id:
+        description: 主键ID
+        type: integer
       key:
         description: 编号
         type: string
@@ -703,7 +703,7 @@ definitions:
       tag:
         description: 文件标签
         type: string
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
       url:
@@ -839,11 +839,11 @@ definitions:
     type: object
   request.PageInfo:
     properties:
-      key_word:
+      keyWord:
         type: string
       page:
         type: integer
-      page_size:
+      pageSize:
         type: integer
     type: object
   request.Register:
@@ -878,9 +878,6 @@ definitions:
     type: object
   request.SearchApiParams:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       api_group:
         description: api组
         type: string
@@ -893,7 +890,10 @@ definitions:
       description:
         description: api中文描述
         type: string
-      key_word:
+      id:
+        description: 主键ID
+        type: integer
+      keyWord:
         type: string
       method:
         description: 方法：创建POST(默认) | GET(查看) | PUT(更新) | DELETE(删除)
@@ -903,12 +903,12 @@ definitions:
         type: string
       page:
         type: integer
-      page_size:
+      pageSize:
         type: integer
       path:
         description: api路径
         type: string
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
@@ -973,7 +973,7 @@ definitions:
       list: {}
       page:
         type: integer
-      page_size:
+      pageSize:
         type: integer
       total:
         type: integer
@@ -1067,9 +1067,6 @@ definitions:
     type: object
   system.Condition:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       column:
         description: 作为查询条件的字段
         type: string
@@ -1079,24 +1076,27 @@ definitions:
       form:
         description: 条件取得key
         type: string
+      id:
+        description: 主键ID
+        type: integer
       operator:
         description: 关联条件
         type: string
       template_id:
         description: 模板标识
         type: string
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
   system.JoinTemplate:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       createdAt:
         description: 创建时间
         type: string
+      id:
+        description: 主键ID
+        type: integer
       joins:
         description: 关联
         type: string
@@ -1109,7 +1109,7 @@ definitions:
       template_id:
         description: 模板标识
         type: string
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
@@ -1136,9 +1136,6 @@ definitions:
     type: object
   system.SysApi:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       api_group:
         description: api组
         type: string
@@ -1148,13 +1145,16 @@ definitions:
       description:
         description: api中文描述
         type: string
+      id:
+        description: 主键ID
+        type: integer
       method:
         description: 方法：创建POST(默认) | GET(查看) | PUT(更新) | DELETE(删除)
         type: string
       path:
         description: api路径
         type: string
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
@@ -1200,9 +1200,6 @@ definitions:
     type: object
   system.SysBaseMenu:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       children:
         items:
           $ref: '#/definitions/system.SysBaseMenu'
@@ -1216,6 +1213,9 @@ definitions:
       hidden:
         description: 是否在列表隐藏
         type: boolean
+      id:
+        description: 主键ID
+        type: integer
       menu_btn:
         items:
           $ref: '#/definitions/system.SysBaseMenuBtn'
@@ -1244,36 +1244,36 @@ definitions:
         items:
           $ref: '#/definitions/system.SysAuthority'
         type: array
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
   system.SysBaseMenuBtn:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       createdAt:
         description: 创建时间
         type: string
       desc:
         type: string
+      id:
+        description: 主键ID
+        type: integer
       name:
         type: string
       sys_base_menu_id:
         type: integer
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
   system.SysBaseMenuParameter:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       createdAt:
         description: 创建时间
         type: string
+      id:
+        description: 主键ID
+        type: integer
       key:
         description: 地址栏携带参数的key
         type: string
@@ -1282,7 +1282,7 @@ definitions:
       type:
         description: 地址栏携带参数为params|query
         type: string
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
       value:
@@ -1291,15 +1291,15 @@ definitions:
     type: object
   system.SysDictionary:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       createdAt:
         description: 创建时间
         type: string
       desc:
         description: 描述
         type: string
+      id:
+        description: 主键ID
+        type: integer
       name:
         description: 字典名(中文)
         type: string
@@ -1313,21 +1313,21 @@ definitions:
       type:
         description: 字典名(英文)
         type: string
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
   system.SysDictionaryDetail:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       createdAt:
         description: 创建时间
         type: string
       extend:
         description: 扩展值
         type: string
+      id:
+        description: 主键ID
+        type: integer
       label:
         description: 展示值
         type: string
@@ -1340,7 +1340,7 @@ definitions:
       sys_dictionary_id:
         description: 关联标记
         type: integer
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
       value:
@@ -1349,9 +1349,6 @@ definitions:
     type: object
   system.SysExportTemplate:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       conditions:
         description: 条件
         items:
@@ -1363,6 +1360,9 @@ definitions:
       db_name:
         description: 数据库名称
         type: string
+      id:
+        description: 主键ID
+        type: integer
       join_template:
         description: 关联
         items:
@@ -1386,15 +1386,12 @@ definitions:
       template_info:
         description: 模板信息
         type: string
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
   system.SysMenu:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       authority_id:
         description: 角色ID
         type: integer
@@ -1415,6 +1412,9 @@ definitions:
       hidden:
         description: 是否在列表隐藏
         type: boolean
+      id:
+        description: 主键ID
+        type: integer
       menu_btn:
         items:
           $ref: '#/definitions/system.SysBaseMenuBtn'
@@ -1446,15 +1446,12 @@ definitions:
         items:
           $ref: '#/definitions/system.SysAuthority'
         type: array
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
     type: object
   system.SysOperationRecord:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       agent:
         description: 代理
         type: string
@@ -1467,6 +1464,9 @@ definitions:
       error_message:
         description: 错误信息
         type: string
+      id:
+        description: 主键ID
+        type: integer
       ip:
         description: 请求ip
         type: string
@@ -1485,7 +1485,7 @@ definitions:
       status:
         description: 请求状态
         type: integer
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
       user:
@@ -1496,9 +1496,6 @@ definitions:
     type: object
   system.SysUser:
     properties:
-      ID:
-        description: 主键ID
-        type: integer
       authorities:
         items:
           $ref: '#/definitions/system.SysAuthority'
@@ -1525,6 +1522,9 @@ definitions:
       header_img:
         description: 用户头像
         type: string
+      id:
+        description: 主键ID
+        type: integer
       nick_name:
         description: 用户昵称
         type: string
@@ -1534,7 +1534,7 @@ definitions:
       side_mode:
         description: 用户侧边栏主题
         type: string
-      updatedAt:
+      updateAt:
         description: 更新时间
         type: string
       user_name:
@@ -2159,10 +2159,6 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
       - description: 创建时间
         in: query
         name: createdAt
@@ -2175,6 +2171,10 @@ paths:
         in: query
         name: customer_phone
         type: string
+      - description: 主键ID
+        in: query
+        name: id
+        type: integer
       - description: 管理角色ID
         in: query
         name: sys_user_authority_id
@@ -2185,7 +2185,7 @@ paths:
         type: integer
       - description: 更新时间
         in: query
-        name: updatedAt
+        name: updateAt
         type: string
       produces:
       - application/json
@@ -2266,13 +2266,13 @@ paths:
       - application/json
       parameters:
       - in: query
-        name: key_word
+        name: keyWord
         type: string
       - in: query
         name: page
         type: integer
       - in: query
-        name: page_size
+        name: pageSize
         type: integer
       produces:
       - application/json
@@ -2860,10 +2860,6 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
       - description: 创建时间
         in: query
         name: createdAt
@@ -2872,6 +2868,10 @@ paths:
         in: query
         name: desc
         type: string
+      - description: 主键ID
+        in: query
+        name: id
+        type: integer
       - description: 字典名(中文)
         in: query
         name: name
@@ -2886,7 +2886,7 @@ paths:
         type: string
       - description: 更新时间
         in: query
-        name: updatedAt
+        name: updateAt
         type: string
       produces:
       - application/json
@@ -3020,10 +3020,6 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
       - description: 创建时间
         in: query
         name: createdAt
@@ -3032,6 +3028,10 @@ paths:
         in: query
         name: extend
         type: string
+      - description: 主键ID
+        in: query
+        name: id
+        type: integer
       - description: 展示值
         in: query
         name: label
@@ -3050,7 +3050,7 @@ paths:
         type: integer
       - description: 更新时间
         in: query
-        name: updatedAt
+        name: updateAt
         type: string
       - description: 字典值
         in: query
@@ -3081,10 +3081,6 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
       - description: 创建时间
         in: query
         name: createdAt
@@ -3093,8 +3089,12 @@ paths:
         in: query
         name: extend
         type: string
+      - description: 主键ID
+        in: query
+        name: id
+        type: integer
       - in: query
-        name: key_word
+        name: keyWord
         type: string
       - description: 展示值
         in: query
@@ -3104,7 +3104,7 @@ paths:
         name: page
         type: integer
       - in: query
-        name: page_size
+        name: pageSize
         type: integer
       - description: 排序标记
         in: query
@@ -3120,7 +3120,7 @@ paths:
         type: integer
       - description: 更新时间
         in: query
-        name: updatedAt
+        name: updateAt
         type: string
       - description: 字典值
         in: query
@@ -3259,10 +3259,6 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
       - description: 创建时间
         in: query
         name: createdAt
@@ -3271,6 +3267,10 @@ paths:
         in: query
         name: db_name
         type: string
+      - description: 主键ID
+        in: query
+        name: id
+        type: integer
       - description: 导出限制
         in: query
         name: limit
@@ -3297,7 +3297,7 @@ paths:
         type: string
       - description: 更新时间
         in: query
-        name: updatedAt
+        name: updateAt
         type: string
       produces:
       - application/json
@@ -3316,10 +3316,6 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
       - description: 创建时间
         in: query
         name: createdAt
@@ -3331,8 +3327,12 @@ paths:
       - in: query
         name: end_created_at
         type: string
+      - description: 主键ID
+        in: query
+        name: id
+        type: integer
       - in: query
-        name: key_word
+        name: keyWord
         type: string
       - description: 导出限制
         in: query
@@ -3350,7 +3350,7 @@ paths:
         name: page
         type: integer
       - in: query
-        name: page_size
+        name: pageSize
         type: integer
       - in: query
         name: start_created_at
@@ -3369,7 +3369,7 @@ paths:
         type: string
       - description: 更新时间
         in: query
-        name: updatedAt
+        name: updateAt
         type: string
       produces:
       - application/json
@@ -3507,10 +3507,6 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
       - description: 代理
         in: query
         name: agent
@@ -3527,6 +3523,10 @@ paths:
         in: query
         name: error_message
         type: string
+      - description: 主键ID
+        in: query
+        name: id
+        type: integer
       - description: 请求ip
         in: query
         name: ip
@@ -3553,7 +3553,7 @@ paths:
         type: integer
       - description: 更新时间
         in: query
-        name: updatedAt
+        name: updateAt
         type: string
       - description: 用户id
         in: query
@@ -3584,10 +3584,6 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
       - description: 代理
         in: query
         name: agent
@@ -3604,12 +3600,16 @@ paths:
         in: query
         name: error_message
         type: string
+      - description: 主键ID
+        in: query
+        name: id
+        type: integer
       - description: 请求ip
         in: query
         name: ip
         type: string
       - in: query
-        name: key_word
+        name: keyWord
         type: string
       - description: 延迟
         in: query
@@ -3623,7 +3623,7 @@ paths:
         name: page
         type: integer
       - in: query
-        name: page_size
+        name: pageSize
         type: integer
       - description: 请求路径
         in: query
@@ -3639,7 +3639,7 @@ paths:
         type: integer
       - description: 更新时间
         in: query
-        name: updatedAt
+        name: updateAt
         type: string
       - description: 用户id
         in: query
