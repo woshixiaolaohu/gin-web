@@ -39,6 +39,6 @@ func RunWindowsServer() {
 	s := initServer(address, Router)
 
 	global.GVA_LOG.Info("server run success on ", zap.String("address", address))
-	fmt.Printf(`欢迎使用%s`, address)
+	fmt.Printf(`swagger地址：127.0.0.1:%s/swagger/index\n`, address)
 	global.GVA_LOG.Error(s.ListenAndServe().Error())
 }

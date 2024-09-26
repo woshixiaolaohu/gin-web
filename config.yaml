@@ -1,254 +1,205 @@
-
-# jwt configuration
-jwt:
-  signing_key: qmPlus
-  expires_time: 7d
-  buffer_time: 1d
-  issuer: qmPlus
-# zap logger configuration
-zap:
-  level: info
-  format: console
-  prefix: "[github.com/flipped-aurora/gin-vue-admin/server]"
-  director: log
-  show_line: true
-  encode_level: LowercaseColorLevelEncoder
-  stacktrace_key: stacktrace
-  log_in_console: true
-
-# redis configuration
-redis:
-  #是否使用redis集群模式
-  useCluster: false
-  #使用集群模式addr和db默认无效
-  addr: 127.0.0.1:6379
-  password: ""
-  db: 0
-  clusterAddrs:
-    - "172.21.0.3:7000"
-    - "172.21.0.4:7001"
-    - "172.21.0.2:7002"
-
-
-# mongo configuration
-mongo:
-  coll: ''
-  options: ''
-  database: ''
-  user_name: ''
-  password: ''
-  auth_source: ''
-  min_pool_size: 0
-  max_pool_size: 100
-  socket_timeout_ms: 0
-  connect_timeout_ms: 0
-  is_zap: false
-  hosts:
-    - host: ''
-      port: ''
-
-# email configuration
-email:
-  to: xxx@qq.com
-  port: 465
-  from: xxx@163.com
-  host: smtp.163.com
-  is-ssl: true
-  secret: xxx
-  nickname: test
-
-# system configuration
-system:
-  env: local # 修改为public可以关闭路由日志输出
-  addr: 8888
-  db_type: mysql
-  oss_type: local # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
-  use_redis: false # 使用redis
-  use_mongo: false     # 使用mongo
-  use_multipoint: false
-  # IP限制次数 一个小时15000次
-  iplimit_count: 15000
-  #  IP限制一个小时
-  iplimit_time: 3600
-  #  路由全局前缀
-  router_prefix: "/api"
-
-# captcha configuration
+aliyun_oss:
+    end_point: ""
+    access_key_id: yourAccessKeyId
+    access_key_secret: yourAccessKeySecret
+    bucket_name: yourBucketName
+    bucket_url: yourBucketUrl
+    base_path: yourBasePath
+auto_code:
+    server: /server
+    server_model: /model/%s
+    server_router: /router/%s
+    server_api: /api/v1/%s
+    server_plug: /plugin/%s
+    server_initialize: /initialize
+    root: D:\jelly\GoLearn
+    web: /web/src
+    web_table: /view
+    server_service: /service/%s
+    server_request: /model/%s/request/
+    web_api: /api
+    web_form: /view
+aws_s3:
+    bucket: ""
+    region: ""
+    end_point: ""
+    secret_id: ""
+    secret_key: ""
+    base_url: ""
+    path_prefix: ""
+    s3_force_path_style: false
+    disable_ssl: false
 captcha:
-  key_long: 6
-  img_width: 240
-  img_height: 80
-  open_captcha: 0 # 0代表一直开启，大于0代表限制次数
-  open_captcha_timeout: 3600 # open_captcha大于0时才生效
-
-# mysql connect configuration
-# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
-mysql:
-  path: "localhost"
-  port: "3306"
-  config: ""
-  db_name: "db_test_1"
-  user_name: "root"
-  password: "123456"
-  max_idle_conn: 10
-  max_open_conn: 100
-  log_mode: ""
-  log_zap: false
-
-# pgsql connect configuration
-# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
-pgsql:
-  path: ""
-  port: ""
-  config: ""
-  db_name: ""
-  user_name: ""
-  password: ""
-  max_idle_conn: 10
-  max_open_conn: 100
-  log_mode: ""
-  log_zap: false
-oracle:
-  path: ""
-  port: ""
-  config: ""
-  db_name: ""
-  user_name: ""
-  password: ""
-  max_idle_conn: 10
-  max_open_conn: 100
-  log_mode: ""
-  log_zap: false
-mssql:
-  path: ""
-  port: ""
-  config: ""
-  db_name: ""
-  user_name: ""
-  password: ""
-  max_idle_conn: 10
-  max_open_conn: 100
-  log_mode: ""
-  log_zap: false
-sqlite:
-  path: ""
-  port: ""
-  config: ""
-  db_name: ""
-  user_name: ""
-  password: ""
-  max_idle_conn: 10
-  max_open_conn: 100
-  log_mode: ""
-  log_zap: false
+    key_long: 6
+    img_width: 240
+    img_height: 80
+    open_captcha: 0
+    open_captcha_time_out: 0
+cors:
+    mode: strict-whitelist
+    white_list: []
 db_list:
-    disable: true # 是否禁用
-    type: "" # 数据库的类型,目前支持mysql、pgsql、mssql、oracle
-    alias_name: "" # 数据库的名称,注意: alias_name 需要在db_list中唯一
+    - type: ""
+      alias_name: ""
+      prefix: ""
+      port: ""
+      config: ""
+      db_name: ""
+      user_name: ""
+      password: ""
+      path: ""
+      engine: ""
+      log_mode: ""
+      max_idle_conns: 0
+      max_open_conns: 0
+      singular: false
+      log_zap: false
+      disable: true
+disk_list: []
+email:
+    to: xxx@qq.com
+    from: ""
+    host: smtp.163.com
+    secret: xxx
+    nick_name: ""
+    port: 465
+    is_ssl: false
+huawei_obs:
     path: ""
+    bucket: ""
+    end_point: ""
+    access_key: ""
+    secret_key: ""
+jwt:
+    signing_key: 3d5d264d-09cf-4ff1-b909-323904f7bbef
+    expires_time: 7d
+    buffer_time: 1d
+    issuer: qmPlus
+local:
+    path: uploads/file
+    store_path: uploads/file
+mongo:
+    coll: ""
+    options: ""
+    database: ""
+    username: ""
+    password: ""
+    auth_source: ""
+    min_pool_size: 0
+    max_pool_size: 100
+    socket_timeout_ms: 0
+    connect_timeout_ms: 0
+    is_zap: false
+    hosts:
+        - host: ""
+          port: ""
+mssql:
+    prefix: ""
     port: ""
     config: ""
     db_name: ""
     user_name: ""
     password: ""
-    max_idle_conn: 10
-    max_open_conn: 100
+    path: ""
+    engine: ""
     log_mode: ""
+    max_idle_conns: 0
+    max_open_conns: 0
+    singular: false
     log_zap: false
-
-# local configuration
-local:
-  path: uploads/file
-  store_path: uploads/file
-
-# autocode configuration
-auto_code:
-  transfer_restart: true
-  # root 自动适配项目根目录
-  # 请不要手动配置,他会在项目加载的时候识别出根路径
-  root: ""
-  server: /server
-  server_plug: /plugin/%s
-  server_api: /api/v1/%s
-  server_initialize: /initialize
-  server_model: /model/%s
-  server_request: /model/%s/request/
-  server_router: /router/%s
-  server_service: /service/%s
-  web: /web/src
-  web_api: /api
-  web_form: /view
-  web_table: /view
-
-# qiniu configuration (请自行七牛申请对应的 公钥 私钥 bucket 和 域名地址)
+mysql:
+    prefix: ""
+    port: "3306"
+    config: charset=utf8mb4&parseTime=True&loc=Local
+    db_name: gin_admin
+    user_name: root
+    password: "123456"
+    path: 127.0.0.1
+    engine: ""
+    log_mode: error
+    max_idle_conns: 10
+    max_open_conns: 100
+    singular: false
+    log_zap: false
+oracle:
+    prefix: ""
+    port: ""
+    config: ""
+    db_name: ""
+    user_name: ""
+    password: ""
+    path: ""
+    engine: ""
+    log_mode: ""
+    max_idle_conns: 0
+    max_open_conns: 0
+    singular: false
+    log_zap: false
+pgsql:
+    prefix: ""
+    port: ""
+    config: ""
+    db_name: ""
+    user_name: ""
+    password: ""
+    path: ""
+    engine: ""
+    log_mode: ""
+    max_idle_conns: 0
+    max_open_conns: 0
+    singular: false
+    log_zap: false
 qiniu:
-  zone: ZoneHuaDong
-  bucket: ""
-  img_path: ""
-  use_https: false
-  access_key: ""
-  secret_key: ""
-  use_cdn_domains: false
-
-# aliyun oss configuration
-aliyun_oss:
-  endpoint: yourEndpoint
-  access_key_id: yourAccessKeyId
-  access_key_secret: yourAccessKeySecret
-  bucket_name: yourBucketName
-  bucket_url: yourBucketUrl
-  base_path: yourBasePath
-
-# tencent cos configuration
+    zone: ZoneHuaDong
+    bucket: ""
+    img_path: ""
+    access_key: ""
+    secret_key: ""
+    use_https: false
+    use_cdn_domains: false
+redis:
+    addr: 127.0.0.1:6379
+    password: ""
+    db: 0
+    use_cluster: false
+    cluster_addrs: []
+sqlite:
+    prefix: ""
+    port: ""
+    config: ""
+    db_name: ""
+    user_name: ""
+    password: ""
+    path: ""
+    engine: ""
+    log_mode: ""
+    max_idle_conns: 0
+    max_open_conns: 0
+    singular: false
+    log_zap: false
+system:
+    db_type: mysql
+    oss-type: ""
+    router_prefix: ""
+    addr: 8888
+    limit_count_ip: 0
+    limit_time_ip: 0
+    use_multipoint: false
+    use_redis: false
+    use_mongo: false
 tencent_cos:
-  bucket: xxxxx_10005608
-  region: ap_shanghai
-  secret_id: your_secret_id
-  secret_key: your_secret_key
-  base_url: https://gin.vue.admin
-  path_prefix: github.com/flipped_aurora/gin-vue-admin/server
-
-# aws s3 configuration (minio compatible)
-aws-s3:
-  bucket: xxxxx-10005608
-  region: ap-shanghai
-  endpoint: ""
-  s3-force-path-style: false
-  disable-ssl: false
-  secret-id: your-secret-id
-  secret-key: your-secret-key
-  base-url: https://gin.vue.admin
-  path-prefix: github.com/flipped-aurora/gin-vue-admin/server
-
-# huawei obs configuration
-hua-wei-obs:
-  path: you-path
-  bucket: you-bucket
-  endpoint: you-endpoint
-  access-key: you-access-key
-  secret-key: you-secret-key
-
-# excel configuration
-excel:
-  dir: ./resource/excel/
-
-# disk usage configuration
-disk-list:
-  - mount-point: "/"
-
-# 跨域配置
-# 需要配合 server/initialize/router.go -> `Router.Use(middleware.CorsByRules())` 使用
-cors:
-  mode: strict-whitelist # 放行模式: allow-all, 放行全部; whitelist, 白名单模式, 来自白名单内域名的请求添加 cors 头; strict-whitelist 严格白名单模式, 白名单外的请求一律拒绝
-  whitelist:
-    - allow-origin: example1.com
-      allow-headers: Content-Type,AccessToken,X-CSRF-Token, Authorization, Token,X-Token,X-User-Id
-      allow-methods: POST, GET
-      expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type
-
-      allow-credentials: true # 布尔值
-    - allow-origin: example2.com
-      allow-headers: content-type
-      allow-methods: GET, POST
-      expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type
-      allow-credentials: true # 布尔值
+    bucket: xxxxx_10005608
+    region: ap_shanghai
+    secret_id: your_secret_id
+    secret_key: your_secret_key
+    base_url: https://gin.vue.admin
+    path_prefix: github.com/flipped_aurora/gin-vue-admin/server
+zap:
+    level: info
+    prefix: '[github.com/flipped-aurora/gin-vue-admin/server]'
+    format: console
+    director: log
+    encode_level: LowercaseColorLevelEncoder
+    stacktrace_key: stacktrace
+    show_line: true
+    log_in_console: true

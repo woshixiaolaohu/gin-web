@@ -3,8 +3,8 @@ package request
 import "gin-vue-admin/model/system"
 
 type Register struct {
-	UserName     string `json:"user_name" example:"用户名"`
-	PassWord     string `json:"pass_word" example:"密码"`
+	UserName     string `json:"username" example:"用户名"`
+	PassWord     string `json:"password" example:"密码"`
 	NickName     string `json:"nick_name" example:"昵称"`
 	HeaderImg    string `json:"header_img" example:"头像链接"`
 	AuthorityID  uint   `json:"authority_id" swaggertype:"string" example:"uint 角色id"`
@@ -17,10 +17,10 @@ type Register struct {
 // Login
 // user login structure
 type Login struct {
-	UserName  string `json:"user_name"`  // 用户名
-	PassWord  string `json:"pass_word"`  //密码
-	Captcha   string `json:"captcha"`    //验证码
-	CaptchaId string `json:"captcha_id"` //验证码 ID
+	UserName  string `json:"username"`  // 用户名
+	PassWord  string `json:"password"`  //密码
+	Captcha   string `json:"captcha"`   //验证码
+	CaptchaID string `json:"captchaID"` //验证码 ID
 }
 
 // ChangePasswordReq

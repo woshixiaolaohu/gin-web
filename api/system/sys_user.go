@@ -46,7 +46,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 		global.BlackCache.Set(key, 1, time.Second*time.Duration(openCaptchaTimeOut))
 	}
 	var oc bool = openCaptcha == 0 || openCaptcha < interfaceToInt(v)
-	if !oc || (l.CaptchaId != "" && l.Captcha != "" && store.Verify(l.CaptchaId, l.Captcha, true)) {
+	if !oc || (l.CaptchaID != "" && l.Captcha != "" && store.Verify(l.CaptchaID, l.Captcha, true)) {
 		u := &system.SysUser{
 			UserName: l.UserName,
 			PassWord: l.PassWord,
