@@ -26,7 +26,7 @@ func (h SqliteInitHandler) WriteConfig(ctx context.Context) error {
 	if !ok {
 		return errors.New("sqlite config invalid")
 	}
-	global.GVA_CONFIG.System.DBType = "sqlite"
+	global.GVA_CONFIG.System.DbType = "sqlite"
 	global.GVA_CONFIG.Sqlite = c
 	global.GVA_CONFIG.JWT.SigningKey = uuid.Must(uuid.NewV4()).String()
 	cs := utils.StructToMap(global.GVA_CONFIG)

@@ -10,7 +10,7 @@ import (
 )
 
 func Gorm() *gorm.DB {
-	switch global.GVA_CONFIG.System.DBType {
+	switch global.GVA_CONFIG.System.DbType {
 	case "mysql":
 		return GormMysql()
 	case "oracle":

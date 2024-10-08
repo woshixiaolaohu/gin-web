@@ -18,7 +18,7 @@ func NewWriter(w logger.Writer) *writer {
 // Printf 格式化打印日志
 func (w *writer) Printf(message string, data ...interface{}) {
 	var logZap bool
-	switch global.GVA_CONFIG.System.DBType {
+	switch global.GVA_CONFIG.System.DbType {
 	case "mysql":
 		logZap = global.GVA_CONFIG.Mysql.LogZap
 	case "pgsql":

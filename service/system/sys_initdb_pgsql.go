@@ -27,7 +27,7 @@ func (h PgsqlInitHandler) WriteConfig(ctx context.Context) error {
 	if !ok {
 		return errors.New("postgresql config invalid")
 	}
-	global.GVA_CONFIG.System.DBType = "pgsql"
+	global.GVA_CONFIG.System.DbType = "pgsql"
 	global.GVA_CONFIG.Pgsql = c
 	global.GVA_CONFIG.JWT.SigningKey = uuid.Must(uuid.NewV4()).String()
 	cs := utils.StructToMap(global.GVA_CONFIG)
