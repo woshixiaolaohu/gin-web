@@ -87,8 +87,11 @@ func Routers() *gin.Engine {
 		systemRouter.InitSysDictionaryDetailRouter(PrivateGroup)    // 字典详情管理
 		systemRouter.InitAuthorityBtnRouterRouter(PrivateGroup)     // 权限按钮管理
 		systemRouter.InitSysExportTemplateRouter(PrivateGroup)      // 导出模板
+		systemRouter.InitAutoCodeRouter(PrivateGroup)               // 创建自动化代码
+		systemRouter.InitAutoCodeHistoryRouter(PrivateGroup)        // 自动化代码历史
 		exampleRouter.InitCustomRouter(PrivateGroup)                // 客户路由
 		exampleRouter.InitFileUploadAndDownloadRouter(PrivateGroup) // 文件上传下载功能路由
+
 	}
 	// 插件路由安装
 	InstallPlugin(PrivateGroup, publicGroup)

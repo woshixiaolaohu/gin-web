@@ -15,4 +15,6 @@ type RouterGroup struct {
 	DictionaryDetailRouter
 	AuthorityBtnRouter
 	SysExportTemplateRouter
+	AutoCodeRouter
+	AutoCodeHistoryRouter
 }
