@@ -9,9 +9,9 @@ import (
 	"strings"
 )
 
-// UZip
+// Unzip
 // 解压
-func UZip(zipFile string, destDir string) ([]string, error) {
+func Unzip(zipFile string, destDir string) ([]string, error) {
 	zipReader, err := zip.OpenReader(zipFile)
 	var paths []string
 	if err != nil {

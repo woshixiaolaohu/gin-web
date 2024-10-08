@@ -15,4 +15,6 @@ type ServiceGroup struct {
 	SysExportTemplateService
 	InitDBService
 	SystemConfigService
+	AutoCodeService
+	AutoCodeHistoryService
 }

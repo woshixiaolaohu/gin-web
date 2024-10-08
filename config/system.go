@@ -1,7 +1,7 @@
 package config
 
 type System struct {
-	DBType        string `json:"dbType" yaml:"db_type" mapstructure:"db_type"`     //数据库类型，默认mysql，可选(sqlite|sqlserver|postgresql)
+	DbType        string `json:"dbType" yaml:"db_type" mapstructure:"db_type"`     //数据库类型，默认mysql，可选(sqlite|sqlserver|postgresql)
 	OssType       string `json:"oss-type" yaml:"oss-type" mapstructure:"oss-type"` // Oss类型
 	RouterPrefix  string `json:"router_prefix" yaml:"router_prefix" mapstructure:"router_prefix"`
 	Addr          int    `json:"addr" yaml:"addr" mapstructure:"addr"` //端口值

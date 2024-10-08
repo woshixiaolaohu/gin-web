@@ -16,6 +16,8 @@ type ApiGroup struct {
 	AuthorityMenuApi
 	OperationRecordApi
 	SystemApi
+	AutoCodeApi
+	AutoCodeHistoryApi
 }
 
 var (
@@ -32,4 +34,6 @@ var (
 	initDBService           = service.ServiceGroupApp.SystemServiceGroup.InitDBService
 	operationRecordService  = service.ServiceGroupApp.SystemServiceGroup.OperationRecordService
 	systemConfigService     = service.ServiceGroupApp.SystemServiceGroup.SystemConfigService
+	autoCodeService         = service.ServiceGroupApp.SystemServiceGroup.AutoCodeService
+	autoCodeHistoryService  = service.ServiceGroupApp.SystemServiceGroup.AutoCodeHistoryService
 )
