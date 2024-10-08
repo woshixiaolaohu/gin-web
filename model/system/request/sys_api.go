@@ -10,6 +10,6 @@ import (
 type SearchApiParams struct {
 	system.SysApi
 	request.PageInfo
-	OrderKey string `json:"order_key"` // 排序
-	Desc     bool   `json:"desc"`      // 排序方式
+	OrderKey string `json:"orderKey"` // 排序
+	Desc     bool   `json:"desc"`     // 排序方式
 }

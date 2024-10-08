@@ -16,9 +16,10 @@ var ApiServiceApp = new(ApiService)
 // CreateApi
 //
 //	@function:		CreateApi
-//	@description:	新增基础api
-//	@param:			api model.SysApi
-//	@return:		err error
+
+// @description:	新增基础api
+// @param:			api model.SysApi
+// @return:		err error
 func (apiService *ApiService) CreateApi(api system.SysApi) (err error) {
 	if !errors.Is(global.GVA_DB.Where("path = ? AND method = ?", api.Path, api.Method).First(&system.SysApi{}).Error, gorm.ErrRecordNotFound) {
 		return errors.New("存在相同API")

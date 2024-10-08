@@ -21,10 +21,10 @@ var CasbinServiceApp = new(CasbinService)
 //
 //	@function:		UpdateCasbin
 //	@description:	更新casbin权限
-//	@param:			authorityId string, casbinInfos []request.CasbinInfo
+//	@param:			AuthorityId string, casbinInfos []request.CasbinInfo
 //	@return:		error
-func (casbinService *CasbinService) UpdateCasbin(AuthorityID uint, casbinInfos []request.CasbinInfo) error {
-	authorityID := strconv.Itoa(int(AuthorityID))
+func (casbinService *CasbinService) UpdateCasbin(AuthorityId uint, casbinInfos []request.CasbinInfo) error {
+	authorityID := strconv.Itoa(int(AuthorityId))
 	casbinService.ClearCasbin(0, authorityID)
 	rules := [][]string{}
 	// 权限去重
@@ -67,11 +67,11 @@ func (casbinService *CasbinService) UpdateCasbinApi(oldPath, newPath, oldMethod,
 //
 //	@function:		GetPolicyPathByAuthorityID
 //	@description:	获取权限列表
-//	@param:			authorityId string
+//	@param:			AuthorityId string
 //	@return:		pathMaps []request.CasbinInfo
-func (casbinService *CasbinService) GetPolicyPathByAuthorityID(AuthorityID uint) (pathMaps []request.CasbinInfo) {
+func (casbinService *CasbinService) GetPolicyPathByAuthorityID(AuthorityId uint) (pathMaps []request.CasbinInfo) {
 	e := casbinService.Casbin()
-	authorityID := strconv.Itoa(int(AuthorityID))
+	authorityID := strconv.Itoa(int(AuthorityId))
 	list, _ := e.GetFilteredPolicy(0, authorityID)
 	for _, v := range list {
 		pathMaps = append(pathMaps, request.CasbinInfo{
@@ -99,7 +99,7 @@ func (casbinService *CasbinService) ClearCasbin(v int, p ...string) bool {
 //
 //	@function:		RemoveFilteredPolicy
 //	@description:	使用数据库方法清理筛选的politicy 此方法需要调用FreshCasbin方法才可以在系统中即刻生效
-//	@param:			db *gorm.DB, authorityId string
+//	@param:			db *gorm.DB, AuthorityId string
 //	@return:		error
 func (casbinService *CasbinService) RemoveFilteredPolicy(db *gorm.DB, authorityID string) error {
 	return db.Delete(&gormadapter.CasbinRule{}, "v0 = ? ", authorityID).Error
@@ -109,7 +109,7 @@ func (casbinService *CasbinService) RemoveFilteredPolicy(db *gorm.DB, authorityI
 //
 //	@function:		SyncPolicy
 //	@description:	同步目前数据库的policy 此方法需要调用FreshCasbin方法才可以在系统中即刻生效
-//	@param:			db *gorm.DB, authorityId string, rules [][]string
+//	@param:			db *gorm.DB, AuthorityId string, rules [][]string
 //	@return:		error
 func (casbinService *CasbinService) SyncPolicy(db *gorm.DB, authorityID string, rules [][]string) error {
 	err := casbinService.RemoveFilteredPolicy(db, authorityID)

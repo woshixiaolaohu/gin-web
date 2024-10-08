@@ -5,7 +5,7 @@ type Mssql struct {
 }
 
 func (m *Mssql) Dsn() string {
-	return "sqlserver://" + m.UserName + ":" + m.Password + "@" + m.Path + ":" + m.Port + "?database=" + m.DBName + "&encrypt=disable"
+	return "sqlserver://" + m.Username + ":" + m.Password + "@" + m.Path + ":" + m.Port + "?database=" + m.DBName + "&encrypt=disable"
 }
 
 func (m *Mssql) GetLogMode() string {

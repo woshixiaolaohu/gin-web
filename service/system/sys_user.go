@@ -24,11 +24,11 @@ type UserService struct {
 func (userService *UserService) Register(u system.SysUser) (userInter system.SysUser, err error) {
 	var user system.SysUser
 	// 判断用户名是否注册
-	if !errors.Is(global.GVA_DB.Where("user_name = ?", u.UserName).First(&user).Error, gorm.ErrRecordNotFound) {
+	if !errors.Is(global.GVA_DB.Where("user_name = ?", u.Username).First(&user).Error, gorm.ErrRecordNotFound) {
 		return userInter, errors.New("用户名已注册")
 	}
 	// 否则 附加 uuid 密码 hash 加密 注册
-	u.PassWord = utils.BcryptHash(u.PassWord)
+	u.Password = utils.BcryptHash(u.Password)
 	u.UUID = uuid.Must(uuid.NewV4())
 	err = global.GVA_DB.Create(&u).Error
 	return u, err
@@ -45,9 +45,9 @@ func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysU
 		return nil, fmt.Errorf("db not init")
 	}
 	var user system.SysUser
-	err = global.GVA_DB.Where("user_name = ?", u.UserName).Preload("Authorities").Preload("Authority").First(&user).Error
+	err = global.GVA_DB.Where("user_name = ?", u.Username).Preload("Authorities").Preload("Authority").First(&user).Error
 	if err != nil {
-		if ok := utils.BcryptCheck(u.PassWord, user.PassWord); !ok {
+		if ok := utils.BcryptCheck(u.Password, user.Password); !ok {
 			return nil, errors.New("密码错误")
 		}
 		MenuServiceApp.UserAuthorityDefaultRouter(&user)
@@ -66,10 +66,10 @@ func (userService *UserService) ChangePassword(u *system.SysUser, newPassword st
 	if err = global.GVA_DB.Where("id = ?", u.ID).First(&user).Error; err != nil {
 		return nil, err
 	}
-	if ok := utils.BcryptCheck(u.PassWord, user.PassWord); !ok {
+	if ok := utils.BcryptCheck(u.Password, user.Password); !ok {
 		return nil, errors.New("原密码错误")
 	}
-	user.PassWord = utils.BcryptHash(newPassword)
+	user.Password = utils.BcryptHash(newPassword)
 	err = global.GVA_DB.Save(&user).Error
 	return &user, err
 }
@@ -97,7 +97,7 @@ func (userService *UserService) GetUserInfoList(info request.PageInfo) (list int
 //
 //	@function:		SetUserAuthority
 //	@description:	设置一个用户的权限
-//	@param:			id uint, authorityId string
+//	@param:			id uint, AuthorityId string
 //	@return:		err error
 func (userService *UserService) SetUserAuthority(id uint, authorityID uint) (err error) {
 	assignErr := global.GVA_DB.Where("sys_user_id = ? AND sys_authority_authority_id = ?", id, authorityID).First(&system.SysUserAuthority{}).Error
@@ -137,7 +137,7 @@ func (userService *UserService) SetUserAuthorities(id uint, authorityIds []uint)
 		if TxErr != nil {
 			return TxErr
 		}
-		TxErr = tx.Model(&user).Update("authority_id = ?", authorityIds[0]).Error
+		TxErr = tx.Model(&user).Update("authority_id", authorityIds[0]).Error
 		if TxErr != nil {
 			return TxErr
 		}

@@ -41,7 +41,7 @@ func (menuService *MenuService) getMenuTreeMap(authorityID uint) (treeMap map[ui
 	for i := range baseMenu {
 		allMenus = append(allMenus, system.SysMenu{
 			SysBaseMenu: baseMenu[i],
-			AuthorityID: authorityID,
+			AuthorityId: authorityID,
 			MenuID:      baseMenu[i].ID,
 			Parameters:  baseMenu[i].Parameters,
 		})
@@ -172,7 +172,7 @@ func (menuService *MenuService) GetBaseMenuTree() (menus []system.SysBaseMenu, e
 //	@return:		err error
 func (menuService *MenuService) AddMenuAuthority(menus []system.SysBaseMenu, authorityID uint) (err error) {
 	var auth system.SysAuthority
-	auth.AuthorityID = authorityID
+	auth.AuthorityId = authorityID
 	auth.SysBaseMenus = menus
 	err = AuthorityServiceApp.SetMenuAuthority(&auth)
 	return err
@@ -187,7 +187,7 @@ func (menuService *MenuService) AddMenuAuthority(menus []system.SysBaseMenu, aut
 func (menuService *MenuService) GetMenuAuthority(info *request.GetAuthorityId) (menus []system.SysMenu, err error) {
 	var baseMenu []system.SysBaseMenu
 	var SysAuthorityMenus []system.SysAuthorityMenu
-	err = global.GVA_DB.Where("sys_authority_authority_id = ?", info.AuthorityID).Find(&SysAuthorityMenus).Error
+	err = global.GVA_DB.Where("sys_authority_authority_id = ?", info.AuthorityId).Find(&SysAuthorityMenus).Error
 	if err != nil {
 		return
 	}
@@ -199,7 +199,7 @@ func (menuService *MenuService) GetMenuAuthority(info *request.GetAuthorityId) (
 	for i := range baseMenu {
 		menus = append(menus, system.SysMenu{
 			SysBaseMenu: baseMenu[i],
-			AuthorityID: info.AuthorityID,
+			AuthorityId: info.AuthorityId,
 			MenuID:      baseMenu[i].ID,
 			Parameters:  baseMenu[i].Parameters,
 		})
@@ -214,7 +214,7 @@ func (menuService *MenuService) GetMenuAuthority(info *request.GetAuthorityId) (
 //	@param:			user *system.SysUser
 func (menuService *MenuService) UserAuthorityDefaultRouter(user *system.SysUser) {
 	var menuIds []string
-	err := global.GVA_DB.Model(&system.SysAuthorityMenu{}).Where("sys_authority_authority_id = ?", user.AuthorityID).Pluck("sys_base_menu_id", &menuIds).Error
+	err := global.GVA_DB.Model(&system.SysAuthorityMenu{}).Where("sys_authority_authority_id = ?", user.AuthorityId).Pluck("sys_base_menu_id", &menuIds).Error
 	if err != nil {
 		return
 	}

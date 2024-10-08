@@ -7,7 +7,7 @@ import (
 
 type AddMenuAuthorityInfo struct {
 	Menus       []system.SysBaseMenu `json:"menus"`
-	AuthorityID uint                 `json:"authority_id"` // 角色 ID
+	AuthorityId uint                 `json:"authorityId"` // 角色 ID
 }
 
 func DefaultMenu() []system.SysBaseMenu {

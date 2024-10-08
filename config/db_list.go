@@ -10,7 +10,7 @@ type GeneralDB struct {
 	Port         string `json:"port" yaml:"port" mapstructure:"port"`
 	Config       string `json:"config" yaml:"config" mapstructure:"config"`          //高级配置
 	DBName       string `json:"db_name" yaml:"db_name" mapstructure:"db_name"`       //数据库名称
-	UserName     string `json:"user_name" yaml:"user_name" mapstructure:"user_name"` //数据库用户名
+	Username     string `json:"user_name" yaml:"user_name" mapstructure:"user_name"` //数据库用户名
 	Password     string `json:"password" yaml:"password" mapstructure:"password"`    //数据库密码
 	Path         string `json:"path" yaml:"path" mapstructure:"path"`
 	Engine       string `json:"engine" yaml:"engine" mapstructure:"engine" default:"InnoDB"`        //数据库引擎,默认InnoDB

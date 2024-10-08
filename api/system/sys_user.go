@@ -48,8 +48,8 @@ func (b *BaseApi) Login(c *gin.Context) {
 	var oc bool = openCaptcha == 0 || openCaptcha < interfaceToInt(v)
 	if !oc || (l.CaptchaID != "" && l.Captcha != "" && store.Verify(l.CaptchaID, l.Captcha, true)) {
 		u := &system.SysUser{
-			UserName: l.UserName,
-			PassWord: l.PassWord,
+			Username: l.Username,
+			Password: l.Password,
 		}
 		user, err := userService.Login(u)
 		if err != nil {
@@ -82,8 +82,8 @@ func (b *BaseApi) TokenNext(c *gin.Context, user system.SysUser) {
 		UUID:        user.UUID,
 		ID:          user.ID,
 		Nickname:    user.NickName,
-		Username:    user.UserName,
-		AuthorityId: user.AuthorityID,
+		Username:    user.Username,
+		AuthorityId: user.AuthorityId,
 	})
 	token, err := j.CreateToken(claims)
 	if err != nil {
@@ -100,8 +100,8 @@ func (b *BaseApi) TokenNext(c *gin.Context, user system.SysUser) {
 		}, "登录成功", c)
 		return
 	}
-	if jwtStr, err := jwtService.GetRedisJWT(user.UserName); err == redis.Nil {
-		if err := jwtService.SetRedisJWT(token, user.UserName); err != nil {
+	if jwtStr, err := jwtService.GetRedisJWT(user.Username); err == redis.Nil {
+		if err := jwtService.SetRedisJWT(token, user.Username); err != nil {
 			global.GVA_LOG.Error("设置登录状态失败", zap.Error(err))
 			response.FailWithMessage("设置登录状态失败", c)
 			return
@@ -122,7 +122,7 @@ func (b *BaseApi) TokenNext(c *gin.Context, user system.SysUser) {
 			response.FailWithMessage("jwt作废失败", c)
 			return
 		}
-		if err := jwtService.SetRedisJWT(token, user.UserName); err != nil {
+		if err := jwtService.SetRedisJWT(token, user.Username); err != nil {
 			response.FailWithMessage("设置登录状态失败", c)
 			return
 		}
@@ -158,15 +158,15 @@ func (b *BaseApi) Register(c *gin.Context) {
 	var authorities []system.SysAuthority
 	for _, v := range r.AuthorityIds {
 		authorities = append(authorities, system.SysAuthority{
-			AuthorityID: v,
+			AuthorityId: v,
 		})
 	}
 	user := &system.SysUser{
-		UserName:    r.UserName,
+		Username:    r.Username,
 		NickName:    r.NickName,
-		PassWord:    r.PassWord,
+		Password:    r.Password,
 		HeaderImg:   r.HeaderImg,
-		AuthorityID: r.AuthorityID,
+		AuthorityId: r.AuthorityId,
 		Authorities: authorities,
 		Enable:      r.Enable,
 		Phone:       r.Phone,
@@ -209,9 +209,9 @@ func (b *BaseApi) ChangePassword(c *gin.Context) {
 	uid := utils.GetUserID(c)
 	u := &system.SysUser{
 		GVA_MODEL: global.GVA_MODEL{ID: uid},
-		PassWord:  req.PassWord,
+		Password:  req.Password,
 	}
-	_, err = userService.ChangePassword(u, req.NewPassWord)
+	_, err = userService.ChangePassword(u, req.NewPassword)
 	if err != nil {
 		global.GVA_LOG.Error("修改失败", zap.Error(err))
 		response.FailWithMessage("修改失败，原密码与当前账户不符", c)

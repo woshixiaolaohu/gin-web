@@ -32,7 +32,9 @@ func (fs justFilesFilesystem) Open(name string) (http.File, error) {
 
 // Routers 初始化总路由
 func Routers() *gin.Engine {
+	// 创建不带中间件的路由
 	Router := gin.New()
+	// 恢复中间件
 	Router.Use(gin.Recovery())
 	if gin.Mode() == gin.DebugMode {
 		Router.Use(gin.Logger())
@@ -67,7 +69,7 @@ func Routers() *gin.Engine {
 		})
 	}
 	{
-		systemRouter.InitBaseRouter(publicGroup) // 注册基础功能路由 不做健全
+		systemRouter.InitBaseRouter(publicGroup) // 注册基础功能路由 不做鉴权
 		systemRouter.InitInitRouter(publicGroup) // 自动初始化相关
 	}
 	PrivateGroup := Router.Group(global.GVA_CONFIG.System.RouterPrefix)

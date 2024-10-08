@@ -19,7 +19,7 @@ type AuthorityBtnService struct{}
 //	@return:		res response.SysAuthorityBtnRes, err error
 func (authorityBtnService *AuthorityBtnService) GetAuthorityBtn(req request.SysAuthorityBtnReq) (res response.SysAuthorityBtnRes, err error) {
 	var authorityBtn []system.SysAuthorityBtn
-	err = global.GVA_DB.Find(&authorityBtn, "authority_id = ? AND sys_menu_id = ?", req.AuthorityID, req.MenuID).Error
+	err = global.GVA_DB.Find(&authorityBtn, "authority_id = ? AND sys_menu_id = ?", req.AuthorityId, req.MenuID).Error
 	if err != nil {
 		return
 	}
@@ -40,13 +40,13 @@ func (authorityBtnService *AuthorityBtnService) GetAuthorityBtn(req request.SysA
 func (authorityBtnService *AuthorityBtnService) SetAuthorityBtn(req request.SysAuthorityBtnReq) (err error) {
 	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
 		var authorityBtn []system.SysAuthorityBtn
-		err = tx.Delete(&[]system.SysAuthorityBtn{}, "authority_id = ? AND sys_menu_id = ?", req.AuthorityID, req.MenuID).Error
+		err = tx.Delete(&[]system.SysAuthorityBtn{}, "authority_id = ? AND sys_menu_id = ?", req.AuthorityId, req.MenuID).Error
 		if err != nil {
 			return err
 		}
 		for _, v := range req.Selected {
 			authorityBtn = append(authorityBtn, system.SysAuthorityBtn{
-				AuthorityID:      req.AuthorityID,
+				AuthorityId:      req.AuthorityId,
 				SysMenuID:        req.MenuID,
 				SysBaseMenuBtnID: v,
 			})

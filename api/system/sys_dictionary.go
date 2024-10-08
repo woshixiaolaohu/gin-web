@@ -100,7 +100,7 @@ func (s *DictionaryApi) UpdateSysDictionary(c *gin.Context) {
 //	@Router		/sysDictionary/getSysDictionary [get]
 func (s *DictionaryApi) GetSysDictionary(c *gin.Context) {
 	var dictionary system.SysDictionary
-	err := c.ShouldBindJSON(&dictionary)
+	err := c.ShouldBindQuery(&dictionary)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return

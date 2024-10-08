@@ -5,7 +5,7 @@ type Mysql struct {
 }
 
 func (m *Mysql) Dsn() string {
-	return m.UserName + ":" + m.Password + "@tcp(" + m.Path + ":" + m.Port + ")/" + m.DBName + "?" + m.Config
+	return m.Username + ":" + m.Password + "@tcp(" + m.Path + ":" + m.Port + ")/" + m.DBName + "?" + m.Config
 }
 
 func (m *Mysql) GetLogMode() string {

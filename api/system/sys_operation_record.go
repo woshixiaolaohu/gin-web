@@ -103,7 +103,7 @@ func (s *OperationRecordApi) DeleteSysOperationRecordByIds(c *gin.Context) {
 //	@Router		/sysOperationRecord/getSysOperationRecord [get]
 func (s *OperationRecordApi) GetSysOperationRecord(c *gin.Context) {
 	var sysOperationRecord system.SysOperationRecord
-	err := c.ShouldBindJSON(&sysOperationRecord)
+	err := c.ShouldBindQuery(&sysOperationRecord)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -134,7 +134,7 @@ func (s *OperationRecordApi) GetSysOperationRecord(c *gin.Context) {
 //	@Router		/sysOperationRecord/getSysOperationRecordList [get]
 func (s *OperationRecordApi) GetSysOperationRecordList(c *gin.Context) {
 	var pageInfo systemReq.SysOperationRecordSearch
-	err := c.ShouldBindJSON(&pageInfo)
+	err := c.ShouldBindQuery(&pageInfo)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return

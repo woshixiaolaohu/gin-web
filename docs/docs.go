@@ -1065,13 +1065,13 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "客户名称",
-                        "name": "customer_name",
+                        "name": "customerName",
                         "in": "query"
                     },
                     {
                         "type": "string",
                         "description": "客户联系方式",
-                        "name": "customer_phone",
+                        "name": "customerPhone",
                         "in": "query"
                     },
                     {
@@ -1083,13 +1083,13 @@ const docTemplate = `{
                     {
                         "type": "integer",
                         "description": "管理角色ID",
-                        "name": "sys_user_authority_id",
+                        "name": "sysUserAuthorityId",
                         "in": "query"
                     },
                     {
                         "type": "integer",
                         "description": "管理ID",
-                        "name": "sys_user_id",
+                        "name": "sysUserId",
                         "in": "query"
                     },
                     {
@@ -1285,7 +1285,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "keyWord",
+                        "name": "keyword",
                         "in": "query"
                     },
                     {
@@ -2658,7 +2658,7 @@ const docTemplate = `{
                     {
                         "type": "integer",
                         "description": "关联标记",
-                        "name": "sys_dictionary_id",
+                        "name": "sysDictionaryId",
                         "in": "query"
                     },
                     {
@@ -2738,7 +2738,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "keyWord",
+                        "name": "keyword",
                         "in": "query"
                     },
                     {
@@ -2772,7 +2772,7 @@ const docTemplate = `{
                     {
                         "type": "integer",
                         "description": "关联标记",
-                        "name": "sys_dictionary_id",
+                        "name": "sysDictionaryId",
                         "in": "query"
                     },
                     {
@@ -3118,7 +3118,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "end_created_at",
+                        "name": "endCreatedAt",
                         "in": "query"
                     },
                     {
@@ -3129,7 +3129,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "keyWord",
+                        "name": "keyword",
                         "in": "query"
                     },
                     {
@@ -3162,7 +3162,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "start_created_at",
+                        "name": "startCreatedAt",
                         "in": "query"
                     },
                     {
@@ -3501,7 +3501,7 @@ const docTemplate = `{
                     {
                         "type": "integer",
                         "description": "用户id",
-                        "name": "user_id",
+                        "name": "userId",
                         "in": "query"
                     }
                 ],
@@ -3587,7 +3587,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "keyWord",
+                        "name": "keyword",
                         "in": "query"
                     },
                     {
@@ -3639,7 +3639,7 @@ const docTemplate = `{
                     {
                         "type": "integer",
                         "description": "用户id",
-                        "name": "user_id",
+                        "name": "userId",
                         "in": "query"
                     }
                 ],
@@ -5216,11 +5216,11 @@ const docTemplate = `{
                     "description": "创建时间",
                     "type": "string"
                 },
-                "customer_name": {
+                "customerName": {
                     "description": "客户名称",
                     "type": "string"
                 },
-                "customer_phone": {
+                "customerPhone": {
                     "description": "客户联系方式",
                     "type": "string"
                 },
@@ -5228,7 +5228,7 @@ const docTemplate = `{
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "sys_user": {
+                "sysUser": {
                     "description": "管理详情",
                     "allOf": [
                         {
@@ -5236,11 +5236,11 @@ const docTemplate = `{
                         }
                     ]
                 },
-                "sys_user_authority_id": {
+                "sysUserAuthorityId": {
                     "description": "管理角色ID",
                     "type": "integer"
                 },
-                "sys_user_id": {
+                "sysUserId": {
                     "description": "管理ID",
                     "type": "integer"
                 },
@@ -5383,7 +5383,7 @@ const docTemplate = `{
         "request.AddMenuAuthorityInfo": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色 ID",
                     "type": "integer"
                 },
@@ -5398,11 +5398,11 @@ const docTemplate = `{
         "request.CasbinInReceive": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "权限 ID",
                     "type": "integer"
                 },
-                "casbin_infos": {
+                "casbinInfos": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/request.CasbinInfo"
@@ -5426,11 +5426,11 @@ const docTemplate = `{
         "request.ChangePasswordReq": {
             "type": "object",
             "properties": {
-                "new_pass_word": {
+                "newPassword": {
                     "description": "新密码",
                     "type": "string"
                 },
-                "pass_word": {
+                "password": {
                     "description": "旧密码",
                     "type": "string"
                 }
@@ -5442,7 +5442,7 @@ const docTemplate = `{
         "request.GetAuthorityId": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色ID",
                     "type": "integer"
                 }
@@ -5532,7 +5532,7 @@ const docTemplate = `{
         "request.PageInfo": {
             "type": "object",
             "properties": {
-                "keyWord": {
+                "keyword": {
                     "type": "string"
                 },
                 "page": {
@@ -5546,11 +5546,11 @@ const docTemplate = `{
         "request.Register": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "type": "string",
                     "example": "uint 角色id"
                 },
-                "authority_ids": {
+                "authorityIds": {
                     "type": "string",
                     "example": "[]uint 角色id"
                 },
@@ -5562,11 +5562,11 @@ const docTemplate = `{
                     "type": "string",
                     "example": "int 是否启用"
                 },
-                "header_img": {
+                "headerImg": {
                     "type": "string",
                     "example": "头像链接"
                 },
-                "nick_name": {
+                "nickName": {
                     "type": "string",
                     "example": "昵称"
                 },
@@ -5587,7 +5587,7 @@ const docTemplate = `{
         "request.SearchApiParams": {
             "type": "object",
             "properties": {
-                "api_group": {
+                "apiGroup": {
                     "description": "api组",
                     "type": "string"
                 },
@@ -5607,14 +5607,14 @@ const docTemplate = `{
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "keyWord": {
+                "keyword": {
                     "type": "string"
                 },
                 "method": {
                     "description": "方法：创建POST(默认) | GET(查看) | PUT(更新) | DELETE(删除)",
                     "type": "string"
                 },
-                "order_key": {
+                "orderKey": {
                     "description": "排序",
                     "type": "string"
                 },
@@ -5637,7 +5637,7 @@ const docTemplate = `{
         "request.SetUserAuth": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色 ID",
                     "type": "integer"
                 }
@@ -5646,7 +5646,7 @@ const docTemplate = `{
         "request.SetUserAuthorities": {
             "type": "object",
             "properties": {
-                "authority_ids": {
+                "authorityIds": {
                     "description": "角色 ID",
                     "type": "array",
                     "items": {
@@ -5661,10 +5661,10 @@ const docTemplate = `{
         "request.SysAuthorityBtnReq": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "type": "integer"
                 },
-                "menu_id": {
+                "menuId": {
                     "type": "integer"
                 },
                 "selected": {
@@ -5694,7 +5694,7 @@ const docTemplate = `{
         "response.FilePathResponse": {
             "type": "object",
             "properties": {
-                "file_path": {
+                "filePath": {
                     "type": "string"
                 }
             }
@@ -5895,7 +5895,7 @@ const docTemplate = `{
                     "description": "关联条件",
                     "type": "string"
                 },
-                "template_id": {
+                "templateId": {
                     "description": "模板标识",
                     "type": "string"
                 },
@@ -5928,7 +5928,7 @@ const docTemplate = `{
                     "description": "关联表",
                     "type": "string"
                 },
-                "template_id": {
+                "templateId": {
                     "description": "模板标识",
                     "type": "string"
                 },
@@ -5941,15 +5941,15 @@ const docTemplate = `{
         "system.Meta": {
             "type": "object",
             "properties": {
-                "active_name": {
+                "activeName": {
                     "description": "高亮菜单",
                     "type": "string"
                 },
-                "close_tab": {
+                "closeTab": {
                     "description": "是否自动关闭tab",
                     "type": "boolean"
                 },
-                "default_menu": {
+                "defaultMenu": {
                     "description": "是否是基础路由",
                     "type": "boolean"
                 },
@@ -5957,7 +5957,7 @@ const docTemplate = `{
                     "description": "菜单图标",
                     "type": "string"
                 },
-                "keep_alive": {
+                "keepAlive": {
                     "description": "是否缓存",
                     "type": "boolean"
                 },
@@ -5970,7 +5970,7 @@ const docTemplate = `{
         "system.SysApi": {
             "type": "object",
             "properties": {
-                "api_group": {
+                "apiGroup": {
                     "description": "api组",
                     "type": "string"
                 },
@@ -6003,11 +6003,11 @@ const docTemplate = `{
         "system.SysAuthority": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色ID",
                     "type": "integer"
                 },
-                "authority_name": {
+                "authorityName": {
                     "description": "角色名",
                     "type": "string"
                 },
@@ -6021,7 +6021,7 @@ const docTemplate = `{
                     "description": "创建时间",
                     "type": "string"
                 },
-                "data_authority_id": {
+                "dataAuthorityId": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/system.SysAuthority"
@@ -6041,7 +6041,7 @@ const docTemplate = `{
                         "$ref": "#/definitions/system.SysBaseMenu"
                     }
                 },
-                "parent_id": {
+                "parentID": {
                     "description": "父级角色ID",
                     "type": "integer"
                 },
@@ -6060,6 +6060,12 @@ const docTemplate = `{
         "system.SysBaseMenu": {
             "type": "object",
             "properties": {
+                "authoritys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/system.SysAuthority"
+                    }
+                },
                 "children": {
                     "type": "array",
                     "items": {
@@ -6082,7 +6088,7 @@ const docTemplate = `{
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "menu_btn": {
+                "menuBtn": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/system.SysBaseMenuBtn"
@@ -6106,7 +6112,7 @@ const docTemplate = `{
                         "$ref": "#/definitions/system.SysBaseMenuParameter"
                     }
                 },
-                "parent_id": {
+                "parentId": {
                     "description": "父菜单ID",
                     "type": "integer"
                 },
@@ -6117,12 +6123,6 @@ const docTemplate = `{
                 "sort": {
                     "description": "排序标记",
                     "type": "integer"
-                },
-                "sys_authoritys": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/system.SysAuthority"
-                    }
                 },
                 "updateAt": {
                     "description": "更新时间",
@@ -6147,7 +6147,7 @@ const docTemplate = `{
                 "name": {
                     "type": "string"
                 },
-                "sys_base_menu_id": {
+                "sysBaseMenuId": {
                     "type": "integer"
                 },
                 "updateAt": {
@@ -6211,7 +6211,7 @@ const docTemplate = `{
                     "description": "状态",
                     "type": "boolean"
                 },
-                "sys_dictionary_details": {
+                "sysDictionaryDetails": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/system.SysDictionaryDetail"
@@ -6254,7 +6254,7 @@ const docTemplate = `{
                     "description": "启用状态",
                     "type": "boolean"
                 },
-                "sys_dictionary_id": {
+                "sysDictionaryId": {
                     "description": "关联标记",
                     "type": "integer"
                 },
@@ -6282,7 +6282,7 @@ const docTemplate = `{
                     "description": "创建时间",
                     "type": "string"
                 },
-                "db_name": {
+                "dbName": {
                     "description": "数据库名称",
                     "type": "string"
                 },
@@ -6290,7 +6290,7 @@ const docTemplate = `{
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "join_template": {
+                "joinTemplate": {
                     "description": "关联",
                     "type": "array",
                     "items": {
@@ -6309,15 +6309,15 @@ const docTemplate = `{
                     "description": "排序",
                     "type": "string"
                 },
-                "table_name": {
+                "tableName": {
                     "description": "表名",
                     "type": "string"
                 },
-                "template_id": {
+                "templateId": {
                     "description": "模板标识",
                     "type": "string"
                 },
-                "template_info": {
+                "templateInfo": {
                     "description": "模板信息",
                     "type": "string"
                 },
@@ -6330,9 +6330,15 @@ const docTemplate = `{
         "system.SysMenu": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色ID",
                     "type": "integer"
+                },
+                "authoritys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/system.SysAuthority"
+                    }
                 },
                 "btns": {
                     "type": "object",
@@ -6362,13 +6368,13 @@ const docTemplate = `{
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "menu_btn": {
+                "menuBtn": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/system.SysBaseMenuBtn"
                     }
                 },
-                "menu_id": {
+                "menuId": {
                     "description": "菜单ID",
                     "type": "integer"
                 },
@@ -6390,7 +6396,7 @@ const docTemplate = `{
                         "$ref": "#/definitions/system.SysBaseMenuParameter"
                     }
                 },
-                "parent_id": {
+                "parentId": {
                     "description": "父菜单ID",
                     "type": "integer"
                 },
@@ -6401,12 +6407,6 @@ const docTemplate = `{
                 "sort": {
                     "description": "排序标记",
                     "type": "integer"
-                },
-                "sys_authoritys": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/system.SysAuthority"
-                    }
                 },
                 "updateAt": {
                     "description": "更新时间",
@@ -6429,7 +6429,7 @@ const docTemplate = `{
                     "description": "创建时间",
                     "type": "string"
                 },
-                "error_message": {
+                "errorMessage": {
                     "description": "错误信息",
                     "type": "string"
                 },
@@ -6468,7 +6468,7 @@ const docTemplate = `{
                 "user": {
                     "$ref": "#/definitions/system.SysUser"
                 },
-                "user_id": {
+                "userId": {
                     "description": "用户id",
                     "type": "integer"
                 }
@@ -6491,11 +6491,11 @@ const docTemplate = `{
                         }
                     ]
                 },
-                "authority_id": {
+                "authorityId": {
                     "description": "用户角色ID",
                     "type": "integer"
                 },
-                "base_color": {
+                "baseColor": {
                     "description": "基础颜色",
                     "type": "string"
                 },
@@ -6511,7 +6511,7 @@ const docTemplate = `{
                     "description": "用户状态",
                     "type": "integer"
                 },
-                "header_img": {
+                "headerImg": {
                     "description": "用户头像",
                     "type": "string"
                 },
@@ -6519,7 +6519,7 @@ const docTemplate = `{
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "nick_name": {
+                "nickName": {
                     "description": "用户昵称",
                     "type": "string"
                 },
@@ -6527,7 +6527,7 @@ const docTemplate = `{
                     "description": "用户手机号",
                     "type": "string"
                 },
-                "side_mode": {
+                "sideMode": {
                     "description": "用户侧边栏主题",
                     "type": "string"
                 },
@@ -6535,7 +6535,7 @@ const docTemplate = `{
                     "description": "更新时间",
                     "type": "string"
                 },
-                "user_name": {
+                "userName": {
                     "description": "用户登录名称",
                     "type": "string"
                 },

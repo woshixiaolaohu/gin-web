@@ -108,8 +108,8 @@ func GetUserInfo(c *gin.Context) *systemReq.CustomClaims {
 	}
 }
 
-// GetUserName 从 Gin 的 Context 中获取从 jwt 解析出来的用户 username
-func GetUserName(c *gin.Context) string {
+// GetUsername 从 Gin 的 Context 中获取从 jwt 解析出来的用户 username
+func GetUsername(c *gin.Context) string {
 	if claims, exists := c.Get("claims"); !exists {
 		if cl, err := GetClaims(c); err != nil {
 			return ""

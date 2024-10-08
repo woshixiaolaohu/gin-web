@@ -76,7 +76,7 @@ func (a *AuthorityMenuApi) AddMenuAuthority(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	if err := menuService.AddMenuAuthority(authorityMenu.Menus, authorityMenu.AuthorityID); err != nil {
+	if err := menuService.AddMenuAuthority(authorityMenu.Menus, authorityMenu.AuthorityId); err != nil {
 		global.GVA_LOG.Error("添加失败", zap.Error(err))
 		response.FailWithMessage("添加失败", c)
 	} else {

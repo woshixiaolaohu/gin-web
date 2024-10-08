@@ -8,7 +8,7 @@ import (
 
 type SysExportTemplateSearch struct {
 	system.SysExportTemplate
-	StartCreatedAt *time.Time `json:"start_created_at" form:"start_created_at"`
-	EndCreatedAt   *time.Time `json:"end_created_at" from:"end_created_at"`
+	StartCreatedAt *time.Time `json:"startCreatedAt" form:"startCreatedAt"`
+	EndCreatedAt   *time.Time `json:"endCreatedAt" from:"endCreatedAt"`
 	request.PageInfo
 }

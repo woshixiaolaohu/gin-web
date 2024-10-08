@@ -619,23 +619,23 @@ definitions:
       createdAt:
         description: 创建时间
         type: string
-      customer_name:
+      customerName:
         description: 客户名称
         type: string
-      customer_phone:
+      customerPhone:
         description: 客户联系方式
         type: string
       id:
         description: 主键ID
         type: integer
-      sys_user:
+      sysUser:
         allOf:
         - $ref: '#/definitions/system.SysUser'
         description: 管理详情
-      sys_user_authority_id:
+      sysUserAuthorityId:
         description: 管理角色ID
         type: integer
-      sys_user_id:
+      sysUserId:
         description: 管理ID
         type: integer
       updateAt:
@@ -736,7 +736,7 @@ definitions:
     type: object
   request.AddMenuAuthorityInfo:
     properties:
-      authority_id:
+      authorityId:
         description: 角色 ID
         type: integer
       menus:
@@ -746,10 +746,10 @@ definitions:
     type: object
   request.CasbinInReceive:
     properties:
-      authority_id:
+      authorityId:
         description: 权限 ID
         type: integer
-      casbin_infos:
+      casbinInfos:
         items:
           $ref: '#/definitions/request.CasbinInfo'
         type: array
@@ -765,10 +765,10 @@ definitions:
     type: object
   request.ChangePasswordReq:
     properties:
-      new_pass_word:
+      newPassword:
         description: 新密码
         type: string
-      pass_word:
+      password:
         description: 旧密码
         type: string
     type: object
@@ -776,7 +776,7 @@ definitions:
     type: object
   request.GetAuthorityId:
     properties:
-      authority_id:
+      authorityId:
         description: 角色ID
         type: integer
     type: object
@@ -839,7 +839,7 @@ definitions:
     type: object
   request.PageInfo:
     properties:
-      keyWord:
+      keyword:
         type: string
       page:
         type: integer
@@ -848,10 +848,10 @@ definitions:
     type: object
   request.Register:
     properties:
-      authority_id:
+      authorityId:
         example: uint 角色id
         type: string
-      authority_ids:
+      authorityIds:
         example: '[]uint 角色id'
         type: string
       email:
@@ -860,10 +860,10 @@ definitions:
       enable:
         example: int 是否启用
         type: string
-      header_img:
+      headerImg:
         example: 头像链接
         type: string
-      nick_name:
+      nickName:
         example: 昵称
         type: string
       password:
@@ -878,7 +878,7 @@ definitions:
     type: object
   request.SearchApiParams:
     properties:
-      api_group:
+      apiGroup:
         description: api组
         type: string
       createdAt:
@@ -893,12 +893,12 @@ definitions:
       id:
         description: 主键ID
         type: integer
-      keyWord:
+      keyword:
         type: string
       method:
         description: 方法：创建POST(默认) | GET(查看) | PUT(更新) | DELETE(删除)
         type: string
-      order_key:
+      orderKey:
         description: 排序
         type: string
       page:
@@ -914,13 +914,13 @@ definitions:
     type: object
   request.SetUserAuth:
     properties:
-      authority_id:
+      authorityId:
         description: 角色 ID
         type: integer
     type: object
   request.SetUserAuthorities:
     properties:
-      authority_ids:
+      authorityIds:
         description: 角色 ID
         items:
           type: integer
@@ -930,9 +930,9 @@ definitions:
     type: object
   request.SysAuthorityBtnReq:
     properties:
-      authority_id:
+      authorityId:
         type: integer
-      menu_id:
+      menuId:
         type: integer
       selected:
         items:
@@ -951,7 +951,7 @@ definitions:
     type: object
   response.FilePathResponse:
     properties:
-      file_path:
+      filePath:
         type: string
     type: object
   response.FileResponse:
@@ -1082,7 +1082,7 @@ definitions:
       operator:
         description: 关联条件
         type: string
-      template_id:
+      templateId:
         description: 模板标识
         type: string
       updateAt:
@@ -1106,7 +1106,7 @@ definitions:
       table:
         description: 关联表
         type: string
-      template_id:
+      templateId:
         description: 模板标识
         type: string
       updateAt:
@@ -1115,19 +1115,19 @@ definitions:
     type: object
   system.Meta:
     properties:
-      active_name:
+      activeName:
         description: 高亮菜单
         type: string
-      close_tab:
+      closeTab:
         description: 是否自动关闭tab
         type: boolean
-      default_menu:
+      defaultMenu:
         description: 是否是基础路由
         type: boolean
       icon:
         description: 菜单图标
         type: string
-      keep_alive:
+      keepAlive:
         description: 是否缓存
         type: boolean
       title:
@@ -1136,7 +1136,7 @@ definitions:
     type: object
   system.SysApi:
     properties:
-      api_group:
+      apiGroup:
         description: api组
         type: string
       createdAt:
@@ -1160,10 +1160,10 @@ definitions:
     type: object
   system.SysAuthority:
     properties:
-      authority_id:
+      authorityId:
         description: 角色ID
         type: integer
-      authority_name:
+      authorityName:
         description: 角色名
         type: string
       children:
@@ -1173,7 +1173,7 @@ definitions:
       createdAt:
         description: 创建时间
         type: string
-      data_authority_id:
+      dataAuthorityId:
         items:
           $ref: '#/definitions/system.SysAuthority'
         type: array
@@ -1187,7 +1187,7 @@ definitions:
         items:
           $ref: '#/definitions/system.SysBaseMenu'
         type: array
-      parent_id:
+      parentID:
         description: 父级角色ID
         type: integer
       updatedAt:
@@ -1200,6 +1200,10 @@ definitions:
     type: object
   system.SysBaseMenu:
     properties:
+      authoritys:
+        items:
+          $ref: '#/definitions/system.SysAuthority'
+        type: array
       children:
         items:
           $ref: '#/definitions/system.SysBaseMenu'
@@ -1216,7 +1220,7 @@ definitions:
       id:
         description: 主键ID
         type: integer
-      menu_btn:
+      menuBtn:
         items:
           $ref: '#/definitions/system.SysBaseMenuBtn'
         type: array
@@ -1231,7 +1235,7 @@ definitions:
         items:
           $ref: '#/definitions/system.SysBaseMenuParameter'
         type: array
-      parent_id:
+      parentId:
         description: 父菜单ID
         type: integer
       path:
@@ -1240,10 +1244,6 @@ definitions:
       sort:
         description: 排序标记
         type: integer
-      sys_authoritys:
-        items:
-          $ref: '#/definitions/system.SysAuthority'
-        type: array
       updateAt:
         description: 更新时间
         type: string
@@ -1260,7 +1260,7 @@ definitions:
         type: integer
       name:
         type: string
-      sys_base_menu_id:
+      sysBaseMenuId:
         type: integer
       updateAt:
         description: 更新时间
@@ -1306,7 +1306,7 @@ definitions:
       status:
         description: 状态
         type: boolean
-      sys_dictionary_details:
+      sysDictionaryDetails:
         items:
           $ref: '#/definitions/system.SysDictionaryDetail'
         type: array
@@ -1337,7 +1337,7 @@ definitions:
       status:
         description: 启用状态
         type: boolean
-      sys_dictionary_id:
+      sysDictionaryId:
         description: 关联标记
         type: integer
       updateAt:
@@ -1357,13 +1357,13 @@ definitions:
       createdAt:
         description: 创建时间
         type: string
-      db_name:
+      dbName:
         description: 数据库名称
         type: string
       id:
         description: 主键ID
         type: integer
-      join_template:
+      joinTemplate:
         description: 关联
         items:
           $ref: '#/definitions/system.JoinTemplate'
@@ -1377,13 +1377,13 @@ definitions:
       order:
         description: 排序
         type: string
-      table_name:
+      tableName:
         description: 表名
         type: string
-      template_id:
+      templateId:
         description: 模板标识
         type: string
-      template_info:
+      templateInfo:
         description: 模板信息
         type: string
       updateAt:
@@ -1392,9 +1392,13 @@ definitions:
     type: object
   system.SysMenu:
     properties:
-      authority_id:
+      authorityId:
         description: 角色ID
         type: integer
+      authoritys:
+        items:
+          $ref: '#/definitions/system.SysAuthority'
+        type: array
       btns:
         additionalProperties:
           type: integer
@@ -1415,11 +1419,11 @@ definitions:
       id:
         description: 主键ID
         type: integer
-      menu_btn:
+      menuBtn:
         items:
           $ref: '#/definitions/system.SysBaseMenuBtn'
         type: array
-      menu_id:
+      menuId:
         description: 菜单ID
         type: integer
       meta:
@@ -1433,7 +1437,7 @@ definitions:
         items:
           $ref: '#/definitions/system.SysBaseMenuParameter'
         type: array
-      parent_id:
+      parentId:
         description: 父菜单ID
         type: integer
       path:
@@ -1442,10 +1446,6 @@ definitions:
       sort:
         description: 排序标记
         type: integer
-      sys_authoritys:
-        items:
-          $ref: '#/definitions/system.SysAuthority'
-        type: array
       updateAt:
         description: 更新时间
         type: string
@@ -1461,7 +1461,7 @@ definitions:
       createdAt:
         description: 创建时间
         type: string
-      error_message:
+      errorMessage:
         description: 错误信息
         type: string
       id:
@@ -1490,7 +1490,7 @@ definitions:
         type: string
       user:
         $ref: '#/definitions/system.SysUser'
-      user_id:
+      userId:
         description: 用户id
         type: integer
     type: object
@@ -1504,10 +1504,10 @@ definitions:
         allOf:
         - $ref: '#/definitions/system.SysAuthority'
         description: 用户角色
-      authority_id:
+      authorityId:
         description: 用户角色ID
         type: integer
-      base_color:
+      baseColor:
         description: 基础颜色
         type: string
       createdAt:
@@ -1519,25 +1519,25 @@ definitions:
       enable:
         description: 用户状态
         type: integer
-      header_img:
+      headerImg:
         description: 用户头像
         type: string
       id:
         description: 主键ID
         type: integer
-      nick_name:
+      nickName:
         description: 用户昵称
         type: string
       phone:
         description: 用户手机号
         type: string
-      side_mode:
+      sideMode:
         description: 用户侧边栏主题
         type: string
       updateAt:
         description: 更新时间
         type: string
-      user_name:
+      userName:
         description: 用户登录名称
         type: string
       uuid:
@@ -2165,11 +2165,11 @@ paths:
         type: string
       - description: 客户名称
         in: query
-        name: customer_name
+        name: customerName
         type: string
       - description: 客户联系方式
         in: query
-        name: customer_phone
+        name: customerPhone
         type: string
       - description: 主键ID
         in: query
@@ -2177,11 +2177,11 @@ paths:
         type: integer
       - description: 管理角色ID
         in: query
-        name: sys_user_authority_id
+        name: sysUserAuthorityId
         type: integer
       - description: 管理ID
         in: query
-        name: sys_user_id
+        name: sysUserId
         type: integer
       - description: 更新时间
         in: query
@@ -2266,7 +2266,7 @@ paths:
       - application/json
       parameters:
       - in: query
-        name: keyWord
+        name: keyword
         type: string
       - in: query
         name: page
@@ -3046,7 +3046,7 @@ paths:
         type: boolean
       - description: 关联标记
         in: query
-        name: sys_dictionary_id
+        name: sysDictionaryId
         type: integer
       - description: 更新时间
         in: query
@@ -3094,7 +3094,7 @@ paths:
         name: id
         type: integer
       - in: query
-        name: keyWord
+        name: keyword
         type: string
       - description: 展示值
         in: query
@@ -3116,7 +3116,7 @@ paths:
         type: boolean
       - description: 关联标记
         in: query
-        name: sys_dictionary_id
+        name: sysDictionaryId
         type: integer
       - description: 更新时间
         in: query
@@ -3325,14 +3325,14 @@ paths:
         name: db_name
         type: string
       - in: query
-        name: end_created_at
+        name: endCreatedAt
         type: string
       - description: 主键ID
         in: query
         name: id
         type: integer
       - in: query
-        name: keyWord
+        name: keyword
         type: string
       - description: 导出限制
         in: query
@@ -3353,7 +3353,7 @@ paths:
         name: pageSize
         type: integer
       - in: query
-        name: start_created_at
+        name: startCreatedAt
         type: string
       - description: 表名
         in: query
@@ -3557,7 +3557,7 @@ paths:
         type: string
       - description: 用户id
         in: query
-        name: user_id
+        name: userId
         type: integer
       produces:
       - application/json
@@ -3609,7 +3609,7 @@ paths:
         name: ip
         type: string
       - in: query
-        name: keyWord
+        name: keyword
         type: string
       - description: 延迟
         in: query
@@ -3643,7 +3643,7 @@ paths:
         type: string
       - description: 用户id
         in: query
-        name: user_id
+        name: userId
         type: integer
       produces:
       - application/json

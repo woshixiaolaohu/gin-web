@@ -5,7 +5,7 @@ type Oracle struct {
 }
 
 func (o *Oracle) Dsn() string {
-	return "oracle://" + o.UserName + ":" + o.Password + "@" + o.Path + ":" + o.Port + "/" + o.DBName + "?" + o.Config
+	return "oracle://" + o.Username + ":" + o.Password + "@" + o.Path + ":" + o.Port + "/" + o.DBName + "?" + o.Config
 }
 
 func (o *Oracle) GetLogMode() string {

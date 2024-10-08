@@ -55,21 +55,21 @@ func (i *initUser) InitializeData(ctx context.Context) (next context.Context, er
 	entities := []sysModel.SysUser{
 		{
 			UUID:        uuid.Must(uuid.NewV4()),
-			UserName:    "admin",
-			PassWord:    adminPassword,
+			Username:    "admin",
+			Password:    adminPassword,
 			NickName:    "JELLY",
 			HeaderImg:   "",
-			AuthorityID: 888,
+			AuthorityId: 888,
 			Phone:       "16888888888",
 			Email:       "jelly@gmail.com",
 		},
 		{
 			UUID:        uuid.Must(uuid.NewV4()),
-			UserName:    "yh1",
-			PassWord:    password,
+			Username:    "yh1",
+			Password:    password,
 			NickName:    "用户1",
 			HeaderImg:   "",
-			AuthorityID: 9528,
+			AuthorityId: 9528,
 			Phone:       "18666666666",
 			Email:       "yh1@gmail.com",
 		},
@@ -100,5 +100,5 @@ func (i *initUser) DataInserted(ctx context.Context) bool {
 	if errors.Is(db.Where("username = ?", "yh1").Preload("Authorities").First(&record).Error, gorm.ErrRecordNotFound) { // 判断是否存在数据
 		return false
 	}
-	return len(record.Authorities) > 0 && record.Authorities[0].AuthorityID == 888
+	return len(record.Authorities) > 0 && record.Authorities[0].AuthorityId == 888
 }

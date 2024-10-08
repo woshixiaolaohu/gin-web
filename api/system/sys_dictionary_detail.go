@@ -102,7 +102,7 @@ func (s *DictionaryDetailApi) UpdateSysDictionaryDetail(c *gin.Context) {
 //	@Router		/sysDictionaryDetail/getSysDictionaryDetail [get]
 func (s *DictionaryDetailApi) GetSysDictionaryDetail(c *gin.Context) {
 	var detail system.SysDictionaryDetail
-	err := c.ShouldBindJSON(&detail)
+	err := c.ShouldBindQuery(&detail)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -133,7 +133,7 @@ func (s *DictionaryDetailApi) GetSysDictionaryDetail(c *gin.Context) {
 //	@Router		/sysDictionaryDetail/getSysDictionaryDetailList [get]
 func (s *DictionaryDetailApi) GetSysDictionaryDetailList(c *gin.Context) {
 	var pageInfo request.SysDictionarySearch
-	err := c.ShouldBindJSON(&pageInfo)
+	err := c.ShouldBindQuery(&pageInfo)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return

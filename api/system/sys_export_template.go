@@ -147,7 +147,7 @@ func (s *SysExportTemplateApi) UpdateSysExportTemplate(c *gin.Context) {
 //	@Router		/sysExportTemplate/getSysExportTemplate [get]
 func (s *SysExportTemplateApi) GetSysExportTemplate(c *gin.Context) {
 	var sysExportTemplate system.SysExportTemplate
-	err := c.ShouldBindJSON(sysExportTemplate)
+	err := c.ShouldBindQuery(sysExportTemplate)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -173,7 +173,7 @@ func (s *SysExportTemplateApi) GetSysExportTemplate(c *gin.Context) {
 //	@Router		/sysExportTemplate/getSysExportTemplateList [get]
 func (s *SysExportTemplateApi) GetSysExportTemplateList(c *gin.Context) {
 	var pageInfo systemReq.SysExportTemplateSearch
-	err := c.ShouldBindJSON(&pageInfo)
+	err := c.ShouldBindQuery(&pageInfo)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return

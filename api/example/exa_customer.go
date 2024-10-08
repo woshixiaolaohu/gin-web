@@ -124,7 +124,7 @@ func (customerApi *CustomerApi) UpdateExaCustomer(c *gin.Context) {
 //	@Router		/customer/customer [get]
 func (customerApi *CustomerApi) GetExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
-	err := c.ShouldBindJSON(&customer)
+	err := c.ShouldBindQuery(&customer)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return

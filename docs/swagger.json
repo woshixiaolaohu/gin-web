@@ -1057,13 +1057,13 @@
                     {
                         "type": "string",
                         "description": "客户名称",
-                        "name": "customer_name",
+                        "name": "customerName",
                         "in": "query"
                     },
                     {
                         "type": "string",
                         "description": "客户联系方式",
-                        "name": "customer_phone",
+                        "name": "customerPhone",
                         "in": "query"
                     },
                     {
@@ -1075,13 +1075,13 @@
                     {
                         "type": "integer",
                         "description": "管理角色ID",
-                        "name": "sys_user_authority_id",
+                        "name": "sysUserAuthorityId",
                         "in": "query"
                     },
                     {
                         "type": "integer",
                         "description": "管理ID",
-                        "name": "sys_user_id",
+                        "name": "sysUserId",
                         "in": "query"
                     },
                     {
@@ -1277,7 +1277,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "keyWord",
+                        "name": "keyword",
                         "in": "query"
                     },
                     {
@@ -2650,7 +2650,7 @@
                     {
                         "type": "integer",
                         "description": "关联标记",
-                        "name": "sys_dictionary_id",
+                        "name": "sysDictionaryId",
                         "in": "query"
                     },
                     {
@@ -2730,7 +2730,7 @@
                     },
                     {
                         "type": "string",
-                        "name": "keyWord",
+                        "name": "keyword",
                         "in": "query"
                     },
                     {
@@ -2764,7 +2764,7 @@
                     {
                         "type": "integer",
                         "description": "关联标记",
-                        "name": "sys_dictionary_id",
+                        "name": "sysDictionaryId",
                         "in": "query"
                     },
                     {
@@ -3110,7 +3110,7 @@
                     },
                     {
                         "type": "string",
-                        "name": "end_created_at",
+                        "name": "endCreatedAt",
                         "in": "query"
                     },
                     {
@@ -3121,7 +3121,7 @@
                     },
                     {
                         "type": "string",
-                        "name": "keyWord",
+                        "name": "keyword",
                         "in": "query"
                     },
                     {
@@ -3154,7 +3154,7 @@
                     },
                     {
                         "type": "string",
-                        "name": "start_created_at",
+                        "name": "startCreatedAt",
                         "in": "query"
                     },
                     {
@@ -3493,7 +3493,7 @@
                     {
                         "type": "integer",
                         "description": "用户id",
-                        "name": "user_id",
+                        "name": "userId",
                         "in": "query"
                     }
                 ],
@@ -3579,7 +3579,7 @@
                     },
                     {
                         "type": "string",
-                        "name": "keyWord",
+                        "name": "keyword",
                         "in": "query"
                     },
                     {
@@ -3631,7 +3631,7 @@
                     {
                         "type": "integer",
                         "description": "用户id",
-                        "name": "user_id",
+                        "name": "userId",
                         "in": "query"
                     }
                 ],
@@ -5208,11 +5208,11 @@
                     "description": "创建时间",
                     "type": "string"
                 },
-                "customer_name": {
+                "customerName": {
                     "description": "客户名称",
                     "type": "string"
                 },
-                "customer_phone": {
+                "customerPhone": {
                     "description": "客户联系方式",
                     "type": "string"
                 },
@@ -5220,7 +5220,7 @@
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "sys_user": {
+                "sysUser": {
                     "description": "管理详情",
                     "allOf": [
                         {
@@ -5228,11 +5228,11 @@
                         }
                     ]
                 },
-                "sys_user_authority_id": {
+                "sysUserAuthorityId": {
                     "description": "管理角色ID",
                     "type": "integer"
                 },
-                "sys_user_id": {
+                "sysUserId": {
                     "description": "管理ID",
                     "type": "integer"
                 },
@@ -5375,7 +5375,7 @@
         "request.AddMenuAuthorityInfo": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色 ID",
                     "type": "integer"
                 },
@@ -5390,11 +5390,11 @@
         "request.CasbinInReceive": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "权限 ID",
                     "type": "integer"
                 },
-                "casbin_infos": {
+                "casbinInfos": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/request.CasbinInfo"
@@ -5418,11 +5418,11 @@
         "request.ChangePasswordReq": {
             "type": "object",
             "properties": {
-                "new_pass_word": {
+                "newPassword": {
                     "description": "新密码",
                     "type": "string"
                 },
-                "pass_word": {
+                "password": {
                     "description": "旧密码",
                     "type": "string"
                 }
@@ -5434,7 +5434,7 @@
         "request.GetAuthorityId": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色ID",
                     "type": "integer"
                 }
@@ -5524,7 +5524,7 @@
         "request.PageInfo": {
             "type": "object",
             "properties": {
-                "keyWord": {
+                "keyword": {
                     "type": "string"
                 },
                 "page": {
@@ -5538,11 +5538,11 @@
         "request.Register": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "type": "string",
                     "example": "uint 角色id"
                 },
-                "authority_ids": {
+                "authorityIds": {
                     "type": "string",
                     "example": "[]uint 角色id"
                 },
@@ -5554,11 +5554,11 @@
                     "type": "string",
                     "example": "int 是否启用"
                 },
-                "header_img": {
+                "headerImg": {
                     "type": "string",
                     "example": "头像链接"
                 },
-                "nick_name": {
+                "nickName": {
                     "type": "string",
                     "example": "昵称"
                 },
@@ -5579,7 +5579,7 @@
         "request.SearchApiParams": {
             "type": "object",
             "properties": {
-                "api_group": {
+                "apiGroup": {
                     "description": "api组",
                     "type": "string"
                 },
@@ -5599,14 +5599,14 @@
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "keyWord": {
+                "keyword": {
                     "type": "string"
                 },
                 "method": {
                     "description": "方法：创建POST(默认) | GET(查看) | PUT(更新) | DELETE(删除)",
                     "type": "string"
                 },
-                "order_key": {
+                "orderKey": {
                     "description": "排序",
                     "type": "string"
                 },
@@ -5629,7 +5629,7 @@
         "request.SetUserAuth": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色 ID",
                     "type": "integer"
                 }
@@ -5638,7 +5638,7 @@
         "request.SetUserAuthorities": {
             "type": "object",
             "properties": {
-                "authority_ids": {
+                "authorityIds": {
                     "description": "角色 ID",
                     "type": "array",
                     "items": {
@@ -5653,10 +5653,10 @@
         "request.SysAuthorityBtnReq": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "type": "integer"
                 },
-                "menu_id": {
+                "menuId": {
                     "type": "integer"
                 },
                 "selected": {
@@ -5686,7 +5686,7 @@
         "response.FilePathResponse": {
             "type": "object",
             "properties": {
-                "file_path": {
+                "filePath": {
                     "type": "string"
                 }
             }
@@ -5887,7 +5887,7 @@
                     "description": "关联条件",
                     "type": "string"
                 },
-                "template_id": {
+                "templateId": {
                     "description": "模板标识",
                     "type": "string"
                 },
@@ -5920,7 +5920,7 @@
                     "description": "关联表",
                     "type": "string"
                 },
-                "template_id": {
+                "templateId": {
                     "description": "模板标识",
                     "type": "string"
                 },
@@ -5933,15 +5933,15 @@
         "system.Meta": {
             "type": "object",
             "properties": {
-                "active_name": {
+                "activeName": {
                     "description": "高亮菜单",
                     "type": "string"
                 },
-                "close_tab": {
+                "closeTab": {
                     "description": "是否自动关闭tab",
                     "type": "boolean"
                 },
-                "default_menu": {
+                "defaultMenu": {
                     "description": "是否是基础路由",
                     "type": "boolean"
                 },
@@ -5949,7 +5949,7 @@
                     "description": "菜单图标",
                     "type": "string"
                 },
-                "keep_alive": {
+                "keepAlive": {
                     "description": "是否缓存",
                     "type": "boolean"
                 },
@@ -5962,7 +5962,7 @@
         "system.SysApi": {
             "type": "object",
             "properties": {
-                "api_group": {
+                "apiGroup": {
                     "description": "api组",
                     "type": "string"
                 },
@@ -5995,11 +5995,11 @@
         "system.SysAuthority": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色ID",
                     "type": "integer"
                 },
-                "authority_name": {
+                "authorityName": {
                     "description": "角色名",
                     "type": "string"
                 },
@@ -6013,7 +6013,7 @@
                     "description": "创建时间",
                     "type": "string"
                 },
-                "data_authority_id": {
+                "dataAuthorityId": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/system.SysAuthority"
@@ -6033,7 +6033,7 @@
                         "$ref": "#/definitions/system.SysBaseMenu"
                     }
                 },
-                "parent_id": {
+                "parentID": {
                     "description": "父级角色ID",
                     "type": "integer"
                 },
@@ -6052,6 +6052,12 @@
         "system.SysBaseMenu": {
             "type": "object",
             "properties": {
+                "authoritys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/system.SysAuthority"
+                    }
+                },
                 "children": {
                     "type": "array",
                     "items": {
@@ -6074,7 +6080,7 @@
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "menu_btn": {
+                "menuBtn": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/system.SysBaseMenuBtn"
@@ -6098,7 +6104,7 @@
                         "$ref": "#/definitions/system.SysBaseMenuParameter"
                     }
                 },
-                "parent_id": {
+                "parentId": {
                     "description": "父菜单ID",
                     "type": "integer"
                 },
@@ -6109,12 +6115,6 @@
                 "sort": {
                     "description": "排序标记",
                     "type": "integer"
-                },
-                "sys_authoritys": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/system.SysAuthority"
-                    }
                 },
                 "updateAt": {
                     "description": "更新时间",
@@ -6139,7 +6139,7 @@
                 "name": {
                     "type": "string"
                 },
-                "sys_base_menu_id": {
+                "sysBaseMenuId": {
                     "type": "integer"
                 },
                 "updateAt": {
@@ -6203,7 +6203,7 @@
                     "description": "状态",
                     "type": "boolean"
                 },
-                "sys_dictionary_details": {
+                "sysDictionaryDetails": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/system.SysDictionaryDetail"
@@ -6246,7 +6246,7 @@
                     "description": "启用状态",
                     "type": "boolean"
                 },
-                "sys_dictionary_id": {
+                "sysDictionaryId": {
                     "description": "关联标记",
                     "type": "integer"
                 },
@@ -6274,7 +6274,7 @@
                     "description": "创建时间",
                     "type": "string"
                 },
-                "db_name": {
+                "dbName": {
                     "description": "数据库名称",
                     "type": "string"
                 },
@@ -6282,7 +6282,7 @@
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "join_template": {
+                "joinTemplate": {
                     "description": "关联",
                     "type": "array",
                     "items": {
@@ -6301,15 +6301,15 @@
                     "description": "排序",
                     "type": "string"
                 },
-                "table_name": {
+                "tableName": {
                     "description": "表名",
                     "type": "string"
                 },
-                "template_id": {
+                "templateId": {
                     "description": "模板标识",
                     "type": "string"
                 },
-                "template_info": {
+                "templateInfo": {
                     "description": "模板信息",
                     "type": "string"
                 },
@@ -6322,9 +6322,15 @@
         "system.SysMenu": {
             "type": "object",
             "properties": {
-                "authority_id": {
+                "authorityId": {
                     "description": "角色ID",
                     "type": "integer"
+                },
+                "authoritys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/system.SysAuthority"
+                    }
                 },
                 "btns": {
                     "type": "object",
@@ -6354,13 +6360,13 @@
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "menu_btn": {
+                "menuBtn": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/system.SysBaseMenuBtn"
                     }
                 },
-                "menu_id": {
+                "menuId": {
                     "description": "菜单ID",
                     "type": "integer"
                 },
@@ -6382,7 +6388,7 @@
                         "$ref": "#/definitions/system.SysBaseMenuParameter"
                     }
                 },
-                "parent_id": {
+                "parentId": {
                     "description": "父菜单ID",
                     "type": "integer"
                 },
@@ -6393,12 +6399,6 @@
                 "sort": {
                     "description": "排序标记",
                     "type": "integer"
-                },
-                "sys_authoritys": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/system.SysAuthority"
-                    }
                 },
                 "updateAt": {
                     "description": "更新时间",
@@ -6421,7 +6421,7 @@
                     "description": "创建时间",
                     "type": "string"
                 },
-                "error_message": {
+                "errorMessage": {
                     "description": "错误信息",
                     "type": "string"
                 },
@@ -6460,7 +6460,7 @@
                 "user": {
                     "$ref": "#/definitions/system.SysUser"
                 },
-                "user_id": {
+                "userId": {
                     "description": "用户id",
                     "type": "integer"
                 }
@@ -6483,11 +6483,11 @@
                         }
                     ]
                 },
-                "authority_id": {
+                "authorityId": {
                     "description": "用户角色ID",
                     "type": "integer"
                 },
-                "base_color": {
+                "baseColor": {
                     "description": "基础颜色",
                     "type": "string"
                 },
@@ -6503,7 +6503,7 @@
                     "description": "用户状态",
                     "type": "integer"
                 },
-                "header_img": {
+                "headerImg": {
                     "description": "用户头像",
                     "type": "string"
                 },
@@ -6511,7 +6511,7 @@
                     "description": "主键ID",
                     "type": "integer"
                 },
-                "nick_name": {
+                "nickName": {
                     "description": "用户昵称",
                     "type": "string"
                 },
@@ -6519,7 +6519,7 @@
                     "description": "用户手机号",
                     "type": "string"
                 },
-                "side_mode": {
+                "sideMode": {
                     "description": "用户侧边栏主题",
                     "type": "string"
                 },
@@ -6527,7 +6527,7 @@
                     "description": "更新时间",
                     "type": "string"
                 },
-                "user_name": {
+                "userName": {
                     "description": "用户登录名称",
                     "type": "string"
                 },
