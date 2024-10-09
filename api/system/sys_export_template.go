@@ -238,7 +238,7 @@ func (s *SysExportTemplateApi) ExportTemplate(c *gin.Context) {
 		response.FailWithMessage("获取失败", c)
 		return
 	}
-	c.Header("Content-Disposition", fmt.Sprintf("attachment; filename=%s", name+"模板.xslx")) // 下载文件重命名
+	c.Header("Content-Disposition", fmt.Sprintf("attachment; filename=%s", name+"模板.xlsx")) // 下载文件重命名
 	c.Header("success", "true")
 	c.Data(http.StatusOK, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", file.Bytes())
 }

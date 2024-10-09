@@ -6,13 +6,13 @@ aliyun_oss:
     bucket_url: yourBucketUrl
     base_path: yourBasePath
 auto_code:
-    server: /server
+    server:
     server_model: /model/%s
     server_router: /router/%s
-    server_api: /api/v1/%s
+    server_api: /api/%s
     server_plug: /plugin/%s
     server_initialize: /initialize
-    root: D:\jelly\GoLearn
+    root: D:\jelly\GoLearn\gin-web
     web: /web/src
     web_table: /view
     server_service: /service/%s
